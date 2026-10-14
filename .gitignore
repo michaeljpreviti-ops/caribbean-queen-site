@@ -1,0 +1,8 @@
+.vercel_token
+.env
+.env.*
+.vercel/
+__pycache__/
+*.pyc
+artifact/
+.DS_Store

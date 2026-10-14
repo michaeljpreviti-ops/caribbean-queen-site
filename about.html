@@ -1,0 +1,1146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="The story behind Caribbean Queen: Valerie Phillips opened Gainesville&#x27;s first Jamaican restaurant in 2000, and still cooks it with spices brought from home.">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}html{-webkit-text-size-adjust:100%}[hidden]{display:none!important}</style>
+<title>Ms. Queen's Kitchen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Barlow+Condensed:wght@500;600;700&family=Karla:wght@400;500;700&display=swap">
+<style>
+/* Layout: a Jamaican counter menu board — charcoal panels, gold hairlines, and the
+   category colours of the board itself (red specialties, green vegetarian and juice,
+   blue fish and sodas, gold patties). Palette: scotch-bonnet gold, pepper red, callaloo
+   green, tropical blue, and the char of the jerk grill. */
+:root{
+  --bg:#FDF8EE; --surface:#FFFFFF; --sunk:#F6EEDD;
+  --ink:#17140F; --ink-soft:#423A2D; --muted:#6F6454;
+  --line:#E7DCC5; --line-strong:#CFBF9D;
+  --gold:#C77A06; --gold-bright:#F0A81C; --red:#C32718; --green:#3F8524; --blue:#1F6E9E;
+  --char:#15120D; --char-2:#211C14; --char-line:#352D20; --char-ink:#F7F0E1; --char-muted:#A89B84;
+  --f-display:"Alfa Slab One",Georgia,"Times New Roman",serif;
+  --f-cond:"Barlow Condensed","Arial Narrow",Helvetica,sans-serif;
+  --f-body:"Karla","Helvetica Neue",Arial,sans-serif;
+  --wrap:1200px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#141108; --surface:#1E1810; --sunk:#191409;
+    --ink:#F7F0E1; --ink-soft:#DED4BF; --muted:#A79B83;
+    --line:#2F2718; --line-strong:#473D25;
+    --gold:#FFC149; --gold-bright:#FFC149; --red:#FF7057; --green:#84CC5F; --blue:#64B6E2;
+    --char:#0C0A06; --char-2:#171309; --char-line:#2B2417; --char-ink:#F7F0E1; --char-muted:#A89B84;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#141108; --surface:#1E1810; --sunk:#191409;
+  --ink:#F7F0E1; --ink-soft:#DED4BF; --muted:#A79B83;
+  --line:#2F2718; --line-strong:#473D25;
+  --gold:#FFC149; --gold-bright:#FFC149; --red:#FF7057; --green:#84CC5F; --blue:#64B6E2;
+  --char:#0C0A06; --char-2:#171309; --char-line:#2B2417; --char-ink:#F7F0E1; --char-muted:#A89B84;
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:18px;line-height:1.62;-webkit-text-size-adjust:100%}
+img{max-width:100%;display:block;height:auto}
+a{color:var(--gold);text-decoration-thickness:1px;text-underline-offset:2px}
+h1,h2,h3,h4{font-family:var(--f-display);font-weight:400;line-height:1.06;margin:0;text-wrap:balance}
+h1{font-size:clamp(2.5rem,6.6vw,4.5rem)}
+h2{font-size:clamp(1.95rem,4.2vw,2.95rem)}
+h3{font-size:clamp(1.3rem,2.3vw,1.6rem)}
+h4{font-size:1.16rem}
+p{margin:0}
+:focus-visible{outline:3px solid var(--gold-bright);outline-offset:2px;border-radius:2px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--red);color:#fff;padding:.7rem 1rem;z-index:99}
+.skip:focus{left:8px;top:8px}
+.wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:20px}
+.eyebrow{font-family:var(--f-cond);font-size:.92rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.lede{font-size:clamp(1.14rem,1.9vw,1.32rem);color:var(--ink-soft);max-width:60ch}
+.prose{display:flex;flex-direction:column;gap:1.05rem;max-width:66ch;color:var(--ink-soft)}
+
+/* ---- top strip ---- */
+.util{background:var(--char);color:var(--char-muted);border-bottom:1px solid var(--char-line);font-family:var(--f-cond);font-size:.98rem;letter-spacing:.03em}
+.util__in{display:flex;flex-wrap:wrap;align-items:center;gap:.3rem 1.3rem;padding-block:.5rem}
+.util__i{display:flex;align-items:center;gap:.4rem}
+.util__i svg{width:14px;height:14px;fill:currentColor;opacity:.8;flex:none}
+.util__sp{flex:1 1 auto}
+.util__ph{color:var(--char-ink);font-family:var(--f-display);font-size:1.3rem;text-decoration:none;display:flex;align-items:center;gap:.45rem;line-height:1}
+.util__ph svg{width:17px;height:17px;fill:var(--gold-bright)}
+.util__ph:hover{color:var(--gold-bright)}
+.open-dot{width:9px;height:9px;border-radius:50%;background:#56C45A;flex:none;box-shadow:0 0 0 3px rgba(86,196,90,.22)}
+.open-dot[data-shut="1"]{background:#D95C4A;box-shadow:0 0 0 3px rgba(217,92,74,.22)}
+
+/* ---- masthead ---- */
+.mast{background:var(--surface);border-bottom:2px solid var(--line);position:sticky;top:env(safe-area-inset-top,0px);z-index:40}
+.mast__in{display:flex;align-items:center;gap:1rem;padding-block:.6rem}
+.brand{display:flex;align-items:center;flex:none;text-decoration:none;gap:.6rem}
+.brand img{height:80px;width:auto}
+.brandmark{display:flex;align-items:center;gap:.6rem}
+.brandmark svg{width:40px;height:40px;fill:var(--gold-bright);flex:none}
+.brandmark__t{display:flex;flex-direction:column;line-height:1;min-width:0}
+.brandmark__k{font-family:var(--f-cond);font-size:.84rem;font-weight:700;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+.brandmark__n{font-family:var(--f-display);font-size:1.78rem;color:var(--ink);padding-top:.16rem}
+.brandmark__s{font-family:var(--f-cond);font-size:.82rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:.3rem}
+.foot__brand .brandmark svg{width:52px;height:52px}
+.foot__brand .brandmark__n{color:var(--char-ink);font-size:2.1rem}
+.foot__brand .brandmark__k{font-size:.92rem}
+.foot__brand .brandmark__s{color:var(--char-muted)}
+.mast__sp{flex:1 1 auto}
+.nav{display:flex;align-items:center;gap:.1rem}
+.nav a{font-family:var(--f-cond);font-size:1.18rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);text-decoration:none;padding:.5rem .66rem;border-bottom:3px solid transparent;white-space:nowrap}
+.nav a:hover{color:var(--ink);border-bottom-color:var(--line-strong)}
+.nav a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--red)}
+.mast__cta{display:flex;align-items:center;gap:.5rem;flex:none}
+.navtoggle{display:none;background:var(--surface);border:2px solid var(--line-strong);color:var(--ink);border-radius:4px;padding:.45rem .6rem;font-family:var(--f-cond);font-size:1.05rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;align-items:center;gap:.4rem;cursor:pointer}
+.navtoggle svg{width:17px;height:17px;fill:currentColor}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-family:var(--f-cond);font-weight:700;text-transform:uppercase;letter-spacing:.07em;font-size:1.12rem;padding:.64rem 1.1rem;border-radius:4px;border:2px solid transparent;text-decoration:none;cursor:pointer;line-height:1.15;text-align:center}
+.btn svg{width:16px;height:16px;fill:currentColor;flex:none}
+.btn--red{background:var(--red);color:#fff;border-color:var(--red)}
+.btn--red:hover{filter:brightness(1.12)}
+.btn--gold{background:var(--gold-bright);color:#231703;border-color:var(--gold-bright)}
+.btn--gold:hover{filter:brightness(1.08)}
+.btn--ghost{background:transparent;color:var(--ink);border-color:var(--line-strong)}
+.btn--ghost:hover{border-color:var(--ink)}
+.btn--onchar{background:transparent;color:var(--char-ink);border-color:rgba(255,255,255,.42)}
+.btn--onchar:hover{border-color:var(--gold-bright);color:var(--gold-bright)}
+.btn--sm{font-size:1rem;padding:.48rem .78rem}
+.btn--lg{font-size:1.24rem;padding:.86rem 1.5rem}
+
+/* ---- hero ---- */
+.hero{color:var(--char-ink);position:relative;overflow:hidden;
+  background:
+    radial-gradient(115% 85% at 6% 0%, rgba(195,39,24,.34) 0%, rgba(195,39,24,0) 56%),
+    radial-gradient(85% 80% at 100% 104%, rgba(240,168,28,.15) 0%, rgba(240,168,28,0) 58%),
+    var(--char);
+  border-top:5px solid var(--red);
+  border-bottom:5px solid var(--gold-bright)}
+.hero__in{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(1.5rem,3.6vw,3rem);align-items:center;padding-block:clamp(2.3rem,5vw,4rem)}
+.hero__body{display:flex;flex-direction:column;gap:1.05rem;align-items:flex-start;min-width:0}
+.hero h1{color:#fff}
+.hero h1 em{font-style:normal;color:var(--gold-bright)}
+.hero .lede{color:#E4DBC7}
+.hero__act{display:flex;flex-wrap:wrap;gap:.6rem;padding-top:.25rem}
+.hero__badge{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--f-cond);font-size:.95rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-bright);border:1px solid rgba(240,168,28,.5);padding:.35rem .7rem;border-radius:3px}
+.hero__fig{margin:0;min-width:0;position:relative;padding-right:11px;padding-bottom:11px}
+.hero__fig img{width:100%;border:4px solid var(--gold-bright);border-radius:6px;
+  box-shadow:11px 11px 0 var(--red)}
+.hero__tag{position:absolute;bottom:-14px;left:-10px;background:var(--red);color:#fff;font-family:var(--f-display);font-size:1.05rem;padding:.38rem .8rem;border-radius:3px;transform:rotate(-2.5deg)}
+
+/* page header */
+.phead{color:var(--char-ink);
+  background:
+    radial-gradient(110% 150% at 4% 0%, rgba(195,39,24,.30) 0%, rgba(195,39,24,0) 60%),
+    var(--char);
+  border-top:5px solid var(--red);
+  border-bottom:5px solid var(--gold-bright)}
+.phead__in{padding-block:clamp(1.8rem,4vw,3rem);display:flex;flex-direction:column;gap:.7rem;align-items:flex-start}
+.phead h1{color:#fff;font-size:clamp(2.2rem,5.4vw,3.6rem)}
+.phead .lede{color:#E4DBC7}
+
+/* ---- strips & sections ---- */
+.strip{background:var(--red);color:#fff;border-bottom:3px solid var(--char)}
+.strip__in{display:flex;flex-wrap:wrap;gap:.5rem 2rem;padding-block:.85rem;align-items:center;justify-content:center;font-family:var(--f-cond);font-size:1.12rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-align:center}
+.strip__in b{color:#FFD98A;font-weight:700}
+.sec{padding-block:clamp(2.5rem,5.4vw,4.2rem);scroll-margin-top:5.5rem}
+.sec--surface{background:var(--surface);border-block:2px solid var(--line)}
+.sec--char{background:var(--char);color:var(--char-ink)}
+.sec--char h2,.sec--char h3{color:#fff}
+.sec--char .prose,.sec--char .lede{color:#DDD3BE}
+.sechead{display:flex;flex-direction:column;gap:.55rem;align-items:flex-start;margin-bottom:1.8rem;max-width:60ch}
+.sechead--row{flex-direction:row;justify-content:space-between;align-items:flex-end;max-width:none;gap:1.2rem;flex-wrap:wrap}
+.rule{height:4px;width:64px;background:var(--gold-bright);border:0;margin:0}
+
+.grid{display:grid;gap:1.15rem}
+.grid--3{grid-template-columns:repeat(3,1fr)}
+.grid--2{grid-template-columns:repeat(2,1fr)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.4rem,3.4vw,2.8rem);align-items:center}
+.split__fig{margin:0;min-width:0}
+.split__fig img{width:100%;border:3px solid var(--line-strong);border-radius:5px}
+.split__fig figcaption{font-family:var(--f-cond);font-size:1rem;letter-spacing:.08em;color:var(--muted);padding-top:.5rem;text-transform:uppercase}
+.split__body{display:flex;flex-direction:column;gap:1rem;align-items:flex-start;min-width:0}
+
+/* ---- dish cards ---- */
+.dish{background:var(--surface);border:2px solid var(--line);border-radius:5px;overflow:hidden;
+  display:flex;flex-direction:column;min-width:0;text-decoration:none;color:inherit;
+  transition:border-color .16s,transform .16s,box-shadow .16s}
+a.dish:hover,a.dish:focus-visible{border-color:var(--red);transform:translateY(-3px);
+  box-shadow:0 10px 0 -4px rgba(195,39,24,.35)}
+a.dish:hover .dish__go,a.dish:focus-visible .dish__go{color:var(--red)}
+.dish__go{font-family:var(--f-cond);font-size:1rem;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);padding-top:.15rem}
+.dish img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.dish__b{padding:1rem 1.05rem;display:flex;flex-direction:column;gap:.35rem;flex:1 1 auto}
+.dish__b h3{font-size:1.24rem}
+.dish__b p{color:var(--ink-soft);font-size:1rem}
+.dish__price{font-family:var(--f-cond);font-size:1.18rem;font-weight:700;color:var(--red);letter-spacing:.03em;font-variant-numeric:tabular-nums}
+
+/* ---- photo carousel: one dish at a time, alternating across menu sections ---- */
+.pcar{display:flex;flex-direction:column;gap:1rem;width:100%}
+.pcar__vp{overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;border-radius:5px}
+.pcar__vp::-webkit-scrollbar{display:none}
+.pcar__vp:focus-visible{outline:3px solid var(--gold-bright);outline-offset:3px}
+.pcar__track{display:flex;gap:1.15rem;margin:0;padding:0;list-style:none}
+.pcar__slide{flex:0 0 calc(33.333% - .77rem);scroll-snap-align:start;min-width:0;display:flex}
+.pcar__slide > *{width:100%}
+.pcar__ctl{display:flex;align-items:center;justify-content:center;gap:.9rem}
+.pcar__btn{width:46px;height:46px;flex:none;border:2px solid var(--line-strong);background:var(--surface);
+  color:var(--ink);border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0}
+.pcar__btn svg{width:19px;height:19px;fill:currentColor}
+.pcar__btn:hover{border-color:var(--red);color:var(--red)}
+.pcar__btn[disabled]{opacity:.34;cursor:default}
+.pcar__btn[disabled]:hover{border-color:var(--line-strong);color:var(--ink)}
+.pcar__dots{display:flex;gap:.45rem;align-items:center;flex-wrap:wrap;justify-content:center}
+.pcar__dot{width:11px;height:11px;padding:0;border-radius:50%;border:2px solid var(--line-strong);background:transparent;cursor:pointer}
+.pcar__dot[aria-selected="true"]{background:var(--red);border-color:var(--red)}
+.pcar__count{font-family:var(--f-cond);font-size:1rem;font-weight:600;letter-spacing:.08em;color:var(--muted);
+  font-variant-numeric:tabular-nums;min-width:4.2em;text-align:center}
+@media (max-width:900px){ .pcar__slide{flex:0 0 calc(50% - .58rem)} }
+@media (max-width:620px){ .pcar__slide{flex:0 0 100%} }
+@media (prefers-reduced-motion: reduce){ .pcar__vp{scroll-behavior:auto} }
+
+/* ---- MENU ---- */
+.menujump{display:flex;flex-wrap:wrap;gap:.45rem;padding-block:1rem}
+.menujump a{font-family:var(--f-cond);font-size:1.04rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;
+  text-decoration:none;color:var(--ink);background:var(--surface);border:2px solid var(--line-strong);
+  border-radius:3px;padding:.34rem .7rem}
+.menujump a:hover{border-color:var(--gold-bright);color:var(--gold)}
+.mcat{margin-bottom:2.3rem;scroll-margin-top:5.5rem}
+.mcat__h{display:flex;align-items:baseline;gap:.8rem;flex-wrap:wrap;background:var(--cat,var(--char));color:#fff;
+  padding:.6rem 1rem;border-radius:4px 4px 0 0}
+.mcat__h h2{font-size:clamp(1.5rem,3vw,2.1rem);color:#fff}
+.mcat__h span{font-family:var(--f-cond);font-size:1rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.82)}
+.mcat__body{border:2px solid var(--line);border-top:0;border-radius:0 0 4px 4px;background:var(--surface)}
+.item{display:grid;grid-template-columns:1fr auto;gap:.3rem 1.2rem;padding:1rem 1.1rem;border-top:1px solid var(--line)}
+.item:first-child{border-top:0}
+.item__n{font-family:var(--f-display);font-size:1.14rem;line-height:1.25;color:var(--ink);display:flex;align-items:baseline;gap:.45rem;flex-wrap:wrap}
+.item__star{color:var(--gold-bright);font-size:.95rem}
+.item__d{grid-column:1;color:var(--ink-soft);font-size:1rem;max-width:60ch}
+.item__p{grid-column:2;grid-row:1/span 2;text-align:right;font-family:var(--f-cond);font-weight:700;font-size:1.1rem;
+  color:var(--red);white-space:nowrap;font-variant-numeric:tabular-nums;letter-spacing:.02em;line-height:1.4}
+.item__p i{display:block;font-style:normal;color:var(--muted);font-weight:600;font-size:.95rem}
+.item__note{grid-column:1;font-family:var(--f-cond);font-size:.98rem;letter-spacing:.07em;text-transform:uppercase;color:var(--red);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;padding:1rem 1.1rem;background:var(--sunk);border:2px dashed var(--line-strong);
+  border-radius:4px;font-size:1rem;color:var(--ink-soft)}
+.legend b{color:var(--ink)}
+
+/* ---- info / hours ---- */
+.info{background:var(--surface);border:2px solid var(--line);border-top:5px solid var(--gold-bright);border-radius:5px;padding:1.4rem 1.35rem;display:flex;flex-direction:column;gap:1.15rem}
+.field{display:flex;flex-direction:column;gap:.2rem}
+.field__k{font-family:var(--f-cond);font-size:1rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.field__v{font-size:1.1rem;color:var(--ink)}
+.field__v--big{font-family:var(--f-display);font-size:1.75rem;line-height:1.15}
+.field__v--big a{text-decoration:none;color:var(--ink)}
+.field__v--big a:hover{color:var(--red)}
+.hours{display:grid;grid-template-columns:auto 1fr;gap:.26rem 1.1rem;font-variant-numeric:tabular-nums;margin:0}
+.hours dt{font-family:var(--f-cond);font-size:1.04rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.hours dd{margin:0;font-size:1.04rem}
+.hours .is-today dt,.hours .is-today dd{color:var(--ink);font-weight:700}
+.hours__row{display:contents}
+
+.maplink{display:block;border:3px solid var(--line-strong);border-radius:5px;background:var(--char);text-decoration:none;position:relative;overflow:hidden;padding:2.4rem 1.2rem;text-align:center;color:var(--char-ink)}
+.maplink b{display:block;font-family:var(--f-display);font-size:1.4rem;color:#fff}
+.maplink span{font-family:var(--f-cond);font-size:1.04rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-bright)}
+.maplink:hover{border-color:var(--gold-bright)}
+
+.copyrow{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.copybtn{font-family:var(--f-cond);font-size:1rem;letter-spacing:.08em;text-transform:uppercase;background:transparent;
+  border:2px solid var(--line-strong);color:var(--muted);padding:.32rem .6rem;border-radius:3px;cursor:pointer;font-weight:600}
+.copybtn:hover{border-color:var(--ink);color:var(--ink)}
+.copybtn{display:inline-flex;align-items:center;gap:.45rem;line-height:1.3}
+.copybtn svg{width:16px;height:16px;fill:currentColor;flex:none}
+
+/* ---- rating badge ---- */
+.grate{display:inline-flex;align-items:center;gap:.6rem;text-decoration:none;flex-wrap:wrap;border:2px solid var(--line-strong);
+  border-radius:4px;padding:.45rem .75rem;background:var(--surface)}
+.grate:hover{border-color:var(--gold-bright)}
+.grate__num{font-family:var(--f-display);font-size:1.5rem;line-height:1;color:var(--ink)}
+.stars{position:relative;display:inline-block;white-space:nowrap;font-size:1.15rem;line-height:1;letter-spacing:.1em}
+.stars__bg{color:var(--line-strong)}
+.stars__fg{position:absolute;left:0;top:0;overflow:hidden;width:var(--pct,100%);color:var(--gold-bright)}
+.grate__n{font-family:var(--f-cond);font-size:1rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);line-height:1.3;font-weight:600}
+.grate__n b{display:block;color:var(--ink);font-weight:700}
+.grate--dark{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.3)}
+.grate--dark .grate__num{color:#fff}
+.grate--dark .stars__bg{color:rgba(255,255,255,.32)}
+.grate--dark .grate__n{color:#CFC4AD}
+.grate--dark .grate__n b{color:#fff}
+
+/* ---- footer ---- */
+.foot{background:var(--char-2);color:var(--char-muted);border-top:5px solid var(--gold-bright);padding-block:2.4rem 1.2rem;font-size:1.02rem}
+.foot__grid{display:grid;grid-template-columns:1.25fr 1fr 1fr 1.1fr;gap:1.9rem}
+.foot h4{color:#fff;font-size:1rem;letter-spacing:.16em;font-family:var(--f-cond);font-weight:700;text-transform:uppercase;padding-bottom:.75rem}
+.foot ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.42rem}
+.foot a{color:var(--char-muted);text-decoration:none}
+.foot a:hover{color:var(--gold-bright);text-decoration:underline}
+.foot__brand img{height:92px;width:auto}
+.foot__brand p{padding-top:.8rem;max-width:34ch;font-size:1rem}
+.foot__ph{font-family:var(--f-display);font-size:1.6rem;color:#fff;text-decoration:none;display:block}
+.foot__ph:hover{color:var(--gold-bright)}
+.social{display:flex;gap:.5rem;padding-top:.85rem}
+.social a{width:40px;height:40px;border:2px solid var(--char-line);border-radius:4px;display:flex;align-items:center;justify-content:center}
+.social a:hover{border-color:var(--gold-bright);background:rgba(240,168,28,.12)}
+.social svg{width:18px;height:18px;fill:var(--char-muted)}
+.social a:hover svg{fill:var(--gold-bright)}
+.foot__base{border-top:1px solid var(--char-line);margin-top:2rem;padding-top:1rem;display:flex;flex-wrap:wrap;gap:.5rem 1.3rem;
+  justify-content:space-between;font-family:var(--f-cond);font-size:.98rem;letter-spacing:.06em;text-transform:uppercase;color:#7D7260}
+
+/* ---- mobile dock ---- */
+.dock{display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--char);border-top:2px solid var(--gold-bright);
+  padding:.5rem .55rem;padding-bottom:calc(.5rem + env(safe-area-inset-bottom,0px));gap:.45rem}
+.dock a{flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:center;gap:.15rem;text-decoration:none;color:var(--char-ink);
+  font-family:var(--f-cond);font-size:.98rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:.36rem .2rem;border-radius:4px}
+.dock a svg{width:18px;height:18px;fill:var(--gold-bright)}
+.dock a.dock--primary{background:var(--red)}
+.dock a.dock--primary svg{fill:#fff}
+
+/* ---------- responsive ---------- */
+@media (max-width:1080px){
+  .brand img{height:64px}
+  .navtoggle{display:inline-flex}
+  .nav{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;background:var(--surface);
+    border-bottom:2px solid var(--line);box-shadow:0 16px 30px rgba(0,0,0,.16);padding:.4rem 20px .8rem;gap:0}
+  .nav.is-open{display:flex}
+  .mast{position:relative}
+  .mast__in{position:relative;flex-wrap:wrap}
+  .nav a{border-bottom:1px solid var(--line);border-left:4px solid transparent;padding:.8rem .4rem;font-size:1.22rem}
+  .nav a[aria-current="page"]{border-left-color:var(--red);border-bottom-color:var(--line)}
+  .nav a:hover{border-bottom-color:var(--line)}
+  .mast__cta .btn--hide-sm{display:none}
+}
+@media (max-width:900px){
+  .foot__grid{grid-template-columns:1fr 1fr;gap:1.6rem}
+  .brandmark svg{width:32px;height:32px}
+  .brandmark__n{font-size:1.48rem}
+  .brandmark__k{font-size:.74rem;letter-spacing:.28em}
+  .grid--3{grid-template-columns:repeat(2,1fr)}
+  .hero__in{grid-template-columns:1fr}
+  .hero__fig{order:-1}
+  .split{grid-template-columns:1fr}
+  .dock{display:flex}
+  body{padding-bottom:4.7rem}
+}
+@media (max-width:620px){
+  .grid--3,.grid--2{grid-template-columns:1fr}
+  .foot__grid{grid-template-columns:1fr}
+  .util__sp{display:none}
+  .util__in{font-size:.92rem;gap:.25rem .9rem}
+  .util__ph{font-size:1.18rem}
+  .brand img{height:54px}
+  .item{grid-template-columns:1fr}
+  .item__p{grid-column:1;grid-row:auto;text-align:left}
+  .hero__tag{left:0}
+}
+@media (prefers-reduced-motion: reduce){ *{animation-duration:.01ms!important;transition-duration:.01ms!important} }
+
+/* ======================================================================
+   Social links, cookie consent and the accessibility panel.
+
+   Everything below the "accessibility modes" rule is driven by data-
+   attributes that the panel writes onto <html>, so the whole feature is
+   CSS plus one small script — no third-party overlay, no extra request.
+   ====================================================================== */
+
+/* ---- text scaling set by the accessibility panel ---- */
+html{font-size:calc(100% * var(--a11y-scale,1))}
+body{font-size:calc(18px * var(--a11y-scale,1))}
+
+/* ---- social in the sticky masthead ---- */
+.mastsoc{display:flex;gap:.35rem;flex:none}
+.mastsoc__a{width:38px;height:38px;flex:none;display:flex;align-items:center;justify-content:center;
+  border:2px solid var(--line-strong);border-radius:4px;color:var(--ink);text-decoration:none}
+.mastsoc__a svg{width:19px;height:19px;fill:currentColor}
+.mastsoc__a span{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip-path:inset(50%);white-space:nowrap;border:0}
+.mastsoc__a:hover{border-color:var(--red);color:var(--red);background:rgba(195,39,24,.09)}
+
+/* ---- "follow the kitchen" row, on the dark hero ---- */
+.follow{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .75rem;padding-top:.3rem}
+.follow__k{font-family:var(--f-cond);font-size:.95rem;font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--gold)}
+.follow__a{display:inline-flex;align-items:center;gap:.45rem;text-decoration:none;color:var(--ink);
+  font-family:var(--f-cond);font-size:1.08rem;font-weight:600;letter-spacing:.04em;
+  border:2px solid var(--line-strong);border-radius:999px;padding:.4rem .9rem}
+.follow__a svg{width:18px;height:18px;fill:currentColor;flex:none}
+.follow__a:hover{border-color:var(--gold-bright);color:var(--gold-bright);background:rgba(240,168,28,.1)}
+.follow--dark .follow__k{color:var(--gold-bright)}
+.follow--dark .follow__a{color:#fff;border-color:rgba(255,255,255,.45)}
+.follow--dark .follow__a:hover{color:var(--gold-bright);border-color:var(--gold-bright)}
+
+/* ---- footer: named social links, then the legal row ---- */
+.foot__soch{font-family:var(--f-cond);font-size:.95rem;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:#fff;padding-top:1.1rem}
+.socpill{display:flex;flex-wrap:wrap;gap:.5rem;padding-top:.55rem}
+.socpill a{display:inline-flex;align-items:center;gap:.45rem;color:var(--char-ink);
+  border:2px solid var(--char-line);border-radius:999px;padding:.42rem .95rem;
+  font-family:var(--f-cond);font-size:1.05rem;font-weight:600;letter-spacing:.05em}
+.socpill svg{width:18px;height:18px;fill:var(--gold-bright);flex:none}
+.socpill a:hover{border-color:var(--gold-bright);background:rgba(240,168,28,.12);
+  color:var(--gold-bright);text-decoration:none}
+.social{padding-top:.6rem}
+.foot__legal{display:flex;flex-wrap:wrap;align-items:center;gap:.3rem .95rem}
+.foot__legal a,.foot__lbtn{color:#7D7260;text-decoration:none;font:inherit;letter-spacing:inherit;
+  text-transform:inherit}
+.foot__lbtn{background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;
+  text-decoration-style:dotted;text-underline-offset:3px}
+.foot__legal a:hover,.foot__lbtn:hover{color:var(--gold-bright)}
+
+/* ---- cookie consent ---- */
+.cc{position:fixed;left:0;right:0;bottom:0;z-index:95;padding:14px;display:flex;
+  justify-content:center;pointer-events:none}
+.cc[hidden]{display:none}
+.cc__card{pointer-events:auto;width:100%;max-width:860px;background:var(--surface);color:var(--ink);
+  border:2px solid var(--line-strong);border-top:5px solid var(--gold-bright);border-radius:8px;
+  box-shadow:0 18px 50px rgba(0,0,0,.34);padding:1.05rem 1.2rem 1rem;
+  max-height:min(82vh,660px);overflow:auto}
+.cc__head{display:flex;align-items:center;gap:.6rem;padding-bottom:.5rem}
+.cc__head svg{width:27px;height:27px;fill:var(--gold);flex:none}
+.cc__head h2{font-size:clamp(1.3rem,2.6vw,1.72rem)}
+.cc__p{font-size:1rem;color:var(--ink-soft);max-width:74ch}
+.cc__opts{list-style:none;margin:0;padding:.9rem 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
+.cc__opt{display:flex;gap:.55rem;align-items:flex-start;border:1px solid var(--line);border-radius:6px;
+  padding:.6rem .7rem;background:var(--sunk);font-size:.93rem;line-height:1.46;cursor:pointer;height:100%}
+.cc__opt input{margin:.2rem 0 0;width:19px;height:19px;flex:none;accent-color:var(--red)}
+.cc__opt b{display:block;font-family:var(--f-cond);font-size:1.02rem;letter-spacing:.05em;
+  text-transform:uppercase;color:var(--ink);padding-bottom:.15rem}
+.cc__opt b i{font-style:normal;color:var(--muted);text-transform:none;letter-spacing:0}
+.cc__opt span{color:var(--ink-soft)}
+.cc__act{display:flex;flex-wrap:wrap;gap:.5rem;padding-top:.95rem}
+.cc__toggle{display:none;align-self:flex-start;margin-top:.8rem;background:none;border:0;padding:0;
+  cursor:pointer;color:var(--gold);font-family:var(--f-cond);font-size:1.05rem;font-weight:700;
+  letter-spacing:.07em;text-transform:uppercase;text-decoration:underline;text-underline-offset:3px}
+.cc__toggle:hover{color:var(--ink)}
+.cc__fine{padding-top:.7rem;font-size:.92rem;line-height:1.5;color:var(--muted)}
+.cc__fine[hidden]{display:none}
+.cc__fine svg{width:15px;height:15px;fill:var(--green);display:inline-block;
+  vertical-align:-2px;margin-right:.3rem}
+.cc__fine b{color:var(--ink-soft)}
+
+/* ---- accessibility panel ---- */
+.a11yfab{position:fixed;z-index:88;right:14px;bottom:14px;display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--blue);color:#fff;border:3px solid #fff;border-radius:999px;padding:.58rem .95rem;
+  cursor:pointer;font-family:var(--f-cond);font-size:1.05rem;font-weight:700;letter-spacing:.07em;
+  text-transform:uppercase;box-shadow:0 8px 22px rgba(0,0,0,.32)}
+.a11yfab svg{width:22px;height:22px;fill:currentColor;flex:none}
+.a11yfab:hover{filter:brightness(1.12)}
+:root[data-cc-open="1"] .a11yfab{display:none}
+.a11y{position:fixed;z-index:89;right:14px;bottom:14px;width:min(368px,calc(100vw - 28px));
+  background:var(--surface);color:var(--ink);border:2px solid var(--line-strong);
+  border-top:5px solid var(--blue);border-radius:8px;box-shadow:0 18px 50px rgba(0,0,0,.34);
+  max-height:min(80vh,660px);display:flex;flex-direction:column}
+.a11y[hidden]{display:none}
+.a11y__head{display:flex;align-items:center;gap:.6rem;padding:.7rem .8rem;border-bottom:1px solid var(--line)}
+.a11y__head h2{flex:1 1 auto;font-size:1.26rem;display:flex;align-items:center;gap:.5rem}
+.a11y__head h2 svg{width:22px;height:22px;fill:var(--blue);flex:none}
+.a11y__x{flex:none;width:34px;height:34px;background:none;border:2px solid var(--line-strong);
+  border-radius:4px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--ink)}
+.a11y__x svg{width:16px;height:16px;fill:currentColor}
+.a11y__body{padding:.8rem;overflow:auto;display:flex;flex-direction:column;gap:.95rem}
+.a11y__k{font-family:var(--f-cond);font-size:.92rem;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);padding-bottom:.4rem}
+.a11y__seg{display:grid;grid-template-columns:repeat(4,1fr);gap:.3rem}
+.a11y__seg--wide{grid-template-columns:repeat(2,1fr)}
+.a11y__sw{display:flex;flex-direction:column;gap:.35rem}
+.a11y__seg button,.a11y__sw button{font-family:var(--f-cond);font-size:1rem;font-weight:600;
+  letter-spacing:.04em;background:var(--sunk);color:var(--ink);border:2px solid var(--line);
+  border-radius:5px;padding:.46rem .3rem;cursor:pointer;text-align:center}
+.a11y__sw button{text-align:left;padding:.46rem .62rem}
+.a11y__seg button:hover,.a11y__sw button:hover{border-color:var(--line-strong)}
+.a11y__seg button.is-on,.a11y__sw button.is-on{background:var(--blue);border-color:var(--blue);color:#fff}
+.a11y__reset{font-family:var(--f-cond);font-size:1rem;font-weight:700;letter-spacing:.07em;
+  text-transform:uppercase;background:none;border:2px solid var(--red);color:var(--red);
+  border-radius:5px;padding:.5rem .8rem;cursor:pointer}
+.a11y__reset:hover{background:var(--red);color:#fff}
+.a11y__note{font-size:.88rem;line-height:1.52;color:var(--muted)}
+
+/* ---- accessibility modes, written onto <html> by the panel ---- */
+:root[data-a11y-contrast="high"]{
+  --bg:#000;--surface:#000;--sunk:#0B0B0B;
+  --ink:#FFF;--ink-soft:#FFF;--muted:#EDEDED;
+  --line:#FFF;--line-strong:#FFF;
+  --gold:#FFD400;--gold-bright:#FFD400;--red:#FF9382;--green:#86FF63;--blue:#86D6FF;
+  --char:#000;--char-2:#000;--char-line:#FFF;--char-ink:#FFF;--char-muted:#FFF;
+  color-scheme:dark}
+:root[data-a11y-contrast="high"] .hero,
+:root[data-a11y-contrast="high"] .phead,
+:root[data-a11y-contrast="high"] .sec--char,
+:root[data-a11y-contrast="high"] .foot{background:#000}
+:root[data-a11y-contrast="high"] a{color:#FFD400}
+:root[data-a11y-contrast="high"] .btn--gold,
+:root[data-a11y-contrast="high"] .a11y__seg button.is-on,
+:root[data-a11y-contrast="high"] .a11y__sw button.is-on{background:#FFD400;color:#000;border-color:#FFD400}
+:root[data-a11y-contrast="high"] .btn--red,
+:root[data-a11y-contrast="high"] .dock a.dock--primary{background:#000;color:#FFD400;border:2px solid #FFD400}
+:root[data-a11y-contrast="high"] .btn--red svg,
+:root[data-a11y-contrast="high"] .dock a.dock--primary svg{fill:#FFD400}
+:root[data-a11y-contrast="high"] .a11yfab{background:#000;color:#FFD400;border-color:#FFD400}
+:root[data-a11y-contrast="high"] .a11y__head h2 svg{fill:#FFD400}
+:root[data-a11y-contrast="high"] .foot__base,
+:root[data-a11y-contrast="high"] .foot__legal a,
+:root[data-a11y-contrast="high"] .foot__lbtn{color:#FFF}
+
+:root[data-a11y-font="plain"]{--f-display:var(--f-body);--f-cond:var(--f-body)}
+:root[data-a11y-font="plain"] body{letter-spacing:.012em;word-spacing:.09em;line-height:1.78}
+:root[data-a11y-font="plain"] h1,:root[data-a11y-font="plain"] h2,
+:root[data-a11y-font="plain"] h3,:root[data-a11y-font="plain"] h4{font-weight:700;line-height:1.22}
+:root[data-a11y-font="plain"] .btn,:root[data-a11y-font="plain"] .nav a,
+:root[data-a11y-font="plain"] .eyebrow,:root[data-a11y-font="plain"] .foot h4,
+:root[data-a11y-font="plain"] .a11y__k,:root[data-a11y-font="plain"] .follow__k,
+:root[data-a11y-font="plain"] .foot__soch{text-transform:none;letter-spacing:.02em}
+
+:root[data-a11y-underline="1"] a{text-decoration:underline;text-underline-offset:3px}
+:root[data-a11y-underline="1"] .btn,:root[data-a11y-underline="1"] .dock a,
+:root[data-a11y-underline="1"] .brand{text-decoration:none}
+
+:root[data-a11y-highlight="1"] a:not(.btn):not(.dish):not(.brand){
+  outline:2px solid var(--gold-bright);outline-offset:2px;border-radius:2px;
+  background:rgba(240,168,28,.16)}
+:root[data-a11y-highlight="1"] .dock a{outline:2px solid var(--gold-bright);outline-offset:-3px;background:none}
+:root[data-a11y-highlight="1"] .btn,:root[data-a11y-highlight="1"] button,
+:root[data-a11y-highlight="1"] .dish{outline:2px dashed var(--gold-bright);outline-offset:3px}
+
+:root[data-a11y-motion="off"] *,:root[data-a11y-motion="off"] *::before,
+:root[data-a11y-motion="off"] *::after{animation-duration:.01ms!important;
+  animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+
+:root[data-a11y-cursor="big"],:root[data-a11y-cursor="big"] *{
+  cursor:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><path d="M7 3l24 20H19.6l5.2 11.6-4.1 1.8-5.2-11.6L7 31z" fill="%23fff" stroke="%23000" stroke-width="2.2" stroke-linejoin="round"/></svg>') 4 2,auto}
+:root[data-a11y-cursor="big"] a,:root[data-a11y-cursor="big"] button,
+:root[data-a11y-cursor="big"] label,:root[data-a11y-cursor="big"] summary,
+:root[data-a11y-cursor="big"] [role="tab"]{
+  cursor:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><path d="M14.5 3a3 3 0 0 1 3 3v11l2.8-1.6 7.6 3.6c2 1 2.6 2.6 2.6 4.6V28a6 6 0 0 1-6 6h-7.8a6 6 0 0 1-5-2.7L7.2 22a3 3 0 0 1 4.6-3.7l-.3-9.3a3 3 0 0 1 3-3z" fill="%23fff" stroke="%23000" stroke-width="2.2" stroke-linejoin="round"/></svg>') 10 2,pointer}
+
+/* ---- responsive: keep the widgets clear of the mobile action dock ---- */
+@media (max-width:1080px){
+  .mast__cta{gap:.4rem}
+}
+@media (max-width:900px){
+  .cc{bottom:calc(4.7rem + env(safe-area-inset-bottom,0px))}
+  .a11yfab,.a11y{bottom:calc(5.1rem + env(safe-area-inset-bottom,0px))}
+}
+@media (max-width:780px){
+  /* On a phone the two plain answers come first and the per-category detail
+     sits behind an expander, so "Necessary only" is never below the fold. */
+  .cc{padding:10px}
+  .cc__card{padding:.9rem 1rem .85rem;max-height:min(80vh,600px);display:flex;flex-direction:column}
+  .cc__card:focus{outline:none}
+  .cc__head{order:0}
+  .cc__p{order:1;font-size:.95rem}
+  .cc__act{order:2}
+  .cc__toggle{order:3;display:inline-block}
+  .cc__opts{order:4;grid-template-columns:1fr;gap:.45rem;padding-top:.7rem;display:none}
+  .cc__fine{order:5}
+  :root[data-cc-opts="1"] .cc__opts{display:grid}
+  :root:not([data-cc-opts="1"]) .cc__act [data-cc-set="save"]{display:none}
+  .cc__act .btn{flex:1 1 auto}
+  .cc__opt{padding:.5rem .6rem;font-size:.88rem;line-height:1.4}
+  .cc__opt b{font-size:.98rem}
+}
+@media (max-width:620px){
+  .mastsoc__a{width:34px;height:34px}
+  .a11yfab span{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+    clip-path:inset(50%);white-space:nowrap;border:0}
+  .a11yfab{padding:.6rem;border-radius:50%}
+}
+
+/* ---- long-form legal / statement pages ---- */
+.legal{max-width:78ch;display:flex;flex-direction:column;gap:.35rem;color:var(--ink-soft)}
+.legal h2{font-size:clamp(1.5rem,3.1vw,2.1rem);padding-top:1.9rem}
+.legal h2:first-child{padding-top:0}
+.legal h3{font-size:1.2rem;font-family:var(--f-cond);font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--ink);padding-top:1.1rem}
+.legal p{padding-top:.75rem;max-width:70ch}
+.legal ul{margin:0;padding:.75rem 0 0 1.25rem;display:flex;flex-direction:column;gap:.5rem;max-width:70ch}
+.legal li>b,.legal li>strong{color:var(--ink)}
+.legal .tbl{width:100%;border-collapse:collapse;margin-top:1rem;font-size:.97rem}
+.legal .tbl caption{text-align:left;font-family:var(--f-cond);font-size:1rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);padding-bottom:.45rem}
+.legal .tbl th,.legal .tbl td{border:1px solid var(--line);padding:.6rem .7rem;text-align:left;vertical-align:top}
+.legal .tbl th{background:var(--sunk);color:var(--ink);font-family:var(--f-cond);font-size:1rem;
+  letter-spacing:.07em;text-transform:uppercase}
+.legal .tbl code{font-size:.92em;background:var(--sunk);padding:.1rem .3rem;border-radius:3px;color:var(--ink)}
+.legal .stamp{font-family:var(--f-cond);font-size:1rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);border-top:2px solid var(--line);margin-top:2.2rem;padding-top:1rem}
+@media (max-width:620px){
+  .legal .tbl,.legal .tbl tbody,.legal .tbl tr,.legal .tbl td,.legal .tbl th{display:block;width:auto}
+  .legal .tbl thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+  .legal .tbl tr{border:1px solid var(--line);margin-bottom:.7rem}
+  .legal .tbl td{border:0;border-bottom:1px solid var(--line)}
+  .legal .tbl td:last-child{border-bottom:0}
+  .legal .tbl td::before{content:attr(data-th) " ";font-family:var(--f-cond);letter-spacing:.08em;
+    text-transform:uppercase;color:var(--muted);display:block}
+}
+
+/* ---- reflow guard (WCAG 1.4.10) ----
+   At 320px with the panel's text scaling turned up, single long words — a
+   heading, a storage key, a phone number — were pushing the page wider than
+   the viewport. Breaking them costs nothing at ordinary sizes. */
+p,li,dt,dd,th,td,.field__k,.field__v,.foot__ph,.util__ph{overflow-wrap:break-word}
+@media (max-width:700px){
+  h1,h2,h3,h4{hyphens:auto;overflow-wrap:anywhere}
+}
+.legal code,.legal .tbl code{overflow-wrap:anywhere}
+/* ...and the tracks they sit in have to be allowed to shrink. A grid or flex
+   item defaults to min-width:auto, which refuses to go below its content's
+   min-content width, so overflow-wrap alone never gets a chance to act. */
+.split>*,.grid>*,.foot__grid>*,.hero__in>*,.sechead--row>*,.info>*,.field>*{min-width:0}
+.hours{grid-template-columns:minmax(0,auto) minmax(0,1fr)}
+.item{grid-template-columns:minmax(0,1fr) auto}
+@media (max-width:1080px){
+  .mast__cta{flex:0 1 auto;min-width:0;flex-wrap:wrap;justify-content:flex-end}
+}
+</style>
+</head>
+<body>
+<script>(function(){try{var R=document.documentElement,s=JSON.parse(localStorage.getItem('cq.a11y.v1')||'{}');if(s.text)R.style.setProperty('--a11y-scale',s.text);if(s.contrast==='light'||s.contrast==='dark')R.setAttribute('data-theme',s.contrast);if(s.contrast==='high')R.setAttribute('data-a11y-contrast','high');if(s.font==='1')R.setAttribute('data-a11y-font','plain');if(s.underline==='1')R.setAttribute('data-a11y-underline','1');if(s.highlight==='1')R.setAttribute('data-a11y-highlight','1');if(s.motion==='off')R.setAttribute('data-a11y-motion','off');if(s.cursor==='1')R.setAttribute('data-a11y-cursor','big');}catch(e){}})();</script>
+<a class="skip" href="#main">Skip to content</a>
+<div class="util"><div class="wrap util__in">
+  <span class="util__i"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg> 507 NW 5th Ave, Gainesville, FL 32601</span>
+  <span class="util__i"><span class="open-dot" id="open-dot"></span><span id="open-now">Open 10:30am&ndash;6:30pm today</span></span>
+  <span class="util__sp"></span>
+  <span class="util__i">Dine in &middot; Takeout</span>
+  <a class="util__ph" href="tel:+13523748111"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .7-.2 1l-2.3 2.2z"/></svg> (352) 374-8111</a>
+</div></div>
+<header class="mast"><div class="wrap mast__in">
+  <a class="brand" href="index.html" aria-label="Caribbean Queen &mdash; home"><span class="brandmark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.6 7.4 7.3 11 12 3.4 16.7 11l4.7-3.6L19.6 19H4.4L2.6 7.4z"/><path d="M4.4 20.3h15.2v2.3H4.4z"/></svg><span class="brandmark__t"><span class="brandmark__k">Caribbean</span><span class="brandmark__n">Queen</span></span></span></a>
+  <span class="mast__sp"></span>
+  <button class="navtoggle" id="navtoggle" aria-expanded="false" aria-controls="nav"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg> Menu</button>
+  <nav class="nav" id="nav" aria-label="Main"><a href="index.html">Home</a><a href="menu.html">Menu</a><a href="about.html" aria-current="page">Our Story</a><a href="catering.html">Catering</a><a href="visit.html">Visit</a></nav>
+  <div class="mast__cta">
+    <a class="btn btn--ghost btn--sm btn--hide-sm" href="https://www.google.com/maps/dir/?api=1&destination=Caribbean+Queen%2C+507+NW+5th+Ave%2C+Gainesville%2C+FL+32601" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.7 11.3 12.7 2.3a1 1 0 0 0-1.4 0l-9 9a1 1 0 0 0 0 1.4l9 9a1 1 0 0 0 1.4 0l9-9a1 1 0 0 0 0-1.4zM13 15v-2.5h-3V15l-3-3.5L10 8v2.5h4V15h-1z"/></svg> Directions</a>
+    <a class="btn btn--red btn--sm" href="tel:+13523748111"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .7-.2 1l-2.3 2.2z"/></svg> Call to Order</a>
+  </div>
+</div></header>
+<main id="main">
+<section class="phead"><div class="wrap phead__in"><p class="eyebrow">Our story</p><h1>Ms. Queen&rsquo;s kitchen</h1><p class="lede">How the first Jamaican restaurant in Gainesville ended up on Northwest Fifth Avenue, and stayed there.</p></div></section>
+<section class="sec"><div class="wrap">
+  <div class="split">
+    <div class="split__body">
+      <h2>&ldquo;Why not Jamaican?&rdquo;</h2>
+      <hr class="rule">
+      <div class="prose">
+        <p>Valerie Phillips was born in Kingston and raised in Clarendon. She left Jamaica at
+          eighteen and spent years working in the medical field, but she had been cooking since
+          elementary school and never really stopped.</p>
+        <p>Watching other restaurants in Gainesville do well, she asked herself the obvious
+          question &mdash; <strong>&ldquo;Why not Jamaican?&rdquo;</strong> &mdash; and in 2000
+          she opened Caribbean Queen, the first Jamaican restaurant in the city. Customers took to
+          calling her <strong>Ms. Queen</strong>, and that is how most of Gainesville knows her
+          now. She and her husband Errol own the place and cook every dish in it.</p>
+        <p>The cooking is the cooking she grew up with. Oxtail and curry goat stewed down until
+          they give way. Jerk chicken marinated and grilled dark. Brown stew, escoviche, callaloo,
+          rice and peas, fried plantain. Nothing reinvented and nothing fused.</p>
+        <p>The one thing she will not compromise on is seasoning. The herbs and spices are not
+          bought from a local supplier &mdash; she goes home to Jamaica and brings them back.
+          <strong>&ldquo;The spices is what makes it what it is.&rdquo;</strong></p>
+        <p>The room is small, there is reggae on, and she is as likely to give you the recipe as
+          not. More than twenty-five years in, that is still how it works.</p>
+      </div>
+      <div class="hero__act" style="padding:0">
+        <a class="btn btn--red" href="menu.html">See the full menu</a>
+        <a class="btn btn--ghost" href="visit.html">Hours &amp; directions</a>
+      </div>
+    </div>
+    <figure class="split__fig">
+      <img src="img/Rice-and-Peas-Plate.jpg" alt="A curry plate with rice and peas and fried plantain at Caribbean Queen"
+           width="480" height="640">
+      <figcaption>Curry, rice and peas, plantain</figcaption>
+    </figure>
+  </div>
+</div></section>
+
+<section class="sec sec--surface"><div class="wrap">
+  <div class="sechead"><p class="eyebrow">What that looks like</p><h2>Straight off the board</h2><hr class="rule"></div>
+  <div class="grid grid--3"><a class="dish" href="menu.html#specialties">
+  <img src="img/Jerk-Chicken.jpg" alt="Jerk Chicken at Caribbean Queen" loading="lazy">
+  <div class="dish__b"><h3>Jerk Chicken</h3><p>Pimento, scallion and scotch bonnet, grilled dark. Rice and a side.</p><p class="dish__price">from $8.99</p>
+    <p class="dish__go">See it on the menu &rarr; Jamaican Specialties</p></div>
+</a><a class="dish" href="menu.html#specialties">
+  <img src="img/Oxtails.jpg" alt="Oxtails at Caribbean Queen" loading="lazy">
+  <div class="dish__b"><h3>Oxtails</h3><p>Slow-cooked until it gives way, in the gravy it made.</p><p class="dish__price">from $7.75</p>
+    <p class="dish__go">See it on the menu &rarr; Jamaican Specialties</p></div>
+</a><a class="dish" href="menu.html#specialties">
+  <img src="img/Curry-Chicken.jpg" alt="Curry Chicken at Caribbean Queen" loading="lazy">
+  <div class="dish__b"><h3>Curry Chicken</h3><p>Jamaican curry over chicken, and the cheapest full plate on the board.</p><p class="dish__price">from $6.75</p>
+    <p class="dish__go">See it on the menu &rarr; Jamaican Specialties</p></div>
+</a></div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="split">
+    <div class="split__body">
+      <p class="eyebrow">Where we are</p>
+      <h2>A block off Main Street</h2>
+      <hr class="rule">
+      <div class="prose">
+        <p>507 Northwest Fifth Avenue is a few minutes from downtown Gainesville and an easy
+          detour off Main Street. It is a small room with a counter, which is part of the point:
+          whoever hands you the plate is the person who cooked it.</p>
+        <p>Saturday is the day off. Everything else, the kitchen opens at 10:30 in the morning.</p>
+      </div>
+      <a class="btn btn--red" href="visit.html">Hours &amp; directions</a>
+    </div>
+    <a class="grate" href="https://www.google.com/maps/place/Caribbean+Queen/@29.6554959,-82.3299333,17z/data=!4m6!3m5!1s0x88e8a389697fea59:0x6c01334397afe9b9!8m2!3d29.6554959!4d-82.3299333!16s%2Fg%2F1pp2vhn24" target="_blank" rel="noopener" aria-label="Rated 4.1 out of 5 on Google from 232 reviews. Opens the Google listing."><span class="grate__num">4.1</span><span class="stars" aria-hidden="true"><span class="stars__bg">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="stars__fg" style="--pct:82%">&#9733;&#9733;&#9733;&#9733;&#9733;</span></span><span class="grate__n"><b>232 Google reviews</b>Read them &nearr;</span></a>
+  </div>
+</div></section>
+</main>
+<section class="sec sec--char" style="border-top:5px solid var(--gold-bright)">
+  <div class="wrap" style="display:flex;flex-wrap:wrap;gap:1.4rem;align-items:center;justify-content:space-between">
+    <div style="display:flex;flex-direction:column;gap:.6rem;min-width:0">
+      <h2>Hungry yet?</h2>
+      <p class="lede">Call the kitchen and it will be boxed and waiting. Fish needs a little
+        more notice &mdash; say so when you ring.</p>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:.6rem">
+      <a class="btn btn--gold btn--lg" href="tel:+13523748111"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .7-.2 1l-2.3 2.2z"/></svg> (352) 374-8111</a>
+      <a class="btn btn--onchar btn--lg" href="menu.html">See the Menu</a>
+    </div>
+  </div>
+</section>
+<footer class="foot"><div class="wrap">
+  <div class="foot__grid">
+    <div class="foot__brand">
+      <span class="brandmark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.6 7.4 7.3 11 12 3.4 16.7 11l4.7-3.6L19.6 19H4.4L2.6 7.4z"/><path d="M4.4 20.3h15.2v2.3H4.4z"/></svg><span class="brandmark__t"><span class="brandmark__k">Caribbean</span><span class="brandmark__n">Queen</span><span class="brandmark__s">Jamaican kitchen &middot; Gainesville</span></span></span>
+      <p>Ms. Queen&rsquo;s Jamaican kitchen on Northwest Fifth Avenue, cooking oxtail,
+         curry goat and jerk chicken in Gainesville since 2000.</p>
+      <div class="social">
+        <a href="https://www.yelp.com/biz/caribbean-queen-gainesville" target="_blank" rel="noopener" aria-label="Caribbean Queen on Yelp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 17.3-6.2 3.7 1.7-7-5.4-4.7 7.1-.6L12 2l2.8 6.7 7.1.6-5.4 4.7 1.7 7z"/></svg></a>
+        <a href="https://www.google.com/maps/place/Caribbean+Queen/@29.6554959,-82.3299333,17z/data=!4m6!3m5!1s0x88e8a389697fea59:0x6c01334397afe9b9!8m2!3d29.6554959!4d-82.3299333!16s%2Fg%2F1pp2vhn24" target="_blank" rel="noopener" aria-label="Caribbean Queen on Google"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></a>
+      </div>
+    </div>
+    <div><h4>Eat</h4><ul>
+      <li><a href="menu.html">Full Menu</a></li>
+      <li><a href="menu.html#specialties">Jamaican Specialties</a></li>
+      <li><a href="menu.html#vegetarian">Vegetarian Dishes</a></li>
+      <li><a href="menu.html#fish">Catch of the Day</a></li>
+      <li><a href="menu-board.jpg">The menu board (photo)</a></li>
+    </ul></div>
+    <div><h4>Visit</h4><ul>
+      <li>507 NW 5th Ave<br>Gainesville, FL 32601</li>
+      <li><a href="https://www.google.com/maps/dir/?api=1&destination=Caribbean+Queen%2C+507+NW+5th+Ave%2C+Gainesville%2C+FL+32601" target="_blank" rel="noopener">Get directions &rarr;</a></li>
+      <li style="padding-top:.45rem">Mon&ndash;Thu: 10:30am &ndash; 6:30pm<br>
+        Fri &amp; Sun: 10:30am &ndash; 5pm<br>Saturday: closed</li>
+    </ul></div>
+    <div><h4>Order &amp; Catering</h4>
+      <a class="foot__ph" href="tel:+13523748111">(352) 374-8111</a>
+      <ul style="padding-top:.6rem">
+        <li>Call to order for pickup</li>
+        <li><a href="catering.html">Catering &amp; big orders</a></li>
+        <li><a href="visit.html">Hours &amp; directions</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot__base">
+    <span>&copy; 2026 Caribbean Queen.</span>
+    <span>507 NW 5th Ave &middot; Gainesville, Florida</span>
+    <span class="foot__legal">
+      <a href="accessibility.html">Accessibility</a>
+      <a href="privacy.html">Privacy &amp; cookies</a>
+      <button class="foot__lbtn" type="button" data-a11y-open>Accessibility tools</button>
+      <button class="foot__lbtn" type="button" data-cc-open>Cookie settings</button>
+    </span>
+  </div>
+</div></footer>
+<nav class="dock" aria-label="Quick actions">
+  <a href="https://www.google.com/maps/dir/?api=1&destination=Caribbean+Queen%2C+507+NW+5th+Ave%2C+Gainesville%2C+FL+32601" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.7 11.3 12.7 2.3a1 1 0 0 0-1.4 0l-9 9a1 1 0 0 0 0 1.4l9 9a1 1 0 0 0 1.4 0l9-9a1 1 0 0 0 0-1.4zM13 15v-2.5h-3V15l-3-3.5L10 8v2.5h4V15h-1z"/></svg> Directions</a>
+  <a href="menu.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg> Menu</a>
+  <a class="dock--primary" href="tel:+13523748111"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .7-.2 1l-2.3 2.2z"/></svg> Call to Order</a>
+</nav><!-- ------------------------------------------------ cookie / storage consent -->
+<div class="cc" id="cc" role="dialog" aria-labelledby="cc-h" aria-describedby="cc-p" hidden>
+  <div class="cc__card" id="cc-card" tabindex="-1">
+    <div class="cc__head"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2a10 10 0 1 0 10 10 2.9 2.9 0 0 1-3.9-3.2A2.9 2.9 0 0 1 14.6 4 2.9 2.9 0 0 1 12 2zM8.2 8.6a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6zm.9 5.1a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4zm4.5 1.5a1.3 1.3 0 1 1 0 2.6 1.3 1.3 0 0 1 0-2.6zm.4-5.6a1.4 1.4 0 1 1 0 2.8 1.4 1.4 0 0 1 0-2.8zm4.1 3.1a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/></svg><h2 id="cc-h">Your choices about cookies</h2></div>
+    <p class="cc__p" id="cc-p">This site keeps a little information on your device so it works and
+      remembers your accessibility settings. Anything beyond that &mdash; measuring how the site
+      gets used, or letting a social network see that a post brought you here &mdash;
+      happens only if you say yes.</p>
+    <button class="cc__toggle" type="button" data-cc-toggle aria-expanded="false"
+            aria-controls="cc-opts">Choose categories one by one</button>
+    <ul class="cc__opts" id="cc-opts">
+      <li><label class="cc__opt">
+        <input type="checkbox" checked disabled>
+        <span><b>Strictly necessary <i>&mdash; always on</i></b>
+          Remembers the choice you make here and your accessibility settings. Held on your own
+          device and sent to nobody.</span>
+      </label></li>
+      <li><label class="cc__opt">
+        <input type="checkbox" id="cc-analytics">
+        <span><b>Analytics</b>
+          Anonymous counts of which pages and dishes people look at, so the kitchen knows what to
+          put up front. Nothing of the sort loads unless you allow it.</span>
+      </label></li>
+      <li><label class="cc__opt">
+        <input type="checkbox" id="cc-marketing">
+        <span><b>Social &amp; marketing</b>
+          Would let a social network work out whether one of its posts brought you here.
+          Nothing of the sort loads unless you allow it.</span>
+      </label></li>
+    </ul>
+    <div class="cc__act">
+      <button class="btn btn--gold" type="button" data-cc-set="all">Accept all</button>
+      <button class="btn btn--ghost" type="button" data-cc-set="none">Necessary only</button>
+      <button class="btn btn--ghost" type="button" data-cc-set="save">Save my choices</button>
+    </div>
+    <p class="cc__fine" id="cc-gpc" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6.1c0 5 3.4 9.7 8 10.9 4.6-1.2 8-5.9 8-10.9V5l-8-3zm-1 14.5-3.5-3.5 1.4-1.4L11 13.7l4.7-4.7 1.4 1.4-6.1 6.1z"/></svg> Your browser is sending a
+      <b>Global Privacy Control</b> or <b>Do Not Track</b> signal, so both optional categories
+      stay switched off and cannot be turned on. We respect that.</p>
+    <p class="cc__fine"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6.1c0 5 3.4 9.7 8 10.9 4.6-1.2 8-5.9 8-10.9V5l-8-3zm-1 14.5-3.5-3.5 1.4-1.4L11 13.7l4.7-4.7 1.4 1.4-6.1 6.1z"/></svg> Change your mind any time with <b>Cookie settings</b> at the bottom
+      of any page. The detail is in our
+      <a href="privacy.html">privacy &amp; cookie policy</a>.</p>
+  </div>
+</div>
+
+<!-- ------------------------------------------------ accessibility (ADA) tools -->
+<button class="a11yfab" type="button" id="a11y-fab" aria-expanded="false" aria-controls="a11y"
+        aria-label="Accessibility tools"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 6c-2.6.7-5.7 1-8.5 1s-5.9-.3-8.5-1L3 8c1.9.5 4 .8 6 1v13h2v-6h2v6h2V9c2-.2 4.1-.5 6-1l-.5-2zM12 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg><span>Accessibility</span></button>
+<div class="a11y" id="a11y" role="dialog" aria-labelledby="a11y-h" hidden>
+  <div class="a11y__head">
+    <h2 id="a11y-h"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 6c-2.6.7-5.7 1-8.5 1s-5.9-.3-8.5-1L3 8c1.9.5 4 .8 6 1v13h2v-6h2v6h2V9c2-.2 4.1-.5 6-1l-.5-2zM12 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg> Accessibility</h2>
+    <button class="a11y__x" type="button" id="a11y-close"
+            aria-label="Close accessibility tools"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6.4 17.6 5 12 10.6 6.4 5 5 6.4 10.6 12 5 17.6 6.4 19 12 13.4 17.6 19 19 17.6 13.4 12z"/></svg></button>
+  </div>
+  <div class="a11y__body">
+    <div class="a11y__grp">
+      <p class="a11y__k" id="a11y-k1">Text size</p>
+      <div class="a11y__seg" role="group" aria-labelledby="a11y-k1">
+        <button type="button" data-a11y="text" data-v="1" aria-pressed="false">100%</button>
+        <button type="button" data-a11y="text" data-v="1.15" aria-pressed="false">115%</button>
+        <button type="button" data-a11y="text" data-v="1.3" aria-pressed="false">130%</button>
+        <button type="button" data-a11y="text" data-v="1.5" aria-pressed="false">150%</button>
+      </div>
+    </div>
+    <div class="a11y__grp">
+      <p class="a11y__k" id="a11y-k2">Colour &amp; contrast</p>
+      <div class="a11y__seg" role="group" aria-labelledby="a11y-k2">
+        <button type="button" data-a11y="contrast" data-v="" aria-pressed="false">Automatic</button>
+        <button type="button" data-a11y="contrast" data-v="light" aria-pressed="false">Light</button>
+        <button type="button" data-a11y="contrast" data-v="dark" aria-pressed="false">Dark</button>
+        <button type="button" data-a11y="contrast" data-v="high" aria-pressed="false">High contrast</button>
+      </div>
+    </div>
+    <div class="a11y__grp">
+      <p class="a11y__k">Reading</p>
+      <div class="a11y__sw">
+        <button type="button" data-a11y="font" data-v="1" data-toggle aria-pressed="false">Plain, wider-spaced type</button>
+        <button type="button" data-a11y="underline" data-v="1" data-toggle aria-pressed="false">Underline every link</button>
+        <button type="button" data-a11y="highlight" data-v="1" data-toggle aria-pressed="false">Highlight links &amp; buttons</button>
+        <button type="button" data-a11y="motion" data-v="off" data-toggle aria-pressed="false">Stop animation</button>
+        <button type="button" data-a11y="cursor" data-v="1" data-toggle aria-pressed="false">Large cursor</button>
+      </div>
+    </div>
+    <button class="a11y__reset" type="button" id="a11y-reset">Reset everything</button>
+    <p class="a11y__note">These settings stay on this device. If you need the menu read to you,
+      in large print, or in any other form, call <a href="tel:+13523748111">(352) 374-8111</a> &mdash; and please tell
+      us about anything on this site that got in your way. Our
+      <a href="accessibility.html">accessibility statement</a> says how.</p>
+  </div>
+</div>
+<script>
+(function(){
+  // "Stop animation" in the accessibility panel counts the same as the OS setting.
+  function reduced(){
+    return (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+        || document.documentElement.getAttribute('data-a11y-motion') === 'off';
+  }
+
+  var t=document.getElementById('navtoggle'), n=document.getElementById('nav');
+  if(t&&n){t.addEventListener('click',function(){
+    var o=n.classList.toggle('is-open'); t.setAttribute('aria-expanded',o?'true':'false');
+  });}
+
+  // Open / closed, computed in the restaurant timezone rather than the viewer timezone.
+  // Minutes from midnight, Sun..Sat; null is a closed day (Saturday).
+  var HOURS=[[630,1020],[630,1110],[630,1110],[630,1110],[630,1110],[630,1020],null];
+  function hhmm(m){
+    var h=Math.floor(m/60), mm=m%60, ap=h>=12?'pm':'am', h12=h%12||12;
+    return h12+(mm?':'+(mm<10?'0':'')+mm:'')+ap;
+  }
+  function etNow(){
+    try{
+      var p=new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',weekday:'short',
+        hour:'numeric',minute:'numeric',hour12:false}).formatToParts(new Date());
+      var g={}; p.forEach(function(x){g[x.type]=x.value;});
+      var d=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(g.weekday);
+      var h=parseInt(g.hour,10)%24, m=parseInt(g.minute,10);
+      return d<0?null:{d:d,mins:h*60+m};
+    }catch(e){ return null; }
+  }
+  var now=etNow(), dot=document.getElementById('open-dot'), lbl=document.getElementById('open-now');
+  if(now&&dot&&lbl){
+    var t=HOURS[now.d], open=!!t&&now.mins>=t[0]&&now.mins<t[1];
+    // the next day that is not closed
+    var nd=now.d, hop=0;
+    do{ nd=(nd+1)%7; hop++; }while(!HOURS[nd]&&hop<8);
+    var DAY=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    dot.setAttribute('data-shut', open?'0':'1');
+    if(open){ lbl.textContent='Open now until '+hhmm(t[1]); }
+    else if(t&&now.mins<t[0]){ lbl.textContent='Opens at '+hhmm(t[0])+' today'; }
+    else if(t){ lbl.textContent='Closed now · opens '+hhmm(HOURS[nd][0])+' '+DAY[nd]; }
+    else { lbl.textContent='Closed Saturdays · open '+DAY[nd]+' '+hhmm(HOURS[nd][0]); }
+    // mark the current day on any hours list
+    document.querySelectorAll('[data-day]').forEach(function(r){
+      if(+r.getAttribute('data-day')===now.d) r.classList.add('is-today');
+    });
+  }
+
+  // ---- dish photo carousel ----
+  document.querySelectorAll('[data-pcar]').forEach(function(root){
+    var vp=root.querySelector('[data-vp]'), track=root.querySelector('[data-track]'),
+        prev=root.querySelector('[data-prev]'), next=root.querySelector('[data-next]'),
+        dotbox=root.querySelector('[data-dots]'), count=root.querySelector('[data-count]'),
+        timer=null, held=false;
+    function slides(){ return Array.prototype.slice.call(track.children); }
+    function step(){
+      var sl=slides(); if(!sl.length) return 1;
+      return sl[0].getBoundingClientRect().width + 18.4;
+    }
+    function perView(){
+      var sl=slides(); if(sl.length<2) return 1;
+      return Math.max(1, Math.round(vp.clientWidth/sl[0].getBoundingClientRect().width));
+    }
+    function index(){
+      var sl=slides(); if(!sl.length) return 0;
+      return Math.max(0, Math.min(sl.length-1, Math.round(vp.scrollLeft/step())));
+    }
+    function go(i, smooth){
+      var sl=slides(); if(!sl.length) return;
+      i=Math.max(0, Math.min(sl.length-1, i));
+      var left=sl[i].offsetLeft-track.offsetLeft;
+      if(smooth&&!reduced()&&vp.scrollTo) vp.scrollTo({left:left, behavior:'smooth'});
+      else vp.scrollLeft=left;
+    }
+    function sync(){
+      var i=index(), sl=slides(), last=Math.max(0, sl.length-perView());
+      Array.prototype.forEach.call(dotbox.children, function(d,n){
+        d.setAttribute('aria-selected', n===i?'true':'false');
+      });
+      if(count) count.textContent=(i+1)+' / '+sl.length;
+      prev.disabled = i<=0;
+      next.disabled = i>=last;
+    }
+    prev.addEventListener('click', function(){ go(index()-1, true); });
+    next.addEventListener('click', function(){ go(index()+1, true); });
+    dotbox.addEventListener('click', function(e){
+      var d=e.target.closest('[data-dot]'); if(d) go(+d.getAttribute('data-dot'), true);
+    });
+    vp.addEventListener('keydown', function(e){
+      if(e.key==='ArrowRight'){ e.preventDefault(); go(index()+1, true); }
+      if(e.key==='ArrowLeft'){ e.preventDefault(); go(index()-1, true); }
+    });
+    var raf=null;
+    vp.addEventListener('scroll', function(){
+      if(raf) return;
+      raf=requestAnimationFrame(function(){ raf=null; sync(); });
+    });
+    window.addEventListener('resize', sync);
+    function stop(){ if(timer){ clearInterval(timer); timer=null; } }
+    function start(){
+      stop();
+      if(reduced()||held||document.hidden||slides().length<2) return;
+      timer=setInterval(function(){
+        var sl=slides(), last=Math.max(0, sl.length-perView());
+        go(index()>=last?0:index()+1, true);
+      }, 4500);
+    }
+    ['mouseenter','focusin','touchstart','pointerdown'].forEach(function(ev){
+      root.addEventListener(ev, function(){ held=true; stop(); }, {passive:true});
+    });
+    ['mouseleave','focusout'].forEach(function(ev){
+      root.addEventListener(ev, function(){ held=false; start(); });
+    });
+    document.addEventListener('visibilitychange', function(){ document.hidden?stop():start(); });
+    window.addEventListener('cq:motion', function(){ reduced()?stop():start(); });
+    sync(); start();
+  });
+
+  document.querySelectorAll('[data-copy]').forEach(function(b){
+    var label=b.textContent;
+    function flash(m){ b.textContent=m; setTimeout(function(){b.textContent=label;},1700); }
+    b.addEventListener('click',function(){
+      var txt=b.getAttribute('data-copy');
+      try{ navigator.clipboard.writeText(txt).then(function(){flash('Copied');},
+            function(){flash('Copy failed');}); }
+      catch(e){ flash('Copy failed'); }
+    });
+  });
+})();
+
+/* ---------------------------------------------------------------------------
+   Accessibility panel and cookie consent. Both store their state on the
+   visitor's own device and send nothing anywhere. Any future analytics or
+   pixel must sit behind window.CQ_CONSENT / the 'cq:consent' event.
+   --------------------------------------------------------------------------- */
+(function(){
+  var R = document.documentElement;
+
+  /* ---------------- accessibility preferences ---------------- */
+  var AK  = 'cq.a11y.v1';
+  var DEF = {text:'1', contrast:'', font:'0', underline:'0', highlight:'0', motion:'', cursor:'0'};
+  var st  = read();
+
+  function read(){
+    var o = {}, k;
+    for(k in DEF) o[k] = DEF[k];
+    try{
+      var raw = JSON.parse(localStorage.getItem(AK) || '{}');
+      for(k in DEF) if(typeof raw[k] === 'string') o[k] = raw[k];
+    }catch(e){}
+    return o;
+  }
+  function store(){ try{ localStorage.setItem(AK, JSON.stringify(st)); }catch(e){} }
+  function flag(attr, on, val){ if(on) R.setAttribute(attr, val); else R.removeAttribute(attr); }
+
+  function paint(){
+    document.querySelectorAll('[data-a11y]').forEach(function(b){
+      var on = st[b.getAttribute('data-a11y')] === b.getAttribute('data-v');
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      b.classList.toggle('is-on', on);
+    });
+  }
+  function apply(){
+    R.style.setProperty('--a11y-scale', st.text);
+    if(st.contrast === 'light' || st.contrast === 'dark') R.setAttribute('data-theme', st.contrast);
+    else R.removeAttribute('data-theme');
+    flag('data-a11y-contrast',  st.contrast  === 'high', 'high');
+    flag('data-a11y-font',      st.font      === '1',    'plain');
+    flag('data-a11y-underline', st.underline === '1',    '1');
+    flag('data-a11y-highlight', st.highlight === '1',    '1');
+    flag('data-a11y-motion',    st.motion    === 'off',  'off');
+    flag('data-a11y-cursor',    st.cursor    === '1',    'big');
+    paint();
+  }
+
+  var fab  = document.getElementById('a11y-fab'),
+      pan  = document.getElementById('a11y'),
+      xbtn = document.getElementById('a11y-close'),
+      rbtn = document.getElementById('a11y-reset');
+
+  function panel(open, refocus){
+    if(!pan || !fab) return;
+    pan.hidden = !open;
+    fab.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if(open){ var f = pan.querySelector('.a11y__seg button'); if(f) f.focus(); }
+    else if(refocus) fab.focus();
+  }
+  if(fab)  fab.addEventListener('click',  function(){ panel(pan.hidden, true); });
+  if(xbtn) xbtn.addEventListener('click', function(){ panel(false, true); });
+  if(rbtn) rbtn.addEventListener('click', function(){
+    var k; for(k in DEF) st[k] = DEF[k];
+    store(); apply(); motionChanged();
+  });
+  function motionChanged(){ try{ window.dispatchEvent(new Event('cq:motion')); }catch(e){} }
+
+  /* ---------------- cookie / storage consent ---------------- */
+  var CK = 'cq.consent.v1', YEAR = 365 * 24 * 60 * 60 * 1000;
+  var cc  = document.getElementById('cc'),
+      ana = document.getElementById('cc-analytics'),
+      mkt = document.getElementById('cc-marketing');
+
+  window.CQ_CONSENT = {analytics:false, marketing:false, answered:false};
+
+  var GPC = (navigator.globalPrivacyControl === true) ||
+            (navigator.doNotTrack === '1' || window.doNotTrack === '1');
+  if(GPC){
+    R.setAttribute('data-gpc', '1');
+    [ana, mkt].forEach(function(b){ if(b){ b.checked = false; b.disabled = true; } });
+  }
+
+  function readCC(){
+    try{
+      var o = JSON.parse(localStorage.getItem(CK) || 'null');
+      if(!o || o.v !== 1 || !o.t || (Date.now() - o.t) > YEAR) return null;
+      return o;
+    }catch(e){ return null; }
+  }
+  function publishCC(o){
+    window.CQ_CONSENT = {analytics:!!o.analytics, marketing:!!o.marketing, answered:true};
+    R.setAttribute('data-consent', ((o.analytics ? 'a' : '') + (o.marketing ? 'm' : '')) || 'n');
+    try{
+      window.dispatchEvent(new CustomEvent('cq:consent', {detail:window.CQ_CONSENT}));
+    }catch(e){}
+  }
+  function showCC(on){
+    if(!cc) return;
+    cc.hidden = !on;
+    flag('data-cc-open', on, '1');
+    if(on){
+      var card = document.getElementById('cc-card');
+      if(card){ card.scrollTop = 0; card.focus(); }
+    }
+  }
+  function saveCC(a, m){
+    if(GPC){ a = false; m = false; }
+    try{
+      localStorage.setItem(CK, JSON.stringify({v:1, t:Date.now(), analytics:!!a, marketing:!!m}));
+    }catch(e){}
+    publishCC({analytics:a, marketing:m});
+    showCC(false);
+  }
+
+  /* ---------------- wiring ---------------- */
+  document.addEventListener('click', function(e){
+    if(!e.target || !e.target.closest) return;
+    var b = e.target.closest('[data-a11y]');
+    if(b){
+      var k = b.getAttribute('data-a11y'), v = b.getAttribute('data-v');
+      st[k] = (b.hasAttribute('data-toggle') && st[k] === v) ? DEF[k] : v;
+      store(); apply();
+      if(k === 'motion') motionChanged();
+      return;
+    }
+    var t = e.target.closest('[data-cc-set],[data-cc-open],[data-cc-toggle],[data-a11y-open]');
+    if(!t) return;
+    if(t.hasAttribute('data-a11y-open')){ panel(true, false); return; }
+    if(t.hasAttribute('data-cc-toggle')){
+      var open = R.getAttribute('data-cc-opts') !== '1';
+      flag('data-cc-opts', open, '1');
+      t.setAttribute('aria-expanded', open ? 'true' : 'false');
+      return;
+    }
+    if(t.hasAttribute('data-cc-open')){
+      var cur = readCC() || {};
+      if(ana) ana.checked = !!cur.analytics;
+      if(mkt) mkt.checked = !!cur.marketing;
+      showCC(true);
+      return;
+    }
+    var how = t.getAttribute('data-cc-set');
+    if(how === 'all' && GPC){ saveCC(false, false); return; }
+    if(how === 'all'){
+      if(ana) ana.checked = true;
+      if(mkt) mkt.checked = true;
+      saveCC(true, true);
+    }else if(how === 'none'){
+      if(ana) ana.checked = false;
+      if(mkt) mkt.checked = false;
+      saveCC(false, false);
+    }else{
+      saveCC(ana && ana.checked, mkt && mkt.checked);
+    }
+  });
+
+  document.addEventListener('click', function(e){
+    if(!pan || pan.hidden || !e.target || !e.target.closest) return;
+    if(pan.contains(e.target)) return;
+    if(e.target.closest('#a11y-fab,[data-a11y-open]')) return;
+    panel(false, false);
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key !== 'Escape') return;
+    if(pan && !pan.hidden){ panel(false, true); return; }
+    /* The banner has no dismiss: a visitor who has not answered yet must choose.
+       Once answered, re-opening it from the footer can be escaped. */
+    if(cc && !cc.hidden && readCC()) showCC(false);
+  });
+
+  apply();
+  var gpcnote = document.getElementById('cc-gpc');
+  if(gpcnote) gpcnote.hidden = !GPC;
+  var had = readCC();
+  if(had) publishCC(had); else showCC(true);
+})();
+</script>
+</body>
+</html>
