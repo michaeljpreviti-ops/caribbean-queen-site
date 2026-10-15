@@ -21,7 +21,7 @@ MAPS_PL = ("https://www.google.com/maps/place/Caribbean+Queen/"
            "@29.6554959,-82.3299333,17z/data=!4m6!3m5!1s0x88e8a389697fea59:"
            "0x6c01334397afe9b9!8m2!3d29.6554959!4d-82.3299333!16s%2Fg%2F1pp2vhn24")
 YELP    = "https://www.yelp.com/biz/caribbean-queen-gainesville"
-BOARD   = "menu-board.jpg"          # photograph of the counter menu board
+BOARD   = "menu-card.jpg"           # photograph of the printed menu card
 TODAY   = "October 14, 2026"        # stamped on the privacy and accessibility pages
 OPENED  = "2000"
 G_RATING, G_PCT, G_COUNT = "4.1", "82%", "232"   # read from the Google listing
@@ -59,15 +59,29 @@ PAGES = [('index','Home','index.html'), ('menu','Menu','menu.html'),
          ('visit','Visit','visit.html')]
 
 def wordmark(sub=True):
-    """Caribbean Queen has no logo artwork, so the masthead is a typographic lockup."""
-    crown = ('<svg viewBox="0 0 24 24" aria-hidden="true">'
+    """The lockup from Caribbean Queen's printed menu card: a gold crown over
+    'Caribbean' in green script and 'Queen' in gold, with JAMAICA RESTAURANT beneath.
+    Set in type rather than cut from the card, which is only a phone photograph."""
+    crown = ('<svg class="crown" viewBox="0 0 24 24" aria-hidden="true">'
              '<path d="M2.6 7.4 7.3 11 12 3.4 16.7 11l4.7-3.6L19.6 19H4.4L2.6 7.4z"/>'
              '<path d="M4.4 20.3h15.2v2.3H4.4z"/></svg>')
     return ('<span class="brandmark">%s<span class="brandmark__t">'
-            '<span class="brandmark__k">Caribbean</span>'
-            '<span class="brandmark__n">Queen</span>%s</span></span>'
-            % (crown, '<span class="brandmark__s">Jamaican kitchen &middot; Gainesville</span>'
+            '<span class="brandmark__k">Caribbean <b>Queen</b></span>'
+            '<span class="brandmark__n">Jamaica <i>Restaurant</i></span>%s</span></span>'
+            % (crown, '<span class="brandmark__s">507 NW 5th Ave &middot; Gainesville</span>'
                if sub else ''))
+
+def flag(cls="flag"):
+    """The flag of Jamaica: gold saltire, green above and below, black hoist and fly."""
+    return ('<svg class="%s" viewBox="0 0 24 12" role="img" '
+            'aria-label="Flag of Jamaica">'
+            '<path d="M0 0h24v12H0z" fill="#FFC400"/>'
+            '<path d="M0 0h24l-12 6z" fill="#0C8A3E"/>'
+            '<path d="M0 12h24l-12-6z" fill="#0C8A3E"/>'
+            '<path d="M0 0v12l12-6z" fill="#0B0B0B"/>'
+            '<path d="M24 0v12l-12-6z" fill="#0B0B0B"/>'
+            '<path d="M0 0 24 12M0 12 24 0" stroke="#FFC400" stroke-width="2.1" fill="none"/>'
+            '</svg>') % cls
 
 def head(key):
     nav = ''.join('<a href="%s"%s>%s</a>' % (h, ' aria-current="page"' if k == key else '', l)
@@ -79,6 +93,7 @@ def head(key):
   <span class="util__sp"></span>
   <span class="util__i">Dine in &middot; Takeout</span>
   <a class="util__ph" href="{ph}">{phi} {pht}</a>
+  <span class="util__flag"><b>One Jamaica</b>{flag}</span>
 </div></div>
 <header class="mast"><div class="wrap mast__in">
   <a class="brand" href="index.html" aria-label="Caribbean Queen &mdash; home">{wm}</a>
@@ -91,12 +106,13 @@ def head(key):
   </div>
 </div></header>""".format(nav=nav, a1=ADDR1, a2=ADDR2, ph=PHONE_H, pht=PHONE_T, maps=MAPS,
                           pin=ico('pin'), phi=ico('phone'), dir=ico('dir'),
-                          mn=ico('menu'), wm=wordmark(False))
+                          mn=ico('menu'), wm=wordmark(False), flag=flag())
 
 
 FOOT_HTML = """<section class="sec sec--char" style="border-top:5px solid var(--gold-bright)">
   <div class="wrap" style="display:flex;flex-wrap:wrap;gap:1.4rem;align-items:center;justify-content:space-between">
-    <div style="display:flex;flex-direction:column;gap:.6rem;min-width:0">
+    <div style="display:flex;flex-direction:column;gap:.75rem;min-width:0">
+      <p class="signboard">Good Food Brings People Together</p>
       <h2>Hungry yet?</h2>
       <p class="lede">Call the kitchen and it will be boxed and waiting. Fish needs a little
         more notice &mdash; say so when you ring.</p>
@@ -111,6 +127,7 @@ FOOT_HTML = """<section class="sec sec--char" style="border-top:5px solid var(--
   <div class="foot__grid">
     <div class="foot__brand">
       {wm}
+      <p class="script" style="margin-top:.2rem">Authentic Jamaican flavors, made with love</p>
       <p>Ms. Queen&rsquo;s Jamaican kitchen on Northwest Fifth Avenue, cooking oxtail,
          curry goat and jerk chicken in Gainesville since {opened}.</p>
       <div class="social">
@@ -123,7 +140,7 @@ FOOT_HTML = """<section class="sec sec--char" style="border-top:5px solid var(--
       <li><a href="menu.html#specialties">Jamaican Specialties</a></li>
       <li><a href="menu.html#vegetarian">Vegetarian Dishes</a></li>
       <li><a href="menu.html#fish">Catch of the Day</a></li>
-      <li><a href="{board}">The menu board (photo)</a></li>
+      <li><a href="{board}">The printed menu (photo)</a></li>
     </ul></div>
     <div><h4>Visit</h4><ul>
       <li>{a1}<br>{a2}</li>
@@ -141,6 +158,8 @@ FOOT_HTML = """<section class="sec sec--char" style="border-top:5px solid var(--
     </div>
   </div>
   <div class="foot__base">
+    <span class="oneja">{flag} Food <i>&middot;</i> Culture <i>&middot;</i> Community
+      <i>&middot;</i> One Jamaica <i>&hearts;</i></span>
     <span>&copy; 2026 Caribbean Queen.</span>
     <span>507 NW 5th Ave &middot; Gainesville, Florida</span>
     <span class="foot__legal">
@@ -560,7 +579,7 @@ A11Y_JS = r"""
 FOOT = (FOOT_HTML.format(ph=PHONE_H, pht=PHONE_T, a1=ADDR1, a2=ADDR2, maps=MAPS,
                          maps_pl=MAPS_PL, yelp=YELP, board=BOARD, opened=OPENED,
                          phi=ico('phone'), dir=ico('dir'), mn=ico('menu'),
-                         sti=ico('star'), pini=ico('pin'), wm=wordmark())
+                         sti=ico('star'), pini=ico('pin'), wm=wordmark(), flag=flag())
         + CONTROLS_HTML.format(ph=PHONE_H, pht=PHONE_T,
                                cki=ico('cookie'), a11yi=ico('a11y'),
                                xi=ico('x'), shi=ico('shield'))
@@ -570,7 +589,7 @@ FOOT = (FOOT_HTML.format(ph=PHONE_H, pht=PHONE_T, a1=ADDR1, a2=ADDR2, maps=MAPS,
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">'
          '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
          '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?'
-         'family=Alfa+Slab+One&family=Barlow+Condensed:wght@500;600;700'
+         'family=Alfa+Slab+One&family=Yellowtail&family=Barlow+Condensed:wght@500;600;700'
          '&family=Karla:wght@400;500;700&display=swap">')
 
 BOOT = ("<script>(function(){try{"
@@ -624,34 +643,34 @@ def grate(dark=False):
             % (' grate--dark' if dark else '', MAPS_PL, G_RATING, G_COUNT, G_RATING,
                stars, G_PCT, stars, G_COUNT))
 
-# (image, dish, blurb, price, menu anchor, section name)
+# (image, dish, blurb, sizes, menu anchor, section name)
 # Ordered so no two neighbours come from the same menu section — a visitor paging
-# through sees the breadth of the board rather than three stew plates in a row.
+# through sees the breadth of the menu rather than three stew plates in a row.
 DISHES = [
  ("img/Jerk-Chicken.jpg", "Jerk Chicken",
   "Pimento, scallion and scotch bonnet, grilled dark. Rice and a side.",
-  "from $8.99", "menu.html#specialties", "Jamaican Specialties"),
+  "Medium or Large", "menu.html#specialties", "Jamaican Specialties"),
  ("img/Catch-of-the-Day.jpg", "Catch of the Day",
-  "Brown stew, steamed or escoviche &mdash; whole fish, cooked to order.",
-  "$14.75 and up", "menu.html#fish", "Catch of the Day"),
+  "Brown stew, steamed or escovitch &mdash; whole fish, cooked to order.",
+  "Call ahead to order", "menu.html#fish", "Catch of the Day"),
  ("img/Oxtails.jpg", "Oxtails",
   "Slow-cooked until it gives way, in the gravy it made.",
-  "from $7.75", "menu.html#specialties", "Jamaican Specialties"),
+  "Express, Medium or Large", "menu.html#specialties", "Jamaican Specialties"),
  ("img/Cool-Tropics.jpg", "Cool Tropics",
-  "Soursap, mango, pineapple ginger, passion fruit &mdash; cold out of the cooler.",
-  "$1.85", "menu.html#tropics", "Cool Tropics"),
+  "Soursop, mango, pineapple ginger, passion fruit &mdash; cold out of the cooler.",
+  "Five flavours", "menu.html#tropics", "Cool Tropics"),
  ("img/Curry-Chicken.jpg", "Curry Chicken",
-  "Jamaican curry over chicken, and the cheapest full plate on the board.",
-  "from $6.75", "menu.html#specialties", "Jamaican Specialties"),
+  "Jamaican curry over chicken. The weekday regular.",
+  "Express, Medium or Large", "menu.html#specialties", "Jamaican Specialties"),
 ]
 
-def dish_card(src, name, desc, price, href, section):
+def dish_card(src, name, desc, sizes, href, section):
     """A dish photo that links to its own line on the menu."""
     return ("""<a class="dish" href="%s">
   <img src="%s" alt="%s at Caribbean Queen" loading="lazy">
   <div class="dish__b"><h3>%s</h3><p>%s</p><p class="dish__price">%s</p>
     <p class="dish__go">See it on the menu &rarr; %s</p></div>
-</a>""" % (href, src, name, name, desc, price, section))
+</a>""" % (href, src, name, name, desc, sizes, section))
 
 
 def photo_carousel(items):
@@ -677,36 +696,40 @@ def photo_carousel(items):
 
 
 # ---------------------------------------------------------------- menu render
-def price_block(prices):
-    if not prices:
+def size_block(sizes):
+    """Which sizes a dish comes in. Prices are the owner\'s to supply."""
+    if not sizes:
         return ''
-    if len(prices) == 1 and not prices[0][0]:
-        return '<p class="item__p">%s</p>' % prices[0][1]
     return ('<p class="item__p">%s</p>'
-            % ''.join('<i>%s %s</i>' % (lbl, val) if lbl else '<i>%s</i>' % val
-                      for lbl, val in prices))
+            % ''.join('<i>%s</i>' % part.strip() for part in sizes.split('&middot;')))
 
 def menu_html():
-    jump = ''.join('<a href="#%s">%s</a>' % (slug, name) for slug, name, _c, _b, _i in MENU)
+    jump = ''.join('<a href="#%s">%s</a>' % (slug, name)
+                   for slug, name, _c, _b, _t, _i in MENU)
     out = ['<div class="menujump" aria-label="Jump to a menu section">%s</div>' % jump,
-           '<p class="legend"><span><b>Plates come three ways</b> — Express, Medium or Large. '
+           '<p class="legend">'
+           '<span><b>Plates come three ways</b> &mdash; Express, Medium or Large. '
            'Express is the quick plate; Large is the one you take home leftovers from.</span>'
            '<span>&#9733; <b>Most ordered</b>, according to their Google listing.</span>'
-           '<span><b>Catch of the Day needs a call ahead</b> — the fish is cooked to order.</span>'
-           '<span>Prices as written on the counter menu board; call to confirm.</span></p>']
-    for slug, name, color, blurb, items in MENU:
+           '<span><b>Catch of the Day needs a call ahead</b> &mdash; the fish is cooked '
+           'to order.</span>'
+           '<span><b>Prices are not listed here yet.</b> Call the kitchen on '
+           '<a href="%s">%s</a> and they will tell you.</span></p>' % (PHONE_H, PHONE_T)]
+    for slug, name, color, blurb, tag, items in MENU:
         rows = ''
-        for iname, idesc, prices, star, note in items:
+        for iname, idesc, sizes, star, note in items:
             rows += '<div class="item"><p class="item__n">%s%s</p>%s%s%s</div>' % (
                 iname,
-                ' <span class="item__star" title="Starred on the printed menu">&#9733;</span>' if star else '',
-                price_block(prices),
+                ' <span class="item__star" title="One of the most ordered dishes">'
+                '&#9733;</span>' if star else '',
+                size_block(sizes),
                 '<p class="item__d">%s</p>' % idesc if idesc else '',
                 '<p class="item__note">%s</p>' % note if note else '')
         out.append("""<section class="mcat" id="%s" style="--cat:%s">
-  <div class="mcat__h"><h2>%s</h2>%s</div>
+  <div class="mcat__h"><h2>%s</h2>%s%s</div>
   <div class="mcat__body">%s</div>
 </section>""" % (slug, CAT_COLOR[color], name,
+                 '<span class="mcat__tag">%s</span>' % tag if tag else '',
                  '<span>%s</span>' % blurb if blurb else '', rows))
     return '\n'.join(out)
 
@@ -715,6 +738,7 @@ home = """<section class="hero"><div class="wrap hero__in">
   <div class="hero__body">
     <p class="hero__badge">Gainesville, Florida &nbsp;&middot;&nbsp; Northwest Fifth Avenue</p>
     <h1>Jamaica, cooked by <em>the Queen.</em></h1>
+    <p class="script">Authentic Jamaican flavors, made with love</p>
     <p class="lede">Oxtail, curry goat and jerk chicken out of a small kitchen on Fifth Avenue,
       seasoned with herbs and spices carried back from home. Open since {opened} &mdash; and
       every plate comes in three sizes, so you order what you can finish.</p>
@@ -744,7 +768,7 @@ home = """<section class="hero"><div class="wrap hero__in">
   <div class="sechead sechead--row">
     <div class="sechead" style="margin:0">
       <p class="eyebrow">What to order</p>
-      <h2>Off the board</h2>
+      <h2>Off the menu card</h2>
       <hr class="rule">
       <p class="lede" style="font-size:1.08rem">Tap any dish to jump straight to it on the menu.</p>
     </div>
@@ -760,9 +784,9 @@ home = """<section class="hero"><div class="wrap hero__in">
       <h2>Order the size you actually want</h2>
       <hr class="rule">
       <div class="prose">
-        <p>Nearly every plate on the board is priced three ways. It is the reason a full
-          Jamaican lunch here still starts under seven dollars, and the reason nobody has to
-          buy a dinner portion to taste the curry goat.</p>
+        <p>Nearly every plate on the menu comes three ways. It is the reason nobody has to
+          buy a dinner portion to taste the curry goat, and the reason a quick lunch and a
+          proper sit-down come out of the same kitchen.</p>
       </div>
       <div class="hero__act" style="padding:0">
         <a class="btn btn--red" href="menu.html#specialties">See the plates</a>
@@ -770,14 +794,14 @@ home = """<section class="hero"><div class="wrap hero__in">
     </div>
     <div class="info">
       <div class="field"><span class="field__k">Express</span>
-        <span class="field__v field__v--big">From $5.75</span>
-        <span class="field__v" style="color:var(--muted)">The quick plate. Lunch, in and out.</span></div>
+        <span class="field__v field__v--big">The quick plate</span>
+        <span class="field__v" style="color:var(--muted)">Lunch, in and out.</span></div>
       <div class="field"><span class="field__k">Medium</span>
-        <span class="field__v field__v--big">From $7.75</span>
-        <span class="field__v" style="color:var(--muted)">The usual order, and the one most people take.</span></div>
+        <span class="field__v field__v--big">The usual order</span>
+        <span class="field__v" style="color:var(--muted)">What most people take.</span></div>
       <div class="field"><span class="field__k">Large</span>
-        <span class="field__v field__v--big">From $8.50</span>
-        <span class="field__v" style="color:var(--muted)">Enough to share, or to put in the fridge.</span></div>
+        <span class="field__v field__v--big">Enough to share</span>
+        <span class="field__v" style="color:var(--muted)">Or to put in the fridge.</span></div>
     </div>
   </div>
 </div></section>
@@ -804,11 +828,11 @@ home = """<section class="hero"><div class="wrap hero__in">
     <article class="dish"><div class="dish__b">
       <h3>A real vegetarian section</h3>
       <p>Jerk tofu, curry tofu, brown stew tofu and <strong>ital pasta</strong> &mdash; the same
-        seasoning and the same pots, not one substitution tacked onto the end of the board.</p>
+        seasoning and the same pots, not one substitution tacked onto the end of the menu.</p>
       </div></article>
     <article class="dish"><div class="dish__b">
       <h3>Fish cooked to order</h3>
-      <p>Brown stew, steamed or escoviche, done when you ask for it rather than held under a
+      <p>Brown stew, steamed or escovitch, done when you ask for it rather than held under a
         lamp. <strong>Call ahead</strong> and it will be ready when you arrive.</p></div></article>
   </div>
 </div></section>
@@ -870,7 +894,7 @@ home = """<section class="hero"><div class="wrap hero__in">
       </a>
       {grate}
       <div class="copyrow">
-        <a class="btn btn--ghost btn--sm" href="{board}">{pdfi} The menu board</a>
+        <a class="btn btn--ghost btn--sm" href="{board}">{pdfi} The printed menu</a>
         <a class="btn btn--ghost btn--sm" href="{yelp}" target="_blank" rel="noopener">{sti} Yelp</a>
       </div>
     </div>
@@ -883,20 +907,20 @@ home = """<section class="hero"><div class="wrap hero__in">
 
 # ================================================================ MENU
 menu = phead("The full menu",
-    "Everything on the board",
+    "Everything on the card",
     "Oxtail, curry goat, jerk chicken, fish cooked to order, a vegetarian section and "
     "Jamaican sodas. Call and we&rsquo;ll have it boxed.") + """
 <section class="sec"><div class="wrap">
   <div class="copyrow" style="padding-bottom:1.3rem">
     <a class="btn btn--red btn--lg" href="{ph}">{phi} {pht}</a>
     <a class="btn btn--ghost" href="{maps}" target="_blank" rel="noopener">{dir} Directions</a>
-    <a class="btn btn--ghost" href="{board}">{pdfi} The menu board (photo)</a>
+    <a class="btn btn--ghost" href="{board}">{pdfi} The printed menu (photo)</a>
   </div>
   {menu}
 </div></section>
 
 <section class="sec sec--surface"><div class="wrap">
-  <div class="sechead"><p class="eyebrow">Seen on the board</p><h2>A few of them, plated</h2><hr class="rule"></div>
+  <div class="sechead"><p class="eyebrow">Seen on the menu</p><h2>A few of them, plated</h2><hr class="rule"></div>
   <div class="grid grid--3">{dishes}</div>
 </div></section>""".format(ph=PHONE_H, pht=PHONE_T, maps=MAPS, board=BOARD, phi=ico('phone'),
                            dir=ico('dir'), pdfi=ico('pdf'), menu=menu_html(),
@@ -921,7 +945,7 @@ about = phead("Our story", "Ms. Queen&rsquo;s kitchen",
           calling her <strong>Ms. Queen</strong>, and that is how most of Gainesville knows her
           now. She and her husband Errol own the place and cook every dish in it.</p>
         <p>The cooking is the cooking she grew up with. Oxtail and curry goat stewed down until
-          they give way. Jerk chicken marinated and grilled dark. Brown stew, escoviche, callaloo,
+          they give way. Jerk chicken marinated and grilled dark. Brown stew, escovitch, callaloo,
           rice and peas, fried plantain. Nothing reinvented and nothing fused.</p>
         <p>The one thing she will not compromise on is seasoning. The herbs and spices are not
           bought from a local supplier &mdash; she goes home to Jamaica and brings them back.
@@ -943,7 +967,7 @@ about = phead("Our story", "Ms. Queen&rsquo;s kitchen",
 </div></section>
 
 <section class="sec sec--surface"><div class="wrap">
-  <div class="sechead"><p class="eyebrow">What that looks like</p><h2>Straight off the board</h2><hr class="rule"></div>
+  <div class="sechead"><p class="eyebrow">What that looks like</p><h2>Straight off the menu</h2><hr class="rule"></div>
   <div class="grid grid--3">{dishes}</div>
 </div></section>
 
@@ -984,7 +1008,7 @@ catering = phead("Catering &amp; big orders", "Feeding a crowd",
           curry goat, curry chicken, beef stew, brown stew &mdash; alongside rice and peas,
           seasoned rice, sauteed vegetables and fried plantain. The vegetarian dishes scale just
           as easily, which tends to matter for a mixed room.</p>
-        <p><strong>Fish needs the most notice.</strong> Brown stew, steamed and escoviche are all
+        <p><strong>Fish needs the most notice.</strong> Brown stew, steamed and escovitch are all
           cooked to order, even for one plate, so give us as much warning as you can.</p>
       </div>
       <div class="hero__act" style="padding:0">
@@ -1020,35 +1044,34 @@ catering = phead("Catering &amp; big orders", "Feeding a crowd",
       <h3>Oxtails &#9733;</h3>
       <p>The dish people ask for by name. Slow-cooked in its own gravy, and it holds heat well
         in a tray.</p>
-      <p class="dish__price">from $7.75 a plate</p></div></article>
+      <p class="dish__price">Express, Medium or Large</p></div></article>
     <article class="dish"><div class="dish__b">
       <h3>Curry Goat &#9733;</h3>
       <p>Bone-in goat in Jamaican curry. The other dish regulars plan their week around.</p>
-      <p class="dish__price">from $7.75 a plate</p></div></article>
+      <p class="dish__price">Express, Medium or Large</p></div></article>
     <article class="dish"><div class="dish__b">
       <h3>Curry Chicken &#9733;</h3>
-      <p>The easiest crowd-pleaser on the board, and the cheapest way to feed a lot of people
-        properly.</p>
-      <p class="dish__price">from $6.75 a plate</p></div></article>
+      <p>The easiest crowd-pleaser on the menu, and the simplest way to feed a lot of
+        people properly.</p>
+      <p class="dish__price">Express, Medium or Large</p></div></article>
     <article class="dish"><div class="dish__b">
       <h3>Jerk Chicken &#9733;</h3>
       <p>Grilled dark, cut up and trayed. Good hot, and still good an hour later.</p>
-      <p class="dish__price">from $8.99 a plate</p></div></article>
+      <p class="dish__price">Medium or Large</p></div></article>
     <article class="dish"><div class="dish__b">
       <h3>The vegetarian dishes</h3>
       <p>Jerk tofu, curry tofu, brown stew tofu and ital pasta &mdash; so nobody is left with a
         side plate for dinner.</p>
-      <p class="dish__price">from $5.75 a plate</p></div></article>
+      <p class="dish__price">Express, Medium or Large</p></div></article>
     <article class="dish"><div class="dish__b">
       <h3>Rice, vegetables, plantain</h3>
-      <p>Pidgeon peas and rice, red beans and rice, seasoned white rice, herb sauteed vegetables,
-        fried plantain.</p>
+      <p>Pigeon peas and rice, red beans and rice, seasoned white rice, herb saut&eacute;ed
+        vegetables, fried plantain.</p>
       <p class="dish__price">by the tray &mdash; call</p></div></article>
   </div>
   <p class="legend" style="margin-top:1.3rem">
-    <span><b>Tray pricing is not published.</b> The figures above are the per-plate prices from
-    the counter menu board, as a guide to what things cost &mdash; call
-    <a href="{ph}">{pht}</a> for tray quantities and a real quote.</span></p>
+    <span><b>Prices are not published on this site.</b> Nothing here is a quote &mdash; call
+    <a href="{ph}">{pht}</a> and the kitchen will price the trays you need.</span></p>
 </div></section>""".format(ph=PHONE_H, pht=PHONE_T, a1=ADDR1, a2=ADDR2, maps=MAPS,
                            phi=ico('phone'), dir=ico('dir'))
 
@@ -1076,7 +1099,7 @@ visit = phead("Visit", "Hours &amp; directions",
         <span class="field__v">Walk in, or call ahead and we will box it for pickup. There is no
           online ordering and no delivery app &mdash; the phone is the fastest way to us.</span></div>
       <div class="field"><span class="field__k">Fish</span>
-        <span class="field__v">Brown stew, steamed and escoviche are cooked to order.
+        <span class="field__v">Brown stew, steamed and escovitch are cooked to order.
           <strong>Call ahead</strong> rather than turning up hoping.</span></div>
     </div>
     <div style="display:flex;flex-direction:column;gap:1rem">
@@ -1093,7 +1116,7 @@ visit = phead("Visit", "Hours &amp; directions",
       </div>
       {grate}
       <div class="copyrow">
-        <a class="btn btn--ghost btn--sm" href="{board}">{pdfi} The menu board</a>
+        <a class="btn btn--ghost btn--sm" href="{board}">{pdfi} The printed menu</a>
         <a class="btn btn--ghost btn--sm" href="{yelp}" target="_blank" rel="noopener">{sti} Yelp</a>
       </div>
     </div>
@@ -1256,7 +1279,7 @@ accessibility = phead("Accessibility", "Accessibility statement",
         sizing up to 150%, light, dark and high-contrast colour, plain wider-spaced type,
         underlined links, highlighted links and buttons, stopped animation, and a large cursor.
         Your choices are remembered on your own device, with nothing sent anywhere.</li>
-      <li><b>A real menu, not a picture of one.</b> Every dish and price is live text, so a
+      <li><b>A real menu, not a picture of one.</b> Every dish on the card is live text, so a
         screen reader can read it, you can search it, and you can zoom it without it turning to
         mush.</li>
       <li><b>Keyboard throughout.</b> A &ldquo;Skip to content&rdquo; link comes first, every
@@ -1279,11 +1302,14 @@ accessibility = phead("Accessibility", "Accessibility statement",
     <h2>Where we still fall short</h2>
     <p>Being straight about this is part of the standard, so here is the current list.</p>
     <ul>
-      <li><b>The menu board photograph is a photograph.</b> The
-        <a href="{board}">picture of our counter menu board</a> kept on this site is an image, so
-        a screen reader cannot read it. It is there only as a record of the board.
-        <b>The accessible version is the <a href="menu.html">full menu page</a></b>, which carries
-        the same items and prices as live text.</li>
+      <li><b>The photograph of the menu card is a photograph.</b> The
+        <a href="{board}">picture of our printed menu</a> kept on this site is an image, so
+        a screen reader cannot read it. It is there only as a record of the card.
+        <b>The accessible version is the <a href="menu.html">full menu page</a></b>, which
+        carries every dish on it as live text.</li>
+      <li><b>Prices are not on the site yet.</b> The menu page lists every dish and the
+        sizes it comes in, but not what it costs, so you have to call to find out. We are
+        putting the prices up.</li>
       <li><b>Ordering is by phone.</b> There is no online ordering to make accessible, which
         removes a whole class of problem &mdash; but it does mean that if using a phone is hard
         for you, there is no alternative route to an order yet. Tell us and we will work
@@ -1334,8 +1360,8 @@ SITE = [
   "Caribbean Queen, 507 NW 5th Ave, Gainesville FL. Oxtail, curry goat, jerk chicken, fish "
   "cooked to order and a vegetarian menu, since 2000. Call (352) 374-8111.", None),
  ('menu.html','menu',"Caribbean Queen Menu",
-  "The full Caribbean Queen menu with prices: oxtails, curry goat, curry chicken, jerk chicken, "
-  "brown stew, vegetarian dishes, patties, Jamaican sodas and tropical juice.", True),
+  "The full Caribbean Queen menu: oxtails, curry goat, curry chicken, jerk chicken, brown stew, "
+  "soups, vegetarian dishes, patties, Jamaican sodas and tropical juice.", True),
  ('about.html','about',"Ms. Queen's Kitchen",
   "The story behind Caribbean Queen: Valerie Phillips opened Gainesville's first Jamaican "
   "restaurant in 2000, and still cooks it with spices brought from home.", True),

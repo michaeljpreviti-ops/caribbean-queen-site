@@ -1,121 +1,150 @@
-# Menu transcribed from the laminated menu board on Caribbean Queen's counter
-# (photographed on their Google listing — the same photo is kept here as menu-board.jpg).
-# Prices and wording are theirs, including the hand-written patty prices written over
-# the printed ones. A star marks the four dishes Google's listing reports as most
-# ordered; the board itself carries no stars.
+# Menu transcribed from Caribbean Queen's printed menu card (kept here as menu-card.jpg).
+# That card replaced the old laminated counter board — menu-board.jpg is kept for
+# reference only. Differences from the board: "Soups on the Avenue" is a new section,
+# Sides are listed by name, the two unreadable roots tonics turn out to be Lion Roots
+# and Zion Roots, and Jerk Wings are gone.
 #
-# item = (name, description, price, starred, note)
+# PRICES ARE DELIBERATELY NOT HERE. The card carries them; the owner is supplying the
+# current ones separately. Sizes are not prices and are kept, because which sizes a dish
+# comes in is how you order it.
+#
+# item    = (name, description, sizes, starred, note)
+# section = (slug, name, colour, blurb, tagline, items)
+
+SIZES3 = "Express &middot; Medium &middot; Large"
+SIZES2 = "Small &middot; Large"
 
 MENU = [
- ("specialties", "Jamaican Specialties", "red",
-  "Every plate comes three ways &mdash; Express, Medium or Large &mdash; with rice and a choice of side.",
+ ("specialties", "Jamaican Specialties", "green",
+  "Every plate comes three ways &mdash; Express, Medium or Large &mdash; with rice and a side.",
+  "Bold Jamaican flavors!",
   [
    ("Oxtails",
     "Slow-cooked until the meat gives way, in the gravy it made. The dish Caribbean Queen "
     "is best known for.",
-    [("Express", "$7.75"), ("Medium", "$13.99"), ("Large", "$15.99")], True, ""),
+    SIZES3, True, ""),
    ("Curry Goat",
     "Bone-in goat stewed down in Jamaican curry until it falls apart. Ms. Queen&rsquo;s "
     "curry powder comes from home.",
-    [("Express", "$7.75"), ("Medium", "$13.99"), ("Large", "$14.99")], True, ""),
+    SIZES3, True, ""),
+   ("Beef Stew",
+    "Brown stew beef, cooked down slow with onion, pepper and thyme.",
+    SIZES3, False, ""),
    ("Curry Chicken",
-    "The same curry, over chicken. The weekday regular &mdash; and the cheapest full plate "
-    "on the board.",
-    [("Express", "$6.75"), ("Medium", "$8.99"), ("Large", "$10.20")], True, ""),
+    "The same curry, over chicken. The weekday regular.",
+    SIZES3, True, ""),
    ("Jerk Chicken",
     "Marinated in pimento, scallion and scotch bonnet, then grilled dark. Served with "
     "rice and a side.",
-    [("Medium", "$8.99"), ("Large", "$10.99")], True, "Half serving $12.20"),
-   ("Beef Stew",
-    "Brown stew beef, cooked down slow with onion, pepper and thyme.",
-    [("Express", "$6.75"), ("Medium", "$9.99"), ("Large", "$10.99")], False, ""),
-   ("Jerk Wings (6)",
-    "Six wings, same jerk marinade, off the same grill.",
-    [("Medium", "$8.99"), ("Large", "$10.20")], False, ""),
+    "Medium &middot; Large", True, "Half serving available"),
   ]),
 
- ("vegetarian", "Vegetarian Dishes", "green",
-  "Not one token dish &mdash; a section of its own, cooked in the same pots and the same seasoning.",
+ ("vegetarian", "Vegetarian Dishes", "green2",
+  "Not one token dish &mdash; a section of its own, cooked in the same pots and the same "
+  "seasoning as everything else.",
+  "Plant power. Good food. Good vibes!",
   [
    ("Jerk Tofu",
     "Tofu carrying the full jerk marinade, grilled the way the chicken is.",
-    [("Express", "$5.75"), ("Medium", "$7.75"), ("Large", "$8.50")], False, ""),
+    SIZES3, False, ""),
    ("Curry Tofu",
     "Jamaican curry, tofu in place of the goat. Served over rice.",
-    [("Express", "$5.75"), ("Medium", "$7.75"), ("Large", "$8.50")], False, ""),
+    SIZES3, False, ""),
    ("Brown Stew Tofu",
     "Brown stew gravy &mdash; onion, pepper, thyme &mdash; over tofu.",
-    [("Express", "$5.75"), ("Medium", "$7.75"), ("Large", "$8.50")], False, ""),
+    SIZES3, False, ""),
    ("Ital Pasta",
     "Pasta with assorted vegetables, cooked ital &mdash; the Rastafarian way, clean and "
     "unsalted at the pot.",
-    [("Express", "$6.00"), ("Medium", "$7.75"), ("Large", "$8.75")], False,
-    "With assorted veggies"),
+    SIZES3, False, "With assorted veggies"),
   ]),
 
  ("fish", "Catch of the Day", "blue",
   "Whole fish, cooked to order. <b>Please call ahead</b> &mdash; (352) 374-8111.",
+  "Fresh from the sea!",
   [
    ("Brown Stew Fish",
     "Fried, then finished in brown stew gravy with onion and sweet pepper.",
-    [("", "$14.75 and up")], False, "Call ahead"),
+    "", False, "Call ahead"),
    ("Steamed Fish",
     "Steamed with okra, carrot and pepper, in its own broth.",
-    [("", "$14.75 and up")], False, "Call ahead"),
-   ("Escoviche Fish",
+    "", False, "Call ahead"),
+   ("Escovitch Fish",
     "Fried golden, then dressed in spiced vinegar with onion, carrot and scotch bonnet.",
-    [("", "$14.75 and up")], False, "Call ahead"),
+    "", False, "Call ahead"),
+  ]),
+
+ ("soups", "Soups on the Avenue", "red",
+  "Cooked down in the pot all morning and sold by the cup or the bowl.",
+  "Hearty soups. Real Jamaican comfort!",
+  [
+   ("Chicken", "Chicken soup with ground provisions, carrot and dumplings.",
+    SIZES2, False, ""),
+   ("Chicken Foot", "Stewed long and slow, the way it is made at home.",
+    SIZES2, False, ""),
+   ("Goat Head", "Mannish water &mdash; the Jamaican goat head soup.",
+    SIZES2, False, ""),
+   ("Red Peas", "Red peas soup, thick with spinners.", SIZES2, False, ""),
+   ("Gungo Peas", "Gungo &mdash; pigeon &mdash; peas, cooked down into soup.",
+    SIZES2, False, ""),
   ]),
 
  ("patties", "Patties", "gold",
-  "The quickest thing on the counter, and none of them over three dollars.",
+  "The quickest thing on the counter, baked and ready to carry out.",
+  "Taste Jamaica in every bite!",
   [
-   ("Mild Beef", "", [("", "$2.40")], False, ""),
-   ("Spicy Beef", "", [("", "$2.40")], False, ""),
-   ("Curry Chicken", "", [("", "$2.50")], False, ""),
-   ("Jerk Chicken", "", [("", "$2.50")], False, ""),
-   ("Veggie", "", [("", "$2.30")], False, ""),
-   ("Soy", "", [("", "$2.89")], False, ""),
-   ("Callaloo", "Jamaican greens, stewed.", [("", "$2.89")], False, ""),
+   ("Mild Beef", "", "", False, ""),
+   ("Spicy Beef", "", "", False, ""),
+   ("Curry Chicken", "", "", False, ""),
+   ("Jerk Chicken", "", "", False, ""),
+   ("Veggie", "", "", False, ""),
+   ("Soy", "", "", False, ""),
+   ("Callaloo", "Jamaican greens, stewed.", "", False, ""),
   ]),
 
  ("sides", "Sides", "gold2",
-  "Your plate comes with these &mdash; say which when you order.",
+  "Your plate comes with a side &mdash; say which one when you order.",
+  "Simple sides. Big flavor!",
   [
-   ("Pidgeon Peas and Rice", "", [], False, ""),
-   ("Red Beans and Rice", "", [], False, ""),
-   ("Seasoned White Rice", "", [], False, ""),
-   ("Herb Saut&eacute;ed Vegetables", "", [], False, ""),
-   ("Fried Plantain", "", [], False, ""),
+   ("Pigeon Peas and Rice", "", "", False, ""),
+   ("Red Beans and Rice", "", "", False, ""),
+   ("Seasoned White Rice", "", "", False, ""),
+   ("Herb Saut&eacute;ed Vegetables", "", "", False, ""),
+   ("Fried Plantain", "", "", False, ""),
   ]),
 
  ("tropics", "Cool Tropics", "green",
-  "Tropical juice, cold out of the cooler. Every one the same price.",
+  "Tropical juice, cold out of the cooler.",
+  "Cool. Refreshing. Irresistible!",
   [
-   ("Soursap", "", [("", "$1.85")], False, ""),
-   ("Mango", "", [("", "$1.85")], False, ""),
-   ("Pineapple / Ginger", "", [("", "$1.85")], False, ""),
-   ("Passion Fruit", "", [("", "$1.85")], False, ""),
-   ("Mango / Orange", "", [("", "$1.85")], False, ""),
+   ("Soursop", "", "", False, ""),
+   ("Mango", "", "", False, ""),
+   ("Pineapple / Ginger", "", "", False, ""),
+   ("Passion Fruit", "", "", False, ""),
+   ("Mango / Orange", "", "", False, ""),
   ]),
 
  ("drinks", "Drinks", "blue",
-  "Jamaican sodas and tonics, straight from the island shelf.",
+  "Jamaican sodas and roots tonics, straight off the island shelf.",
+  "Taste the island in every sip!",
   [
-   ("Cola Champagne", "", [("", "$1.79")], False, ""),
-   ("Grape", "", [("", "$1.79")], False, ""),
-   ("Pineapple", "", [("", "$1.79")], False, ""),
-   ("Orange", "", [("", "$1.79")], False, ""),
-   ("Cream Soda", "", [("", "$1.79")], False, ""),
-   ("Ginger Beer", "", [("", "$1.79")], False, ""),
-   ("Jamaican Ting", "Grapefruit, properly bitter.", [("", "$2.69")], False, ""),
-   ("Tiger &amp; Bone", "Jamaican roots tonic.", [("", "$3.50")], False, ""),
-   ("Roots Tonic", "Two more roots tonics on the board.",
-    [("", "$3.50 &ndash; $4.50")], False, "Ask at the counter"),
+   ("Cola Champagne", "", "", False, ""),
+   ("Grape", "", "", False, ""),
+   ("Pineapple", "", "", False, ""),
+   ("Orange", "", "", False, ""),
+   ("Cream", "", "", False, ""),
+   ("Ginger Beer", "", "", False, ""),
+   ("Jamaican Ting", "Grapefruit, properly bitter.", "", False, ""),
+   ("Tiger &amp; Bone", "Jamaican roots tonic.", "", False, ""),
+   ("Lion Roots", "Roots tonic.", "", False, ""),
+   ("Zion Roots", "Roots tonic.", "", False, ""),
   ]),
 ]
 
+# Section accent colours, drawn from the printed card: flag green, leaf green,
+# sea blue, hibiscus red and the gold of the brush strokes behind every heading.
 CAT_COLOR = {
- 'red': 'var(--red)', 'gold': 'var(--gold)', 'gold2': 'var(--gold)',
- 'green': 'var(--green)', 'blue': 'var(--blue)', 'char': 'var(--char)',
+ 'green': 'var(--green)', 'green2': 'var(--leaf)', 'blue': 'var(--blue)',
+ 'red': 'var(--red)', 'gold': 'var(--gold-deep)', 'gold2': 'var(--gold-deep)',
+ 'char': 'var(--char)',
 }

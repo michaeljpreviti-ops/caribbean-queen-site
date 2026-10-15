@@ -6,39 +6,53 @@
 <meta name="description" content="What the Caribbean Queen website stores on your device, what it does not collect, the companies it links to, and how to change your cookie choices.">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}html{-webkit-text-size-adjust:100%}[hidden]{display:none!important}</style>
 <title>Privacy & Cookies — Caribbean Queen</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Barlow+Condensed:wght@500;600;700&family=Karla:wght@400;500;700&display=swap">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Yellowtail&family=Barlow+Condensed:wght@500;600;700&family=Karla:wght@400;500;700&display=swap">
 <style>
-/* Layout: a Jamaican counter menu board — charcoal panels, gold hairlines, and the
-   category colours of the board itself (red specialties, green vegetarian and juice,
-   blue fish and sodas, gold patties). Palette: scotch-bonnet gold, pepper red, callaloo
-   green, tropical blue, and the char of the jerk grill. */
+/* Theme: Caribbean Queen's own printed menu card — white paper, gold brush strokes
+   behind every heading, Jamaican flag green and black, with hibiscus red and sea blue
+   for accents. Headings sit on a painted gold band the way the card's sections do. */
 :root{
-  --bg:#FDF8EE; --surface:#FFFFFF; --sunk:#F6EEDD;
-  --ink:#17140F; --ink-soft:#423A2D; --muted:#6F6454;
-  --line:#E7DCC5; --line-strong:#CFBF9D;
-  --gold:#C77A06; --gold-bright:#F0A81C; --red:#C32718; --green:#3F8524; --blue:#1F6E9E;
-  --char:#15120D; --char-2:#211C14; --char-line:#352D20; --char-ink:#F7F0E1; --char-muted:#A89B84;
+  --bg:#FFFDF5; --surface:#FFFFFF; --sunk:#FFF7DF;
+  --ink:#141210; --ink-soft:#3B372F; --muted:#6B6456;
+  --line:#EADFC0; --line-strong:#D6C48F;
+
+  /* Jamaican flag + the card's own inks */
+  --gold:#E8A800; --gold-bright:#FFC400; --gold-band:#FFE24D; --gold-deep:#B07A00;
+  --band-ink:#141210;
+  --green:#0C8A3E; --green-deep:#07632B; --leaf:#4FA82B;
+  --red:#DE3A22; --blue:#1C9FB8;
+
+  --char:#0B0B0B; --char-2:#171717; --char-line:#2C2C2C;
+  --char-ink:#FFFDF5; --char-muted:#A8A299;
+
   --f-display:"Alfa Slab One",Georgia,"Times New Roman",serif;
+  --f-script:"Yellowtail","Segoe Script","Brush Script MT",cursive;
   --f-cond:"Barlow Condensed","Arial Narrow",Helvetica,sans-serif;
   --f-body:"Karla","Helvetica Neue",Arial,sans-serif;
   --wrap:1200px;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#141108; --surface:#1E1810; --sunk:#191409;
-    --ink:#F7F0E1; --ink-soft:#DED4BF; --muted:#A79B83;
-    --line:#2F2718; --line-strong:#473D25;
-    --gold:#FFC149; --gold-bright:#FFC149; --red:#FF7057; --green:#84CC5F; --blue:#64B6E2;
-    --char:#0C0A06; --char-2:#171309; --char-line:#2B2417; --char-ink:#F7F0E1; --char-muted:#A89B84;
+    --bg:#0E0E0C; --surface:#181815; --sunk:#141412;
+    --ink:#FFFDF5; --ink-soft:#E3DED0; --muted:#A8A196;
+    --line:#2A2A26; --line-strong:#423F36;
+    --gold:#FFC400; --gold-bright:#FFD64A; --gold-band:#FFC400; --gold-deep:#FFC400;
+    --band-ink:#141210;
+    --green:#3FC46F; --green-deep:#2FA458; --leaf:#7FD24F;
+    --red:#FF7057; --blue:#5CCBE0;
+    --char:#070707; --char-2:#121212; --char-line:#262626;
     color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#141108; --surface:#1E1810; --sunk:#191409;
-  --ink:#F7F0E1; --ink-soft:#DED4BF; --muted:#A79B83;
-  --line:#2F2718; --line-strong:#473D25;
-  --gold:#FFC149; --gold-bright:#FFC149; --red:#FF7057; --green:#84CC5F; --blue:#64B6E2;
-  --char:#0C0A06; --char-2:#171309; --char-line:#2B2417; --char-ink:#F7F0E1; --char-muted:#A89B84;
+  --bg:#0E0E0C; --surface:#181815; --sunk:#141412;
+  --ink:#FFFDF5; --ink-soft:#E3DED0; --muted:#A8A196;
+  --line:#2A2A26; --line-strong:#423F36;
+  --gold:#FFC400; --gold-bright:#FFD64A; --gold-band:#FFC400; --gold-deep:#FFC400;
+    --band-ink:#141210;
+  --green:#3FC46F; --green-deep:#2FA458; --leaf:#7FD24F;
+  --red:#FF7057; --blue:#5CCBE0;
+  --char:#070707; --char-2:#121212; --char-line:#262626;
   color-scheme:dark;
 }
 
@@ -61,8 +75,8 @@ p{margin:0}
 .prose{display:flex;flex-direction:column;gap:1.05rem;max-width:66ch;color:var(--ink-soft)}
 
 /* ---- top strip ---- */
-.util{background:var(--char);color:var(--char-muted);border-bottom:1px solid var(--char-line);font-family:var(--f-cond);font-size:.98rem;letter-spacing:.03em}
-.util__in{display:flex;flex-wrap:wrap;align-items:center;gap:.3rem 1.3rem;padding-block:.5rem}
+.util{position:relative;background:var(--char);color:var(--char-muted);border-bottom:1px solid var(--char-line);font-family:var(--f-cond);font-size:.98rem;letter-spacing:.03em}
+.util__in{display:flex;flex-wrap:wrap;align-items:center;gap:.3rem 1.3rem;padding-block:.5rem;padding-right:62px}
 .util__i{display:flex;align-items:center;gap:.4rem}
 .util__i svg{width:14px;height:14px;fill:currentColor;opacity:.8;flex:none}
 .util__sp{flex:1 1 auto}
@@ -77,16 +91,45 @@ p{margin:0}
 .mast__in{display:flex;align-items:center;gap:1rem;padding-block:.6rem}
 .brand{display:flex;align-items:center;flex:none;text-decoration:none;gap:.6rem}
 .brand img{height:80px;width:auto}
-.brandmark{display:flex;align-items:center;gap:.6rem}
-.brandmark svg{width:40px;height:40px;fill:var(--gold-bright);flex:none}
+.brandmark{display:flex;align-items:center;gap:.55rem}
+.brandmark svg.crown{width:34px;height:34px;fill:var(--gold-bright);flex:none;
+  filter:drop-shadow(0 1px 0 rgba(176,122,0,.5))}
 .brandmark__t{display:flex;flex-direction:column;line-height:1;min-width:0}
-.brandmark__k{font-family:var(--f-cond);font-size:.84rem;font-weight:700;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
-.brandmark__n{font-family:var(--f-display);font-size:1.78rem;color:var(--ink);padding-top:.16rem}
-.brandmark__s{font-family:var(--f-cond);font-size:.82rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:.3rem}
-.foot__brand .brandmark svg{width:52px;height:52px}
-.foot__brand .brandmark__n{color:var(--char-ink);font-size:2.1rem}
-.foot__brand .brandmark__k{font-size:.92rem}
+.brandmark__k{font-family:var(--f-script);font-size:1.95rem;line-height:.98;color:var(--green);
+  white-space:nowrap}
+.brandmark__k b{font-weight:400;color:var(--gold)}
+.brandmark__n{font-family:var(--f-display);font-size:.82rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--green-deep);padding-top:.3rem}
+.brandmark__n i{font-style:normal;font-family:var(--f-cond);font-weight:600;
+  letter-spacing:.26em;color:var(--ink-soft)}
+.brandmark__s{font-family:var(--f-cond);font-size:.82rem;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);padding-top:.34rem}
+.foot__brand .brandmark svg.crown{width:46px;height:46px}
+.foot__brand .brandmark__k{font-size:2.6rem;color:#fff}
+.foot__brand .brandmark__k b{color:var(--gold-bright)}
+.foot__brand .brandmark__n{color:var(--gold-bright)}
+.foot__brand .brandmark__n i{color:var(--char-muted)}
 .foot__brand .brandmark__s{color:var(--char-muted)}
+
+/* ---- Jamaican flag, top right of every page ---- */
+.flag{width:38px;height:19px;flex:none;border-radius:2px;display:block;
+  box-shadow:0 0 0 1px rgba(255,255,255,.28)}
+.util__flag{position:absolute;top:7px;right:20px;display:flex;align-items:center;gap:.5rem}
+.util__flag b{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+
+/* ---- script accents taken off the card ---- */
+.script{font-family:var(--f-script);color:var(--green);font-size:1.45rem;line-height:1.3}
+.sec--char .script{color:var(--gold-bright)}
+.foot__brand .script{font-size:1.14rem;color:var(--gold-bright);max-width:26ch}
+.hero .script{color:var(--gold-bright)}
+.signboard{display:inline-block;font-family:var(--f-script);font-size:clamp(1.3rem,2.6vw,1.9rem);
+  color:#5A3A12;background:linear-gradient(177deg,#E8C98E,#D9B374 55%,#C9A05E);
+  border:2px solid #B8884A;border-radius:4px;padding:.55rem 1.5rem;transform:rotate(-1.4deg);
+  box-shadow:0 3px 0 rgba(0,0,0,.16),inset 0 1px 0 rgba(255,255,255,.5);text-align:center}
+.oneja{display:flex;flex-wrap:wrap;gap:.45rem .9rem;align-items:center;
+  font-family:var(--f-cond);font-weight:600;font-size:.95rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--char-muted)}
+.oneja i{font-style:normal;color:var(--gold-bright)}
 .mast__sp{flex:1 1 auto}
 .nav{display:flex;align-items:center;gap:.1rem}
 .nav a{font-family:var(--f-cond);font-size:1.18rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);text-decoration:none;padding:.5rem .66rem;border-bottom:3px solid transparent;white-space:nowrap}
@@ -112,22 +155,24 @@ p{margin:0}
 /* ---- hero ---- */
 .hero{color:var(--char-ink);position:relative;overflow:hidden;
   background:
-    radial-gradient(115% 85% at 6% 0%, rgba(195,39,24,.34) 0%, rgba(195,39,24,0) 56%),
-    radial-gradient(85% 80% at 100% 104%, rgba(240,168,28,.15) 0%, rgba(240,168,28,0) 58%),
+    linear-gradient(109deg, rgba(255,196,0,0) 46.5%, rgba(255,196,0,.16) 48%,
+                            rgba(255,196,0,.16) 52%, rgba(255,196,0,0) 53.5%),
+    radial-gradient(105% 86% at 4% -8%, rgba(12,138,62,.42) 0%, rgba(12,138,62,0) 58%),
+    radial-gradient(90% 82% at 100% 106%, rgba(12,138,62,.30) 0%, rgba(12,138,62,0) 60%),
     var(--char);
-  border-top:5px solid var(--red);
+  border-top:5px solid var(--green);
   border-bottom:5px solid var(--gold-bright)}
 .hero__in{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(1.5rem,3.6vw,3rem);align-items:center;padding-block:clamp(2.3rem,5vw,4rem)}
 .hero__body{display:flex;flex-direction:column;gap:1.05rem;align-items:flex-start;min-width:0}
 .hero h1{color:#fff}
 .hero h1 em{font-style:normal;color:var(--gold-bright)}
-.hero .lede{color:#E4DBC7}
+.hero .lede{color:#E6E1D4}
 .hero__act{display:flex;flex-wrap:wrap;gap:.6rem;padding-top:.25rem}
-.hero__badge{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--f-cond);font-size:.95rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-bright);border:1px solid rgba(240,168,28,.5);padding:.35rem .7rem;border-radius:3px}
+.hero__badge{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--f-cond);font-size:.95rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-bright);border:1px solid rgba(255,196,0,.5);padding:.35rem .7rem;border-radius:3px}
 .hero__fig{margin:0;min-width:0;position:relative;padding-right:11px;padding-bottom:11px}
 .hero__fig img{width:100%;border:4px solid var(--gold-bright);border-radius:6px;
   box-shadow:11px 11px 0 var(--red)}
-.hero__tag{position:absolute;bottom:-14px;left:-10px;background:var(--red);color:#fff;font-family:var(--f-display);font-size:1.05rem;padding:.38rem .8rem;border-radius:3px;transform:rotate(-2.5deg)}
+.hero__tag{position:absolute;bottom:-14px;left:-10px;background:var(--green);color:#fff;font-family:var(--f-display);font-size:1.05rem;padding:.38rem .8rem;border-radius:3px;transform:rotate(-2.5deg)}
 
 /* page header */
 .phead{color:var(--char-ink);
@@ -141,9 +186,9 @@ p{margin:0}
 .phead .lede{color:#E4DBC7}
 
 /* ---- strips & sections ---- */
-.strip{background:var(--red);color:#fff;border-bottom:3px solid var(--char)}
+.strip{background:var(--green);color:#fff;border-bottom:3px solid var(--char)}
 .strip__in{display:flex;flex-wrap:wrap;gap:.5rem 2rem;padding-block:.85rem;align-items:center;justify-content:center;font-family:var(--f-cond);font-size:1.12rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-align:center}
-.strip__in b{color:#FFD98A;font-weight:700}
+.strip__in b{color:var(--gold-bright);font-weight:700}
 .sec{padding-block:clamp(2.5rem,5.4vw,4.2rem);scroll-margin-top:5.5rem}
 .sec--surface{background:var(--surface);border-block:2px solid var(--line)}
 .sec--char{background:var(--char);color:var(--char-ink)}
@@ -151,7 +196,7 @@ p{margin:0}
 .sec--char .prose,.sec--char .lede{color:#DDD3BE}
 .sechead{display:flex;flex-direction:column;gap:.55rem;align-items:flex-start;margin-bottom:1.8rem;max-width:60ch}
 .sechead--row{flex-direction:row;justify-content:space-between;align-items:flex-end;max-width:none;gap:1.2rem;flex-wrap:wrap}
-.rule{height:4px;width:64px;background:var(--gold-bright);border:0;margin:0}
+.rule{height:7px;width:86px;border:0;margin:0;background:var(--gold-bright);border-radius:40% 60% 55% 45%/60% 45% 55% 40%}
 
 .grid{display:grid;gap:1.15rem}
 .grid--3{grid-template-columns:repeat(3,1fr)}
@@ -208,19 +253,20 @@ a.dish:hover .dish__go,a.dish:focus-visible .dish__go{color:var(--red)}
   border-radius:3px;padding:.34rem .7rem}
 .menujump a:hover{border-color:var(--gold-bright);color:var(--gold)}
 .mcat{margin-bottom:2.3rem;scroll-margin-top:5.5rem}
-.mcat__h{display:flex;align-items:baseline;gap:.8rem;flex-wrap:wrap;background:var(--cat,var(--char));color:#fff;
-  padding:.6rem 1rem;border-radius:4px 4px 0 0}
-.mcat__h h2{font-size:clamp(1.5rem,3vw,2.1rem);color:#fff}
-.mcat__h span{font-family:var(--f-cond);font-size:1rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.82)}
+.mcat__h{display:flex;align-items:baseline;gap:.2rem .9rem;flex-wrap:wrap;background:var(--surface);border:2px solid var(--line);border-bottom:0;border-radius:5px 5px 0 0;padding:1.05rem 1.1rem .9rem;position:relative}
+.mcat__h::before{content:"";position:absolute;left:0;top:0;bottom:0;width:7px;background:var(--cat,var(--green))}
+.mcat__h h2{font-size:clamp(1.45rem,2.9vw,2rem);color:var(--band-ink);position:relative;z-index:1;display:inline-block;padding:.12em .4em .14em;margin-left:-.12em}
+.mcat__h h2::before{content:"";position:absolute;inset:.02em -.02em .04em 0;z-index:-1;background:var(--gold-band);border-radius:46% 54% 50% 50%/58% 46% 54% 42%}
+.mcat__h span{flex:1 1 14rem;font-family:var(--f-body);font-size:1rem;letter-spacing:0;text-transform:none;color:var(--ink-soft)}
+.mcat__tag{font-family:var(--f-script);font-size:1.3rem;color:var(--cat,var(--green));letter-spacing:0;text-transform:none;flex:none;transform:rotate(-2deg)}
 .mcat__body{border:2px solid var(--line);border-top:0;border-radius:0 0 4px 4px;background:var(--surface)}
 .item{display:grid;grid-template-columns:1fr auto;gap:.3rem 1.2rem;padding:1rem 1.1rem;border-top:1px solid var(--line)}
 .item:first-child{border-top:0}
-.item__n{font-family:var(--f-display);font-size:1.14rem;line-height:1.25;color:var(--ink);display:flex;align-items:baseline;gap:.45rem;flex-wrap:wrap}
-.item__star{color:var(--gold-bright);font-size:.95rem}
+.item__n{font-family:var(--f-display);font-size:1.1rem;line-height:1.25;color:var(--ink);display:flex;align-items:baseline;gap:.45rem;flex-wrap:wrap}
+.item__star{color:var(--gold);font-size:.95rem}
 .item__d{grid-column:1;color:var(--ink-soft);font-size:1rem;max-width:60ch}
-.item__p{grid-column:2;grid-row:1/span 2;text-align:right;font-family:var(--f-cond);font-weight:700;font-size:1.1rem;
-  color:var(--red);white-space:nowrap;font-variant-numeric:tabular-nums;letter-spacing:.02em;line-height:1.4}
-.item__p i{display:block;font-style:normal;color:var(--muted);font-weight:600;font-size:.95rem}
+.item__p{grid-column:2;grid-row:1/span 2;text-align:right;display:flex;flex-wrap:wrap;justify-content:flex-end;align-content:start;gap:.3rem;max-width:15rem}
+.item__p i{font-style:normal;font-family:var(--f-cond);font-weight:600;font-size:.88rem;letter-spacing:.09em;text-transform:uppercase;color:var(--green-deep);background:var(--sunk);border:1px solid var(--line-strong);border-radius:99px;padding:.1rem .52rem;white-space:nowrap}
 .item__note{grid-column:1;font-family:var(--f-cond);font-size:.98rem;letter-spacing:.07em;text-transform:uppercase;color:var(--red);font-weight:600}
 .legend{display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;padding:1rem 1.1rem;background:var(--sunk);border:2px dashed var(--line-strong);
   border-radius:4px;font-size:1rem;color:var(--ink-soft)}
@@ -312,9 +358,9 @@ a.dish:hover .dish__go,a.dish:focus-visible .dish__go{color:var(--red)}
 }
 @media (max-width:900px){
   .foot__grid{grid-template-columns:1fr 1fr;gap:1.6rem}
-  .brandmark svg{width:32px;height:32px}
-  .brandmark__n{font-size:1.48rem}
-  .brandmark__k{font-size:.74rem;letter-spacing:.28em}
+  .brandmark svg.crown{width:28px;height:28px}
+  .brandmark__k{font-size:1.6rem}
+  .brandmark__n{font-size:.72rem;letter-spacing:.17em}
   .grid--3{grid-template-columns:repeat(2,1fr)}
   .hero__in{grid-template-columns:1fr}
   .hero__fig{order:-1}
@@ -602,9 +648,10 @@ p,li,dt,dd,th,td,.field__k,.field__v,.foot__ph,.util__ph{overflow-wrap:break-wor
   <span class="util__sp"></span>
   <span class="util__i">Dine in &middot; Takeout</span>
   <a class="util__ph" href="tel:+13523748111"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .7-.2 1l-2.3 2.2z"/></svg> (352) 374-8111</a>
+  <span class="util__flag"><b>One Jamaica</b><svg class="flag" viewBox="0 0 24 12" role="img" aria-label="Flag of Jamaica"><path d="M0 0h24v12H0z" fill="#FFC400"/><path d="M0 0h24l-12 6z" fill="#0C8A3E"/><path d="M0 12h24l-12-6z" fill="#0C8A3E"/><path d="M0 0v12l12-6z" fill="#0B0B0B"/><path d="M24 0v12l-12-6z" fill="#0B0B0B"/><path d="M0 0 24 12M0 12 24 0" stroke="#FFC400" stroke-width="2.1" fill="none"/></svg></span>
 </div></div>
 <header class="mast"><div class="wrap mast__in">
-  <a class="brand" href="index.html" aria-label="Caribbean Queen &mdash; home"><span class="brandmark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.6 7.4 7.3 11 12 3.4 16.7 11l4.7-3.6L19.6 19H4.4L2.6 7.4z"/><path d="M4.4 20.3h15.2v2.3H4.4z"/></svg><span class="brandmark__t"><span class="brandmark__k">Caribbean</span><span class="brandmark__n">Queen</span></span></span></a>
+  <a class="brand" href="index.html" aria-label="Caribbean Queen &mdash; home"><span class="brandmark"><svg class="crown" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.6 7.4 7.3 11 12 3.4 16.7 11l4.7-3.6L19.6 19H4.4L2.6 7.4z"/><path d="M4.4 20.3h15.2v2.3H4.4z"/></svg><span class="brandmark__t"><span class="brandmark__k">Caribbean <b>Queen</b></span><span class="brandmark__n">Jamaica <i>Restaurant</i></span></span></span></a>
   <span class="mast__sp"></span>
   <button class="navtoggle" id="navtoggle" aria-expanded="false" aria-controls="nav"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg> Menu</button>
   <nav class="nav" id="nav" aria-label="Main"><a href="index.html">Home</a><a href="menu.html">Menu</a><a href="about.html">Our Story</a><a href="catering.html">Catering</a><a href="visit.html">Visit</a></nav>
@@ -734,7 +781,8 @@ p,li,dt,dd,th,td,.field__k,.field__v,.foot__ph,.util__ph{overflow-wrap:break-wor
 </main>
 <section class="sec sec--char" style="border-top:5px solid var(--gold-bright)">
   <div class="wrap" style="display:flex;flex-wrap:wrap;gap:1.4rem;align-items:center;justify-content:space-between">
-    <div style="display:flex;flex-direction:column;gap:.6rem;min-width:0">
+    <div style="display:flex;flex-direction:column;gap:.75rem;min-width:0">
+      <p class="signboard">Good Food Brings People Together</p>
       <h2>Hungry yet?</h2>
       <p class="lede">Call the kitchen and it will be boxed and waiting. Fish needs a little
         more notice &mdash; say so when you ring.</p>
@@ -748,7 +796,8 @@ p,li,dt,dd,th,td,.field__k,.field__v,.foot__ph,.util__ph{overflow-wrap:break-wor
 <footer class="foot"><div class="wrap">
   <div class="foot__grid">
     <div class="foot__brand">
-      <span class="brandmark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.6 7.4 7.3 11 12 3.4 16.7 11l4.7-3.6L19.6 19H4.4L2.6 7.4z"/><path d="M4.4 20.3h15.2v2.3H4.4z"/></svg><span class="brandmark__t"><span class="brandmark__k">Caribbean</span><span class="brandmark__n">Queen</span><span class="brandmark__s">Jamaican kitchen &middot; Gainesville</span></span></span>
+      <span class="brandmark"><svg class="crown" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.6 7.4 7.3 11 12 3.4 16.7 11l4.7-3.6L19.6 19H4.4L2.6 7.4z"/><path d="M4.4 20.3h15.2v2.3H4.4z"/></svg><span class="brandmark__t"><span class="brandmark__k">Caribbean <b>Queen</b></span><span class="brandmark__n">Jamaica <i>Restaurant</i></span><span class="brandmark__s">507 NW 5th Ave &middot; Gainesville</span></span></span>
+      <p class="script" style="margin-top:.2rem">Authentic Jamaican flavors, made with love</p>
       <p>Ms. Queen&rsquo;s Jamaican kitchen on Northwest Fifth Avenue, cooking oxtail,
          curry goat and jerk chicken in Gainesville since 2000.</p>
       <div class="social">
@@ -761,7 +810,7 @@ p,li,dt,dd,th,td,.field__k,.field__v,.foot__ph,.util__ph{overflow-wrap:break-wor
       <li><a href="menu.html#specialties">Jamaican Specialties</a></li>
       <li><a href="menu.html#vegetarian">Vegetarian Dishes</a></li>
       <li><a href="menu.html#fish">Catch of the Day</a></li>
-      <li><a href="menu-board.jpg">The menu board (photo)</a></li>
+      <li><a href="menu-card.jpg">The printed menu (photo)</a></li>
     </ul></div>
     <div><h4>Visit</h4><ul>
       <li>507 NW 5th Ave<br>Gainesville, FL 32601</li>
@@ -779,6 +828,8 @@ p,li,dt,dd,th,td,.field__k,.field__v,.foot__ph,.util__ph{overflow-wrap:break-wor
     </div>
   </div>
   <div class="foot__base">
+    <span class="oneja"><svg class="flag" viewBox="0 0 24 12" role="img" aria-label="Flag of Jamaica"><path d="M0 0h24v12H0z" fill="#FFC400"/><path d="M0 0h24l-12 6z" fill="#0C8A3E"/><path d="M0 12h24l-12-6z" fill="#0C8A3E"/><path d="M0 0v12l12-6z" fill="#0B0B0B"/><path d="M24 0v12l-12-6z" fill="#0B0B0B"/><path d="M0 0 24 12M0 12 24 0" stroke="#FFC400" stroke-width="2.1" fill="none"/></svg> Food <i>&middot;</i> Culture <i>&middot;</i> Community
+      <i>&middot;</i> One Jamaica <i>&hearts;</i></span>
     <span>&copy; 2026 Caribbean Queen.</span>
     <span>507 NW 5th Ave &middot; Gainesville, Florida</span>
     <span class="foot__legal">

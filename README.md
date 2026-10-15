@@ -54,29 +54,65 @@ OUTDIR=. python3 src/gen.py     # regenerate all 7 pages at the repo root
   have accounts, they drop straight back in — the CSS for them is still in the stylesheet.
 - **No email address.** Every contact route is the phone. If they give you an address, add an
   `EMAIL` constant in `src/gen.py` and put it back in the footer and the two statement pages.
-- **No logo artwork.** The masthead and footer use a **typographic wordmark** — a gold crown
-  plus "CARIBBEAN / Queen" in the site's own display face (`wordmark()` in `gen.py`,
-  `.brandmark*` in the stylesheet). It is crisp at any size and needs no image file. Swap in
-  their artwork when they provide it.
+- **No logo file.** The masthead and footer typeset the card's lockup instead
+  (`wordmark()` in `gen.py`, `.brandmark*` in the stylesheet). See **Theme** below.
 - **Closed Saturdays.** The open/closed clock in the top bar now handles a closed day and skips
   over it when working out when the kitchen next opens — Friday evening correctly says
   "opens 10:30am Sunday". *(The Di Big Jerk build has a latent bug here: its "closed now" string
   prints a literal `·` instead of a middle dot. Fixed in this build, not touched there.)*
-- **Three-size pricing** replaces the weekly-specials block on the home page, because that is
-  the genuinely unusual thing about this menu.
+- **Three sizes** replace the weekly-specials block on the home page, because that is the
+  genuinely unusual thing about this menu.
+- **No prices anywhere.** See **Menu provenance** below.
 
 ## Menu provenance
 
-Transcribed from the **photograph of their counter menu board** on their Google listing, kept
-here as `menu-board.jpg`. Prices are as written, including the hand-written patty prices
-inked over the printed ones. Changes made while transcribing:
+Transcribed from **Caribbean Queen's printed menu card** (`menu-card.jpg`), which replaced
+the old laminated counter board. `menu-board.jpg` is kept only for reference.
 
-- `Callalloo` → `Callaloo`, `Cream` → `Cream Soda` (clarity only)
-- The star marks the four dishes **Google reports as most ordered** — Oxtails, Curry Goat,
-  Curry Chicken, Jerk Chicken. The board carries no stars of its own, and the legend says so.
-- **The dish descriptions are written for this site.** The board has none. They are standard
+**There are no prices on this site.** The card carries them; the owner is supplying the
+current ones separately. Every place a price used to sit now shows the sizes a dish comes
+in instead, and the menu page says plainly to call. To put prices back, add them to the
+items in `src/menu_data.py` and give `size_block()` a price slot.
+
+What the new card changed:
+
+- **"Soups on the Avenue" is a new section** — chicken, chicken foot, goat head, red peas
+  and gungo peas, small or large.
+- **The two unreadable roots tonics are solved.** They are **Lion Roots** and **Zion Roots**.
+- **Sides are named on the card now**, so they are on the site by name.
+- **Jerk Wings are gone.** They were on the old board and are not on the card, so they have
+  been dropped. Worth confirming they really are off.
+- Spellings corrected to the card: **Escovitch** (not escoviche), **Soursop** (not soursap),
+  **Pigeon Peas** (not pidgeon).
+- The card's own section lines are used as written — *Bold Jamaican flavors!*,
+  *Plant power. Good food. Good vibes!*, *Fresh from the sea!*, *Hearty soups. Real Jamaican
+  comfort!*, *Simple sides. Big flavor!*, *Taste Jamaica in every bite!*, *Cool. Refreshing.
+  Irresistible!*, *Taste the island in every sip!*
+- The star still marks the four dishes **Google reports as most ordered** — Oxtails, Curry
+  Goat, Curry Chicken, Jerk Chicken. Neither the card nor the board carries stars of its own,
+  and the legend says so.
+- **The dish descriptions are written for this site.** The card has none. They are standard
   Jamaican preparations and nothing is invented about the food, but **Ms. Queen should read
-  them and change anything she does not recognise** before this goes anywhere.
+  them and change anything she does not recognise** before this goes anywhere. The five soup
+  descriptions are the newest and the least checked.
+
+## Theme
+
+The site is themed off the printed card rather than the old counter board:
+
+- **Jamaican flag colours** — flag green `#0C8A3E`, gold `#FFC400` and black `#0B0B0B`, with
+  the card's hibiscus red and sea blue as accents, on near-white paper.
+- **The flag itself** sits in the top right corner of every page, drawn as inline SVG
+  (`flag()` in `gen.py`) so it stays crisp and needs no image file.
+- **Section headings sit on a painted gold brush band**, the way the card's do, with the
+  section tagline beside them in script.
+- **The wordmark** is the card's lockup — gold crown, *Caribbean* in green script and *Queen*
+  in gold, JAMAICA RESTAURANT beneath. It is **set in type (Yellowtail), not cut from the
+  card**, because the only copy of the card we have is a phone photograph of a tablet screen.
+  **Swap in the real artwork when the designer's file turns up** — it will be an improvement.
+- The card's own lines are used across the site: *Authentic Jamaican flavors, made with love*
+  in the hero and footer, *Good Food Brings People Together* on a wooden sign above the
+  closing call to action, and *Food · Culture · Community · One Jamaica* along the footer base.
 
 ## Photographs
 
@@ -99,18 +135,17 @@ than a demo.
   Jamaican restaurant; her husband Errol cooks with her; the spices come back from Jamaica.
   **That article is ten years old.** Confirm she still owns it, that Errol is still cooking, and
   that she is happy being named before this is published.
-- **Two drinks could not be read.** Two roots tonics at the bottom of the board are lost to
-  glare in the photograph — $3.50 and $4.50. The menu lists them as "Roots Tonic / ask at the
-  counter". Get the names.
-- **Curry Goat large price.** The board's printed price is struck through and "14" is written
-  over it; read as **$14.99**, with the medium at $13.99. Worth double-checking, since the
-  medium and large are then only a dollar apart.
+- **Prices.** They are deliberately not on the site. Send them over and they go in.
+- **Jerk Wings.** On the old counter board, not on the new card. Dropped from the site —
+  confirm that is right.
 - **Catering.** Nothing in any listing says they cater. The catering page is written as
   "call and ask", with no claim that trays are a standing offer. If they do not cater, drop the
   page from `PAGES` in `gen.py` and the nav closes up by itself.
 - **No photograph of the building.** A storefront shot would improve the Visit page a lot.
 - **Both statement pages are stamped October 14, 2026** (`TODAY` in `gen.py`). Bump it when
   either one changes.
+- **The logo artwork.** The wordmark here is typeset from the card. If whoever printed the
+  card still has the artwork, that file is worth asking for.
 
 ## Deploying
 
