@@ -18,9 +18,17 @@
 
   /* Jamaican flag + the card's own inks */
   --gold:#E8A800; --gold-bright:#FFC400; --gold-band:#FFE24D; --gold-deep:#B07A00;
+  /* --gold is a 2.1:1 fill on a light page, so text and icons use these instead:
+     --gold-text clears 4.5:1 at body size, --gold-disp clears the 3:1 that applies
+     to the wordmark as large-scale text. Both go bright again in dark mode. */
+  --gold-text:#8A5E00; --gold-disp:#BC8700;
   --band-ink:#141210;
   --green:#0C8A3E; --green-deep:#07632B; --leaf:#4FA82B;
-  --red:#DE3A22; --blue:#1C9FB8;
+  /* the green the solid bands are painted with: deep enough to carry white and
+     gold text at 4.5:1, which plain --green is not */
+  --green-band:#07632B;
+  --red:#D13319; --blue:#1C9FB8;
+  --red-text:#D13319;
 
   --char:#0B0B0B; --char-2:#171717; --char-line:#2C2C2C;
   --char-ink:#FFFDF5; --char-muted:#A8A299;
@@ -37,9 +45,12 @@
     --ink:#FFFDF5; --ink-soft:#E3DED0; --muted:#A8A196;
     --line:#2A2A26; --line-strong:#423F36;
     --gold:#FFC400; --gold-bright:#FFD64A; --gold-band:#FFC400; --gold-deep:#FFC400;
+    --gold-text:#FFC400; --gold-disp:#FFC400;
     --band-ink:#141210;
     --green:#3FC46F; --green-deep:#2FA458; --leaf:#7FD24F;
-    --red:#FF7057; --blue:#5CCBE0;
+    --green-band:#10512A;
+    --red:#D13319; --blue:#5CCBE0;
+    --red-text:#FF8A72;
     --char:#070707; --char-2:#121212; --char-line:#262626;
     color-scheme:dark;
   }
@@ -49,17 +60,25 @@
   --ink:#FFFDF5; --ink-soft:#E3DED0; --muted:#A8A196;
   --line:#2A2A26; --line-strong:#423F36;
   --gold:#FFC400; --gold-bright:#FFD64A; --gold-band:#FFC400; --gold-deep:#FFC400;
+  --gold-text:#FFC400; --gold-disp:#FFC400;
     --band-ink:#141210;
   --green:#3FC46F; --green-deep:#2FA458; --leaf:#7FD24F;
-  --red:#FF7057; --blue:#5CCBE0;
+  --green-band:#10512A;
+  --red:#D13319; --blue:#5CCBE0;
+  --red-text:#FF8A72;
   --char:#070707; --char-2:#121212; --char-line:#262626;
   color-scheme:dark;
 }
 
+/* Visually hidden, still read aloud. The accessibility toolbar labels its
+   launcher with this; without it the label renders as text on the page. */
+.vh{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:18px;line-height:1.62;-webkit-text-size-adjust:100%}
 img{max-width:100%;display:block;height:auto}
-a{color:var(--gold);text-decoration-thickness:1px;text-underline-offset:2px}
+a{color:var(--gold-text);text-decoration-thickness:1px;text-underline-offset:2px}
 h1,h2,h3,h4{font-family:var(--f-display);font-weight:400;line-height:1.06;margin:0;text-wrap:balance}
 h1{font-size:clamp(2.5rem,6.6vw,4.5rem)}
 h2{font-size:clamp(1.95rem,4.2vw,2.95rem)}
@@ -70,7 +89,7 @@ p{margin:0}
 .skip{position:absolute;left:-9999px;top:0;background:var(--red);color:#fff;padding:.7rem 1rem;z-index:99}
 .skip:focus{left:8px;top:8px}
 .wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:20px}
-.eyebrow{font-family:var(--f-cond);font-size:.92rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.eyebrow{font-family:var(--f-cond);font-size:.92rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-text)}
 .lede{font-size:clamp(1.14rem,1.9vw,1.32rem);color:var(--ink-soft);max-width:60ch}
 .prose{display:flex;flex-direction:column;gap:1.05rem;max-width:66ch;color:var(--ink-soft)}
 
@@ -97,7 +116,7 @@ p{margin:0}
 .brandmark__t{display:flex;flex-direction:column;line-height:1;min-width:0}
 .brandmark__k{font-family:var(--f-script);font-size:1.95rem;line-height:.98;color:var(--green);
   white-space:nowrap}
-.brandmark__k b{font-weight:400;color:var(--gold)}
+.brandmark__k b{font-weight:400;color:var(--gold-disp)}
 .brandmark__n{font-family:var(--f-display);font-size:.82rem;letter-spacing:.2em;
   text-transform:uppercase;color:var(--green-deep);padding-top:.3rem}
 .brandmark__n i{font-style:normal;font-family:var(--f-cond);font-weight:600;
@@ -172,7 +191,7 @@ p{margin:0}
 .hero__fig{margin:0;min-width:0;position:relative;padding-right:11px;padding-bottom:11px}
 .hero__fig img{width:100%;border:4px solid var(--gold-bright);border-radius:6px;
   box-shadow:11px 11px 0 var(--red)}
-.hero__tag{position:absolute;bottom:-14px;left:-10px;background:var(--green);color:#fff;font-family:var(--f-display);font-size:1.05rem;padding:.38rem .8rem;border-radius:3px;transform:rotate(-2.5deg)}
+.hero__tag{position:absolute;bottom:-14px;left:-10px;background:var(--green-band);color:#fff;font-family:var(--f-display);font-size:1.05rem;padding:.38rem .8rem;border-radius:3px;transform:rotate(-2.5deg)}
 
 /* page header */
 .phead{color:var(--char-ink);
@@ -186,13 +205,19 @@ p{margin:0}
 .phead .lede{color:#E4DBC7}
 
 /* ---- strips & sections ---- */
-.strip{background:var(--green);color:#fff;border-bottom:3px solid var(--char)}
+.strip{background:var(--green-band);color:#fff;border-bottom:3px solid var(--char)}
 .strip__in{display:flex;flex-wrap:wrap;gap:.5rem 2rem;padding-block:.85rem;align-items:center;justify-content:center;font-family:var(--f-cond);font-size:1.12rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-align:center}
 .strip__in b{color:var(--gold-bright);font-weight:700}
 .sec{padding-block:clamp(2.5rem,5.4vw,4.2rem);scroll-margin-top:5.5rem}
 .sec--surface{background:var(--surface);border-block:2px solid var(--line)}
 .sec--char{background:var(--char);color:var(--char-ink)}
 .sec--char h2,.sec--char h3{color:#fff}
+/* --gold-text is tuned for a light page; on the charcoal bands the bright gold
+   is the one that clears 4.5:1, so put it back for anything sitting on them. */
+.hero .eyebrow,.phead .eyebrow,.sec--char .eyebrow,.foot .eyebrow{color:var(--gold-bright)}
+.hero a:not(.btn):not(.dish):not(.grate),
+.phead a:not(.btn):not(.dish):not(.grate),
+.sec--char a:not(.btn):not(.dish):not(.grate){color:var(--gold-bright)}
 .sec--char .prose,.sec--char .lede{color:#DDD3BE}
 .sechead{display:flex;flex-direction:column;gap:.55rem;align-items:flex-start;margin-bottom:1.8rem;max-width:60ch}
 .sechead--row{flex-direction:row;justify-content:space-between;align-items:flex-end;max-width:none;gap:1.2rem;flex-wrap:wrap}
@@ -213,14 +238,14 @@ p{margin:0}
   transition:border-color .16s,transform .16s,box-shadow .16s}
 a.dish:hover,a.dish:focus-visible{border-color:var(--red);transform:translateY(-3px);
   box-shadow:0 10px 0 -4px rgba(195,39,24,.35)}
-a.dish:hover .dish__go,a.dish:focus-visible .dish__go{color:var(--red)}
+a.dish:hover .dish__go,a.dish:focus-visible .dish__go{color:var(--red-text)}
 .dish__go{font-family:var(--f-cond);font-size:1rem;font-weight:700;letter-spacing:.08em;
   text-transform:uppercase;color:var(--muted);padding-top:.15rem}
 .dish img{width:100%;aspect-ratio:4/5;object-fit:cover}
 .dish__b{padding:1rem 1.05rem;display:flex;flex-direction:column;gap:.35rem;flex:1 1 auto}
 .dish__b h3{font-size:1.24rem}
 .dish__b p{color:var(--ink-soft);font-size:1rem}
-.dish__price{font-family:var(--f-cond);font-size:1.18rem;font-weight:700;color:var(--red);letter-spacing:.03em;font-variant-numeric:tabular-nums}
+.dish__price{font-family:var(--f-cond);font-size:1.18rem;font-weight:700;color:var(--red-text);letter-spacing:.03em;font-variant-numeric:tabular-nums}
 
 /* ---- photo carousel: one dish at a time, alternating across menu sections ---- */
 .pcar{display:flex;flex-direction:column;gap:1rem;width:100%}
@@ -234,7 +259,7 @@ a.dish:hover .dish__go,a.dish:focus-visible .dish__go{color:var(--red)}
 .pcar__btn{width:46px;height:46px;flex:none;border:2px solid var(--line-strong);background:var(--surface);
   color:var(--ink);border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0}
 .pcar__btn svg{width:19px;height:19px;fill:currentColor}
-.pcar__btn:hover{border-color:var(--red);color:var(--red)}
+.pcar__btn:hover{border-color:var(--red);color:var(--red-text)}
 .pcar__btn[disabled]{opacity:.34;cursor:default}
 .pcar__btn[disabled]:hover{border-color:var(--line-strong);color:var(--ink)}
 .pcar__dots{display:flex;gap:.45rem;align-items:center;flex-wrap:wrap;justify-content:center}
@@ -251,23 +276,23 @@ a.dish:hover .dish__go,a.dish:focus-visible .dish__go{color:var(--red)}
 .menujump a{font-family:var(--f-cond);font-size:1.04rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;
   text-decoration:none;color:var(--ink);background:var(--surface);border:2px solid var(--line-strong);
   border-radius:3px;padding:.34rem .7rem}
-.menujump a:hover{border-color:var(--gold-bright);color:var(--gold)}
+.menujump a:hover{border-color:var(--gold-bright);color:var(--gold-text)}
 .mcat{margin-bottom:2.3rem;scroll-margin-top:5.5rem}
 .mcat__h{display:flex;align-items:baseline;gap:.2rem .9rem;flex-wrap:wrap;background:var(--surface);border:2px solid var(--line);border-bottom:0;border-radius:5px 5px 0 0;padding:1.05rem 1.1rem .9rem;position:relative}
 .mcat__h::before{content:"";position:absolute;left:0;top:0;bottom:0;width:7px;background:var(--cat,var(--green))}
 .mcat__h h2{font-size:clamp(1.45rem,2.9vw,2rem);color:var(--band-ink);position:relative;z-index:1;display:inline-block;padding:.12em .4em .14em;margin-left:-.12em}
 .mcat__h h2::before{content:"";position:absolute;inset:.02em -.02em .04em 0;z-index:-1;background:var(--gold-band);border-radius:46% 54% 50% 50%/58% 46% 54% 42%}
 .mcat__h span{flex:1 1 14rem;font-family:var(--f-body);font-size:1rem;letter-spacing:0;text-transform:none;color:var(--ink-soft)}
-.mcat__tag{font-family:var(--f-script);font-size:1.3rem;color:var(--cat,var(--green));letter-spacing:0;text-transform:none;flex:none;transform:rotate(-2deg)}
+.mcat__tag{font-family:var(--f-script);font-size:1.3rem;color:var(--cat,var(--green-deep));letter-spacing:0;text-transform:none;flex:none;transform:rotate(-2deg)}
 .mcat__body{border:2px solid var(--line);border-top:0;border-radius:0 0 4px 4px;background:var(--surface)}
 .item{display:grid;grid-template-columns:1fr auto;gap:.3rem 1.2rem;padding:1rem 1.1rem;border-top:1px solid var(--line)}
 .item:first-child{border-top:0}
 .item__n{font-family:var(--f-display);font-size:1.1rem;line-height:1.25;color:var(--ink);display:flex;align-items:baseline;gap:.45rem;flex-wrap:wrap}
-.item__star{color:var(--gold);font-size:.95rem}
+.item__star{color:var(--gold-text);font-size:.95rem}
 .item__d{grid-column:1;color:var(--ink-soft);font-size:1rem;max-width:60ch}
 .item__p{grid-column:2;grid-row:1/span 2;text-align:right;display:flex;flex-wrap:wrap;justify-content:flex-end;align-content:start;gap:.3rem;max-width:15rem}
 .item__p i{font-style:normal;font-family:var(--f-cond);font-weight:600;font-size:.88rem;letter-spacing:.09em;text-transform:uppercase;color:var(--green-deep);background:var(--sunk);border:1px solid var(--line-strong);border-radius:99px;padding:.1rem .52rem;white-space:nowrap}
-.item__note{grid-column:1;font-family:var(--f-cond);font-size:.98rem;letter-spacing:.07em;text-transform:uppercase;color:var(--red);font-weight:600}
+.item__note{grid-column:1;font-family:var(--f-cond);font-size:.98rem;letter-spacing:.07em;text-transform:uppercase;color:var(--red-text);font-weight:600}
 .legend{display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;padding:1rem 1.1rem;background:var(--sunk);border:2px dashed var(--line-strong);
   border-radius:4px;font-size:1rem;color:var(--ink-soft)}
 .legend b{color:var(--ink)}
@@ -279,7 +304,7 @@ a.dish:hover .dish__go,a.dish:focus-visible .dish__go{color:var(--red)}
 .field__v{font-size:1.1rem;color:var(--ink)}
 .field__v--big{font-family:var(--f-display);font-size:1.75rem;line-height:1.15}
 .field__v--big a{text-decoration:none;color:var(--ink)}
-.field__v--big a:hover{color:var(--red)}
+.field__v--big a:hover{color:var(--red-text)}
 .hours{display:grid;grid-template-columns:auto 1fr;gap:.26rem 1.1rem;font-variant-numeric:tabular-nums;margin:0}
 .hours dt{font-family:var(--f-cond);font-size:1.04rem;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:600}
 .hours dd{margin:0;font-size:1.04rem}
@@ -304,8 +329,8 @@ a.dish:hover .dish__go,a.dish:focus-visible .dish__go{color:var(--red)}
 .grate:hover{border-color:var(--gold-bright)}
 .grate__num{font-family:var(--f-display);font-size:1.5rem;line-height:1;color:var(--ink)}
 .stars{position:relative;display:inline-block;white-space:nowrap;font-size:1.15rem;line-height:1;letter-spacing:.1em}
-.stars__bg{color:var(--line-strong)}
-.stars__fg{position:absolute;left:0;top:0;overflow:hidden;width:var(--pct,100%);color:var(--gold-bright)}
+.stars__bg{color:#9A8A63}
+.stars__fg{position:absolute;left:0;top:0;overflow:hidden;width:var(--pct,100%);color:var(--gold-deep)}
 .grate__n{font-family:var(--f-cond);font-size:1rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);line-height:1.3;font-weight:600}
 .grate__n b{display:block;color:var(--ink);font-weight:700}
 .grate--dark{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.3)}
@@ -317,7 +342,7 @@ a.dish:hover .dish__go,a.dish:focus-visible .dish__go{color:var(--red)}
 /* ---- footer ---- */
 .foot{background:var(--char-2);color:var(--char-muted);border-top:5px solid var(--gold-bright);padding-block:2.4rem 1.2rem;font-size:1.02rem}
 .foot__grid{display:grid;grid-template-columns:1.25fr 1fr 1fr 1.1fr;gap:1.9rem}
-.foot h4{color:#fff;font-size:1rem;letter-spacing:.16em;font-family:var(--f-cond);font-weight:700;text-transform:uppercase;padding-bottom:.75rem}
+.foot h3{color:#fff;font-size:1rem;letter-spacing:.16em;font-family:var(--f-cond);font-weight:700;text-transform:uppercase;padding-bottom:.75rem}
 .foot ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.42rem}
 .foot a{color:var(--char-muted);text-decoration:none}
 .foot a:hover{color:var(--gold-bright);text-decoration:underline}
@@ -331,7 +356,7 @@ a.dish:hover .dish__go,a.dish:focus-visible .dish__go{color:var(--red)}
 .social svg{width:18px;height:18px;fill:var(--char-muted)}
 .social a:hover svg{fill:var(--gold-bright)}
 .foot__base{border-top:1px solid var(--char-line);margin-top:2rem;padding-top:1rem;display:flex;flex-wrap:wrap;gap:.5rem 1.3rem;
-  justify-content:space-between;font-family:var(--f-cond);font-size:.98rem;letter-spacing:.06em;text-transform:uppercase;color:#7D7260}
+  justify-content:space-between;font-family:var(--f-cond);font-size:.98rem;letter-spacing:.06em;text-transform:uppercase;color:var(--char-muted)}
 
 /* ---- mobile dock ---- */
 .dock{display:none;position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--char);border-top:2px solid var(--gold-bright);
@@ -389,10 +414,6 @@ a.dish:hover .dish__go,a.dish:focus-visible .dish__go{color:var(--red)}
    CSS plus one small script — no third-party overlay, no extra request.
    ====================================================================== */
 
-/* ---- text scaling set by the accessibility panel ---- */
-html{font-size:calc(100% * var(--a11y-scale,1))}
-body{font-size:calc(18px * var(--a11y-scale,1))}
-
 /* ---- social in the sticky masthead ---- */
 .mastsoc{display:flex;gap:.35rem;flex:none}
 .mastsoc__a{width:38px;height:38px;flex:none;display:flex;align-items:center;justify-content:center;
@@ -400,7 +421,7 @@ body{font-size:calc(18px * var(--a11y-scale,1))}
 .mastsoc__a svg{width:19px;height:19px;fill:currentColor}
 .mastsoc__a span{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
   clip-path:inset(50%);white-space:nowrap;border:0}
-.mastsoc__a:hover{border-color:var(--red);color:var(--red);background:rgba(195,39,24,.09)}
+.mastsoc__a:hover{border-color:var(--red);color:var(--red-text);background:rgba(195,39,24,.09)}
 
 /* ---- "follow the kitchen" row, on the dark hero ---- */
 .follow{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem .75rem;padding-top:.3rem}
@@ -427,7 +448,7 @@ body{font-size:calc(18px * var(--a11y-scale,1))}
   color:var(--gold-bright);text-decoration:none}
 .social{padding-top:.6rem}
 .foot__legal{display:flex;flex-wrap:wrap;align-items:center;gap:.3rem .95rem}
-.foot__legal a,.foot__lbtn{color:#7D7260;text-decoration:none;font:inherit;letter-spacing:inherit;
+.foot__legal a,.foot__lbtn{color:var(--char-muted);text-decoration:none;font:inherit;letter-spacing:inherit;
   text-transform:inherit}
 .foot__lbtn{background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;
   text-decoration-style:dotted;text-underline-offset:3px}
@@ -442,7 +463,7 @@ body{font-size:calc(18px * var(--a11y-scale,1))}
   box-shadow:0 18px 50px rgba(0,0,0,.34);padding:1.05rem 1.2rem 1rem;
   max-height:min(82vh,660px);overflow:auto}
 .cc__head{display:flex;align-items:center;gap:.6rem;padding-bottom:.5rem}
-.cc__head svg{width:27px;height:27px;fill:var(--gold);flex:none}
+.cc__head svg{width:27px;height:27px;fill:var(--gold-text);flex:none}
 .cc__head h2{font-size:clamp(1.3rem,2.6vw,1.72rem)}
 .cc__p{font-size:1rem;color:var(--ink-soft);max-width:74ch}
 .cc__opts{list-style:none;margin:0;padding:.9rem 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
@@ -455,7 +476,7 @@ body{font-size:calc(18px * var(--a11y-scale,1))}
 .cc__opt span{color:var(--ink-soft)}
 .cc__act{display:flex;flex-wrap:wrap;gap:.5rem;padding-top:.95rem}
 .cc__toggle{display:none;align-self:flex-start;margin-top:.8rem;background:none;border:0;padding:0;
-  cursor:pointer;color:var(--gold);font-family:var(--f-cond);font-size:1.05rem;font-weight:700;
+  cursor:pointer;color:var(--gold-text);font-family:var(--f-cond);font-size:1.05rem;font-weight:700;
   letter-spacing:.07em;text-transform:uppercase;text-decoration:underline;text-underline-offset:3px}
 .cc__toggle:hover{color:var(--ink)}
 .cc__fine{padding-top:.7rem;font-size:.92rem;line-height:1.5;color:var(--muted)}
@@ -464,107 +485,12 @@ body{font-size:calc(18px * var(--a11y-scale,1))}
   vertical-align:-2px;margin-right:.3rem}
 .cc__fine b{color:var(--ink-soft)}
 
-/* ---- accessibility panel ---- */
-.a11yfab{position:fixed;z-index:88;right:14px;bottom:14px;display:inline-flex;align-items:center;gap:.5rem;
-  background:var(--blue);color:#fff;border:3px solid #fff;border-radius:999px;padding:.58rem .95rem;
-  cursor:pointer;font-family:var(--f-cond);font-size:1.05rem;font-weight:700;letter-spacing:.07em;
-  text-transform:uppercase;box-shadow:0 8px 22px rgba(0,0,0,.32)}
-.a11yfab svg{width:22px;height:22px;fill:currentColor;flex:none}
-.a11yfab:hover{filter:brightness(1.12)}
-:root[data-cc-open="1"] .a11yfab{display:none}
-.a11y{position:fixed;z-index:89;right:14px;bottom:14px;width:min(368px,calc(100vw - 28px));
-  background:var(--surface);color:var(--ink);border:2px solid var(--line-strong);
-  border-top:5px solid var(--blue);border-radius:8px;box-shadow:0 18px 50px rgba(0,0,0,.34);
-  max-height:min(80vh,660px);display:flex;flex-direction:column}
-.a11y[hidden]{display:none}
-.a11y__head{display:flex;align-items:center;gap:.6rem;padding:.7rem .8rem;border-bottom:1px solid var(--line)}
-.a11y__head h2{flex:1 1 auto;font-size:1.26rem;display:flex;align-items:center;gap:.5rem}
-.a11y__head h2 svg{width:22px;height:22px;fill:var(--blue);flex:none}
-.a11y__x{flex:none;width:34px;height:34px;background:none;border:2px solid var(--line-strong);
-  border-radius:4px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--ink)}
-.a11y__x svg{width:16px;height:16px;fill:currentColor}
-.a11y__body{padding:.8rem;overflow:auto;display:flex;flex-direction:column;gap:.95rem}
-.a11y__k{font-family:var(--f-cond);font-size:.92rem;font-weight:700;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--muted);padding-bottom:.4rem}
-.a11y__seg{display:grid;grid-template-columns:repeat(4,1fr);gap:.3rem}
-.a11y__seg--wide{grid-template-columns:repeat(2,1fr)}
-.a11y__sw{display:flex;flex-direction:column;gap:.35rem}
-.a11y__seg button,.a11y__sw button{font-family:var(--f-cond);font-size:1rem;font-weight:600;
-  letter-spacing:.04em;background:var(--sunk);color:var(--ink);border:2px solid var(--line);
-  border-radius:5px;padding:.46rem .3rem;cursor:pointer;text-align:center}
-.a11y__sw button{text-align:left;padding:.46rem .62rem}
-.a11y__seg button:hover,.a11y__sw button:hover{border-color:var(--line-strong)}
-.a11y__seg button.is-on,.a11y__sw button.is-on{background:var(--blue);border-color:var(--blue);color:#fff}
-.a11y__reset{font-family:var(--f-cond);font-size:1rem;font-weight:700;letter-spacing:.07em;
-  text-transform:uppercase;background:none;border:2px solid var(--red);color:var(--red);
-  border-radius:5px;padding:.5rem .8rem;cursor:pointer}
-.a11y__reset:hover{background:var(--red);color:#fff}
-.a11y__note{font-size:.88rem;line-height:1.52;color:var(--muted)}
-
-/* ---- accessibility modes, written onto <html> by the panel ---- */
-:root[data-a11y-contrast="high"]{
-  --bg:#000;--surface:#000;--sunk:#0B0B0B;
-  --ink:#FFF;--ink-soft:#FFF;--muted:#EDEDED;
-  --line:#FFF;--line-strong:#FFF;
-  --gold:#FFD400;--gold-bright:#FFD400;--red:#FF9382;--green:#86FF63;--blue:#86D6FF;
-  --char:#000;--char-2:#000;--char-line:#FFF;--char-ink:#FFF;--char-muted:#FFF;
-  color-scheme:dark}
-:root[data-a11y-contrast="high"] .hero,
-:root[data-a11y-contrast="high"] .phead,
-:root[data-a11y-contrast="high"] .sec--char,
-:root[data-a11y-contrast="high"] .foot{background:#000}
-:root[data-a11y-contrast="high"] a{color:#FFD400}
-:root[data-a11y-contrast="high"] .btn--gold,
-:root[data-a11y-contrast="high"] .a11y__seg button.is-on,
-:root[data-a11y-contrast="high"] .a11y__sw button.is-on{background:#FFD400;color:#000;border-color:#FFD400}
-:root[data-a11y-contrast="high"] .btn--red,
-:root[data-a11y-contrast="high"] .dock a.dock--primary{background:#000;color:#FFD400;border:2px solid #FFD400}
-:root[data-a11y-contrast="high"] .btn--red svg,
-:root[data-a11y-contrast="high"] .dock a.dock--primary svg{fill:#FFD400}
-:root[data-a11y-contrast="high"] .a11yfab{background:#000;color:#FFD400;border-color:#FFD400}
-:root[data-a11y-contrast="high"] .a11y__head h2 svg{fill:#FFD400}
-:root[data-a11y-contrast="high"] .foot__base,
-:root[data-a11y-contrast="high"] .foot__legal a,
-:root[data-a11y-contrast="high"] .foot__lbtn{color:#FFF}
-
-:root[data-a11y-font="plain"]{--f-display:var(--f-body);--f-cond:var(--f-body)}
-:root[data-a11y-font="plain"] body{letter-spacing:.012em;word-spacing:.09em;line-height:1.78}
-:root[data-a11y-font="plain"] h1,:root[data-a11y-font="plain"] h2,
-:root[data-a11y-font="plain"] h3,:root[data-a11y-font="plain"] h4{font-weight:700;line-height:1.22}
-:root[data-a11y-font="plain"] .btn,:root[data-a11y-font="plain"] .nav a,
-:root[data-a11y-font="plain"] .eyebrow,:root[data-a11y-font="plain"] .foot h4,
-:root[data-a11y-font="plain"] .a11y__k,:root[data-a11y-font="plain"] .follow__k,
-:root[data-a11y-font="plain"] .foot__soch{text-transform:none;letter-spacing:.02em}
-
-:root[data-a11y-underline="1"] a{text-decoration:underline;text-underline-offset:3px}
-:root[data-a11y-underline="1"] .btn,:root[data-a11y-underline="1"] .dock a,
-:root[data-a11y-underline="1"] .brand{text-decoration:none}
-
-:root[data-a11y-highlight="1"] a:not(.btn):not(.dish):not(.brand){
-  outline:2px solid var(--gold-bright);outline-offset:2px;border-radius:2px;
-  background:rgba(240,168,28,.16)}
-:root[data-a11y-highlight="1"] .dock a{outline:2px solid var(--gold-bright);outline-offset:-3px;background:none}
-:root[data-a11y-highlight="1"] .btn,:root[data-a11y-highlight="1"] button,
-:root[data-a11y-highlight="1"] .dish{outline:2px dashed var(--gold-bright);outline-offset:3px}
-
-:root[data-a11y-motion="off"] *,:root[data-a11y-motion="off"] *::before,
-:root[data-a11y-motion="off"] *::after{animation-duration:.01ms!important;
-  animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
-
-:root[data-a11y-cursor="big"],:root[data-a11y-cursor="big"] *{
-  cursor:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><path d="M7 3l24 20H19.6l5.2 11.6-4.1 1.8-5.2-11.6L7 31z" fill="%23fff" stroke="%23000" stroke-width="2.2" stroke-linejoin="round"/></svg>') 4 2,auto}
-:root[data-a11y-cursor="big"] a,:root[data-a11y-cursor="big"] button,
-:root[data-a11y-cursor="big"] label,:root[data-a11y-cursor="big"] summary,
-:root[data-a11y-cursor="big"] [role="tab"]{
-  cursor:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"><path d="M14.5 3a3 3 0 0 1 3 3v11l2.8-1.6 7.6 3.6c2 1 2.6 2.6 2.6 4.6V28a6 6 0 0 1-6 6h-7.8a6 6 0 0 1-5-2.7L7.2 22a3 3 0 0 1 4.6-3.7l-.3-9.3a3 3 0 0 1 3-3z" fill="%23fff" stroke="%23000" stroke-width="2.2" stroke-linejoin="round"/></svg>') 10 2,pointer}
-
 /* ---- responsive: keep the widgets clear of the mobile action dock ---- */
 @media (max-width:1080px){
   .mast__cta{gap:.4rem}
 }
 @media (max-width:900px){
   .cc{bottom:calc(4.7rem + env(safe-area-inset-bottom,0px))}
-  .a11yfab,.a11y{bottom:calc(5.1rem + env(safe-area-inset-bottom,0px))}
 }
 @media (max-width:780px){
   /* On a phone the two plain answers come first and the per-category detail
@@ -586,9 +512,6 @@ body{font-size:calc(18px * var(--a11y-scale,1))}
 }
 @media (max-width:620px){
   .mastsoc__a{width:34px;height:34px}
-  .a11yfab span{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
-    clip-path:inset(50%);white-space:nowrap;border:0}
-  .a11yfab{padding:.6rem;border-radius:50%}
 }
 
 /* ---- long-form legal / statement pages ---- */
@@ -637,12 +560,179 @@ p,li,dt,dd,th,td,.field__k,.field__v,.foot__ph,.util__ph{overflow-wrap:break-wor
 @media (max-width:1080px){
   .mast__cta{flex:0 1 auto;min-width:0;flex-wrap:wrap;justify-content:flex-end}
 }
+
+/* ===================================================== ACCESSIBILITY TOOLBAR ===
+   A visitor-facing adjustment panel: text sizing, spacing, contrast and reading aids.
+   Two rules make it safe to bolt onto a finished site:
+     1. every element it draws carries .a11y-ui, and every page-wide override below is
+        scoped to body>*:not(.a11y-ui), so the panel never restyles its own controls;
+     2. the panel sizes itself in px, never rem, so the Font Size control cannot shrink
+        the buttons a visitor needs in order to undo it.
+   Preferences arrive as data-a11y-* attributes and custom properties on <html>. */
+
+/* ---- the scale the Font Size control drives -------------------------------- */
+html{font-size:calc(100% * var(--a11y-fs,1))}
+body{font-size:calc(18px * var(--a11y-fs,1))}
+
+/* ---- content modules ------------------------------------------------------- */
+html[data-a11y-lh] body>*:not(.a11y-ui) :where(p,li,dd,dt,blockquote,figcaption,td,th,a,span,label,h1,h2,h3,h4,h5,h6)
+  {line-height:var(--a11y-lh)!important}
+html[data-a11y-ls] body>*:not(.a11y-ui) :where(p,li,dd,dt,blockquote,figcaption,td,th,a,span,label,h1,h2,h3,h4,h5,h6)
+  {letter-spacing:var(--a11y-ls)!important;word-spacing:var(--a11y-ws)!important}
+html[data-a11y-align] body>*:not(.a11y-ui) :where(p,li,dd,dt,blockquote,figcaption,h1,h2,h3,h4,h5,h6)
+  {text-align:var(--a11y-align)!important;text-wrap:wrap}
+html[data-a11y-weight] body>*:not(.a11y-ui) :where(p,li,dd,dt,blockquote,figcaption,td,th,a,span,label,h1,h2,h3,h4,h5,h6)
+  {font-weight:700!important}
+html[data-a11y-readable] body>*:not(.a11y-ui),
+html[data-a11y-readable] body>*:not(.a11y-ui) *
+  {font-family:Verdana,Tahoma,"DejaVu Sans",Arial,sans-serif!important;text-transform:none!important}
+html[data-a11y-cursor] body>*:not(.a11y-ui),
+html[data-a11y-cursor] body>*:not(.a11y-ui) *
+  {cursor:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 24 24'%3E%3Cpath d='M5 1.8l14.2 10.1-6.6 1.2 3.1 6.6-3.2 1.5-3-6.7-4.5 4.4z' fill='%23000' stroke='%23fff' stroke-width='1.4' stroke-linejoin='round'/%3E%3C/svg%3E") 5 3,auto!important}
+html[data-a11y-cursor] body>*:not(.a11y-ui) :where(a,button,summary,[role="button"],input,select,textarea)
+  {cursor:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 24 24'%3E%3Cpath d='M9 1.6l9.8 7-4.6.9 2.2 4.6-2.3 1-2.1-4.6-3 3z' fill='%2307632B' stroke='%23fff' stroke-width='1.4' stroke-linejoin='round'/%3E%3C/svg%3E") 8 2,pointer!important}
+
+/* ---- colour modules -------------------------------------------------------- */
+html[data-a11y-color="mono"] body>*:not(.a11y-ui){filter:grayscale(1)!important}
+/* Both high-contrast modes repaint every descendant rather than re-pointing design
+   tokens: the page has hard-coded whites inside its dark bands (the rating block, the
+   ghost buttons, the hero badge) that a token swap would leave invisible. */
+html[data-a11y-color="light"] body>*:not(.a11y-ui),
+html[data-a11y-color="light"] body>*:not(.a11y-ui) *
+  {background-color:#FFF!important;background-image:none!important;color:#15181D!important;
+   border-color:#454C56!important;fill:#15181D!important;text-shadow:none!important;box-shadow:none!important}
+html[data-a11y-color="light"]{color-scheme:light}
+html[data-a11y-color="light"] body>*:not(.a11y-ui) :where(a,a *){color:#06305F!important}
+html[data-a11y-color="light"] body>*:not(.a11y-ui) :where(button,.btn,input,select,textarea)
+  {border:2px solid #15181D!important;border-radius:3px}
+html[data-a11y-color="light"] body>*:not(.a11y-ui) .stars__bg{color:#8A939F!important}
+html[data-a11y-color="light"] body>*:not(.a11y-ui) :where(.stars__fg,.item__star){color:#5E3A00!important}
+html[data-a11y-color="light"] body>*:not(.a11y-ui) .pcar__dot[aria-selected="true"]{background:#15181D!important}
+html[data-a11y-color="light"] body>*:not(.a11y-ui) :where(img,video,iframe){filter:contrast(1.1)}
+
+html[data-a11y-color="dark"] body>*:not(.a11y-ui),
+html[data-a11y-color="dark"] body>*:not(.a11y-ui) *
+  {background-color:#0B0B0B!important;background-image:none!important;color:#FFFDF5!important;
+   border-color:#A8A299!important;fill:#FFFDF5!important;text-shadow:none!important;box-shadow:none!important}
+html[data-a11y-color="dark"]{color-scheme:dark}
+html[data-a11y-color="dark"] body>*:not(.a11y-ui) :where(a,a *){color:#FFC400!important}
+html[data-a11y-color="dark"] body>*:not(.a11y-ui) :where(button,.btn,input,select,textarea)
+  {border:2px solid #FFFDF5!important;border-radius:3px}
+html[data-a11y-color="dark"] body>*:not(.a11y-ui) .stars__bg{color:#6F6A61!important}
+html[data-a11y-color="dark"] body>*:not(.a11y-ui) .pcar__dot[aria-selected="true"]{background:#FFC400!important}
+
+html[data-a11y-color="high"] body>*:not(.a11y-ui),
+html[data-a11y-color="high"] body>*:not(.a11y-ui) *
+  {background-color:#000!important;background-image:none!important;color:#FFF!important;
+   border-color:#FFF!important;fill:#FFF!important;text-shadow:none!important;box-shadow:none!important}
+html[data-a11y-color="high"]{color-scheme:dark}
+html[data-a11y-color="high"] body>*:not(.a11y-ui) :where(a,a *){color:#FFE900!important}
+html[data-a11y-color="high"] body>*:not(.a11y-ui) :where(button,.btn,input,select,textarea)
+  {border:2px solid #FFF!important;border-radius:3px}
+html[data-a11y-color="high"] body>*:not(.a11y-ui) .stars__bg{color:#6A6A6A!important}
+html[data-a11y-color="high"] body>*:not(.a11y-ui) .pcar__dot[aria-selected="true"]{background:#FFE900!important}
+html[data-a11y-color="high"] body>*:not(.a11y-ui) :where(img,video,iframe){filter:grayscale(1) contrast(1.35)}
+
+/* ---- orientation modules --------------------------------------------------- */
+html[data-a11y-noimg] body>*:not(.a11y-ui) :where(img,picture,video,iframe)
+  {display:none!important}
+html[data-a11y-links] body>*:not(.a11y-ui) a
+  {outline:2px solid #D13319!important;outline-offset:2px;text-decoration:underline!important;
+   text-decoration-thickness:2px!important}
+html[data-a11y-stopmotion] body>*:not(.a11y-ui),
+html[data-a11y-stopmotion] body>*:not(.a11y-ui) *
+  {animation:none!important;transition:none!important;scroll-behavior:auto!important}
+.a11y-spot{outline:3px solid #07632B!important;outline-offset:3px;background:rgba(27,59,217,.07)!important}
+.a11y-rule{position:fixed;left:0;right:0;height:5px;background:#D13319;box-shadow:0 0 0 1px #fff;
+  z-index:2147483000;pointer-events:none;display:none}
+.a11y-mask{position:fixed;left:0;right:0;background:rgba(0,0,0,.78);z-index:2147482999;
+  pointer-events:none;display:none}
+
+/* ---- the launcher ---------------------------------------------------------- */
+.a11y-fab{position:fixed;right:16px;bottom:16px;z-index:2147483100;width:56px;height:56px;
+  border-radius:50%;border:2px solid #fff;background:#07632B;color:#fff;cursor:pointer;
+  display:grid;place-items:center;box-shadow:0 6px 20px rgba(5,40,18,.40);padding:0}
+.a11y-fab svg{width:30px;height:30px;fill:#fff}
+.a11y-fab:hover{background:#043D1A}
+.a11y-fab:focus-visible{outline:3px solid #15181D;outline-offset:3px}
+/* the cookie banner must be answered first, so hide the launcher under it */
+:root[data-cc-open="1"] .a11y-fab{display:none}
+
+/* ---- the panel ------------------------------------------------------------- */
+.a11y{position:fixed;right:16px;bottom:16px;z-index:2147483200;
+  width:min(404px,calc(100vw - 24px));max-height:min(88vh,780px);
+  display:flex;flex-direction:column;border-radius:18px;overflow:hidden;background:#EEF1F6;
+  box-shadow:0 18px 56px rgba(5,40,18,.44);font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  color:#15181D;line-height:1.4}
+.a11y[hidden]{display:none}
+.a11y__head{background:#07632B;color:#fff;padding:20px 18px 24px;text-align:center;position:relative}
+.a11y__x{position:absolute;top:9px;right:9px;width:40px;height:40px;border-radius:50%;border:0;
+  background:rgba(255,255,255,.16);cursor:pointer;display:grid;place-items:center;padding:0}
+.a11y__x svg{width:17px;height:17px;fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round}
+.a11y__x:hover{background:rgba(255,255,255,.34)}
+.a11y__x:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.a11y__mark{width:52px;height:52px;border-radius:50%;background:#fff;display:inline-grid;place-items:center;margin-bottom:10px}
+.a11y__mark svg{width:30px;height:30px;fill:#07632B}
+.a11y h2{font-family:inherit;font-size:25px;line-height:1.15;font-weight:700;margin:0;
+  letter-spacing:-.01em;text-transform:none;color:#fff}
+.a11y__sub{margin:6px 0 0;font-size:14px;color:#D8EFDF}
+.a11y__hide{background:none;border:0;color:#fff;font:inherit;text-decoration:underline;
+  cursor:pointer;padding:2px 4px;border-radius:4px}
+.a11y__hide:hover{color:#fff;background:rgba(255,255,255,.18)}
+.a11y__hide:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.a11y__body{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;
+  padding:12px;display:flex;flex-direction:column;gap:12px}
+.a11y__grp{background:#fff;border-radius:14px;padding:14px}
+.a11y h3{font-family:inherit;font-size:17px;font-weight:700;margin:0 0 11px;
+  text-transform:none;letter-spacing:0;color:#15181D;line-height:1.3}
+.a11y__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.a11y__tile,.a11y__step{background:#F4F6F9;border:1px solid #6E7785;border-radius:11px;
+  min-height:104px;padding:11px 7px;color:#15181D;font:500 13px/1.3 inherit;text-align:center}
+.a11y__tile{display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:9px;cursor:pointer}
+.a11y__tile svg{width:21px;height:21px;fill:none;stroke:#15181D;stroke-width:1.8;
+  stroke-linecap:round;stroke-linejoin:round}
+.a11y__ic{width:42px;height:42px;border-radius:50%;background:#fff;display:grid;place-items:center;
+  border:1px solid #DDE3EB;flex:none}
+.a11y__tile:hover{background:#E4E9F1;border-color:#454C56}
+.a11y__tile[aria-pressed="true"]{border:2px solid #07632B;background:#E2F0E7;padding:10px 6px}
+.a11y__tile[aria-pressed="true"] .a11y__ic{background:#07632B;border-color:#07632B}
+.a11y__tile[aria-pressed="true"] svg{stroke:#fff}
+.a11y__tile:focus-visible,.a11y__sbtn:focus-visible,.a11y__reset:focus-visible
+  {outline:3px solid #15181D;outline-offset:2px}
+.a11y__step{grid-column:span 2;display:flex;flex-direction:column;justify-content:center;gap:11px}
+.a11y__step>span{font-size:15px;font-weight:600}
+.a11y__row{display:flex;align-items:center;gap:8px}
+.a11y__sbtn{width:40px;height:40px;flex:none;border-radius:50%;border:0;background:#07632B;color:#fff;
+  font-size:22px;line-height:1;cursor:pointer;display:grid;place-items:center;padding:0}
+.a11y__sbtn:hover{background:#043D1A}
+.a11y__sbtn svg{width:16px;height:16px;fill:none;stroke:#fff;stroke-width:2.6;stroke-linecap:round}
+.a11y__out{flex:1 1 auto;background:#fff;border:1px solid #DDE3EB;border-radius:7px;
+  padding:9px 4px;font-size:14px;font-weight:600;text-align:center;min-width:0}
+.a11y__reset{width:100%;border:0;border-radius:11px;background:#07632B;color:#fff;
+  font:700 16px/1 inherit;padding:16px;cursor:pointer;flex:none}
+.a11y__reset:hover{background:#043D1A}
+.a11y__note{margin:0;font-size:12px;line-height:1.5;color:#3C4049;text-align:center;padding:0 4px 2px}
+.a11y__note a{color:#07632B;text-decoration:underline;text-underline-offset:2px}
+
+/* the mobile quick-action dock appears at 900px here, and body reserves 4.7rem for it */
+@media (max-width:900px){
+  .a11y-fab{bottom:calc(5.1rem + env(safe-area-inset-bottom,0px))}
+  .a11y{bottom:calc(5.1rem + env(safe-area-inset-bottom,0px));max-height:min(72vh,680px)}
+}
+@media (max-width:420px){
+  .a11y__grid{grid-template-columns:repeat(2,1fr)}
+  .a11y__step{grid-column:span 2}
+}
+@media (prefers-reduced-motion:reduce){
+  .a11y-fab,.a11y__tile,.a11y__sbtn,.a11y__reset{transition:none}
+}
 </style>
 </head>
 <body>
-<script>(function(){try{var R=document.documentElement,s=JSON.parse(localStorage.getItem('cq.a11y.v1')||'{}');if(s.text)R.style.setProperty('--a11y-scale',s.text);if(s.contrast==='light'||s.contrast==='dark')R.setAttribute('data-theme',s.contrast);if(s.contrast==='high')R.setAttribute('data-a11y-contrast','high');if(s.font==='1')R.setAttribute('data-a11y-font','plain');if(s.underline==='1')R.setAttribute('data-a11y-underline','1');if(s.highlight==='1')R.setAttribute('data-a11y-highlight','1');if(s.motion==='off')R.setAttribute('data-a11y-motion','off');if(s.cursor==='1')R.setAttribute('data-a11y-cursor','big');}catch(e){}})();</script>
+<script>(function(){try{var R=document.documentElement,s=JSON.parse(localStorage.getItem('cq_a11y_v1')||'{}');var FS=['0.88','1','1.15','1.3','1.5','1.75'],LH=['1.25','','1.9','2.3','2.8'],LS=['','.06em','.12em','.2em'],WS=['','.16em','.26em','.4em'],AL=['','left','center','right'];if(s.fs&&FS[s.fs])R.style.setProperty('--a11y-fs',FS[s.fs]);if(s.lh&&LH[s.lh]){R.setAttribute('data-a11y-lh','');R.style.setProperty('--a11y-lh',LH[s.lh]);}if(s.ls&&LS[s.ls]){R.setAttribute('data-a11y-ls','');R.style.setProperty('--a11y-ls',LS[s.ls]);R.style.setProperty('--a11y-ws',WS[s.ls]);}if(s.align&&AL[s.align]){R.setAttribute('data-a11y-align','');R.style.setProperty('--a11y-align',AL[s.align]);}if(s.weight)R.setAttribute('data-a11y-weight','');if(s.readable)R.setAttribute('data-a11y-readable','');if(s.cursor)R.setAttribute('data-a11y-cursor','');if(s.noimg)R.setAttribute('data-a11y-noimg','');if(s.links)R.setAttribute('data-a11y-links','');if(s.motion)R.setAttribute('data-a11y-stopmotion','');if(s.color)R.setAttribute('data-a11y-color',s.color);}catch(e){}})();</script>
 <a class="skip" href="#main">Skip to content</a>
-<div class="util"><div class="wrap util__in">
+<div class="util" role="region" aria-label="Address, hours and phone"><div class="wrap util__in">
   <span class="util__i"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg> 507 NW 5th Ave, Gainesville, FL 32601</span>
   <span class="util__i"><span class="open-dot" id="open-dot"></span><span id="open-now">Open 10:30am&ndash;6:30pm today</span></span>
   <span class="util__sp"></span>
@@ -704,27 +794,27 @@ p,li,dt,dd,th,td,.field__k,.field__v,.foot__ph,.util__ph{overflow-wrap:break-wor
   <div class="pcar" data-pcar>
   <div class="pcar__vp" data-vp tabindex="0" role="group" aria-roledescription="carousel"
        aria-label="Dishes from the menu" aria-live="polite">
-    <ul class="pcar__track" data-track><li class="pcar__slide" role="group" aria-roledescription="slide" aria-label="1 of 5"><a class="dish" href="menu.html#specialties">
+    <div class="pcar__track" data-track><div class="pcar__slide" role="group" aria-roledescription="slide" aria-label="1 of 5"><a class="dish" href="menu.html#specialties">
   <img src="img/Jerk-Chicken.jpg" alt="Jerk Chicken at Caribbean Queen" loading="lazy">
   <div class="dish__b"><h3>Jerk Chicken</h3><p>Pimento, scallion and scotch bonnet, grilled dark. Rice and a side.</p><p class="dish__price">Medium or Large</p>
     <p class="dish__go">See it on the menu &rarr; Jamaican Specialties</p></div>
-</a></li><li class="pcar__slide" role="group" aria-roledescription="slide" aria-label="2 of 5"><a class="dish" href="menu.html#fish">
+</a></div><div class="pcar__slide" role="group" aria-roledescription="slide" aria-label="2 of 5"><a class="dish" href="menu.html#fish">
   <img src="img/Catch-of-the-Day.jpg" alt="Catch of the Day at Caribbean Queen" loading="lazy">
   <div class="dish__b"><h3>Catch of the Day</h3><p>Brown stew, steamed or escovitch &mdash; whole fish, cooked to order.</p><p class="dish__price">Call ahead to order</p>
     <p class="dish__go">See it on the menu &rarr; Catch of the Day</p></div>
-</a></li><li class="pcar__slide" role="group" aria-roledescription="slide" aria-label="3 of 5"><a class="dish" href="menu.html#specialties">
+</a></div><div class="pcar__slide" role="group" aria-roledescription="slide" aria-label="3 of 5"><a class="dish" href="menu.html#specialties">
   <img src="img/Oxtails.jpg" alt="Oxtails at Caribbean Queen" loading="lazy">
   <div class="dish__b"><h3>Oxtails</h3><p>Slow-cooked until it gives way, in the gravy it made.</p><p class="dish__price">Express, Medium or Large</p>
     <p class="dish__go">See it on the menu &rarr; Jamaican Specialties</p></div>
-</a></li><li class="pcar__slide" role="group" aria-roledescription="slide" aria-label="4 of 5"><a class="dish" href="menu.html#tropics">
+</a></div><div class="pcar__slide" role="group" aria-roledescription="slide" aria-label="4 of 5"><a class="dish" href="menu.html#tropics">
   <img src="img/Cool-Tropics.jpg" alt="Cool Tropics at Caribbean Queen" loading="lazy">
   <div class="dish__b"><h3>Cool Tropics</h3><p>Soursop, mango, pineapple ginger, passion fruit &mdash; cold out of the cooler.</p><p class="dish__price">Five flavours</p>
     <p class="dish__go">See it on the menu &rarr; Cool Tropics</p></div>
-</a></li><li class="pcar__slide" role="group" aria-roledescription="slide" aria-label="5 of 5"><a class="dish" href="menu.html#specialties">
+</a></div><div class="pcar__slide" role="group" aria-roledescription="slide" aria-label="5 of 5"><a class="dish" href="menu.html#specialties">
   <img src="img/Curry-Chicken.jpg" alt="Curry Chicken at Caribbean Queen" loading="lazy">
   <div class="dish__b"><h3>Curry Chicken</h3><p>Jamaican curry over chicken. The weekday regular.</p><p class="dish__price">Express, Medium or Large</p>
     <p class="dish__go">See it on the menu &rarr; Jamaican Specialties</p></div>
-</a></li></ul>
+</a></div></div>
   </div>
   <div class="pcar__ctl">
     <button class="pcar__btn" type="button" data-prev aria-label="Previous dish"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.4 4.6 8 12l7.4 7.4 1.4-1.4L10.8 12l6-6z"/></svg></button>
@@ -859,11 +949,11 @@ p,li,dt,dd,th,td,.field__k,.field__v,.foot__ph,.util__ph{overflow-wrap:break-wor
   </div>
 </div></section>
 </main>
-<section class="sec sec--char" style="border-top:5px solid var(--gold-bright)">
+<section class="sec sec--char" aria-labelledby="hungry" style="border-top:5px solid var(--gold-bright)">
   <div class="wrap" style="display:flex;flex-wrap:wrap;gap:1.4rem;align-items:center;justify-content:space-between">
     <div style="display:flex;flex-direction:column;gap:.75rem;min-width:0">
       <p class="signboard">Good Food Brings People Together</p>
-      <h2>Hungry yet?</h2>
+      <h2 id="hungry">Hungry yet?</h2>
       <p class="lede">Call the kitchen and it will be boxed and waiting. Fish needs a little
         more notice &mdash; say so when you ring.</p>
     </div>
@@ -885,20 +975,20 @@ p,li,dt,dd,th,td,.field__k,.field__v,.foot__ph,.util__ph{overflow-wrap:break-wor
         <a href="https://www.google.com/maps/place/Caribbean+Queen/@29.6554959,-82.3299333,17z/data=!4m6!3m5!1s0x88e8a389697fea59:0x6c01334397afe9b9!8m2!3d29.6554959!4d-82.3299333!16s%2Fg%2F1pp2vhn24" target="_blank" rel="noopener" aria-label="Caribbean Queen on Google"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></a>
       </div>
     </div>
-    <div><h4>Eat</h4><ul>
+    <div><h3>Eat</h3><ul>
       <li><a href="menu.html">Full Menu</a></li>
       <li><a href="menu.html#specialties">Jamaican Specialties</a></li>
       <li><a href="menu.html#vegetarian">Vegetarian Dishes</a></li>
       <li><a href="menu.html#fish">Catch of the Day</a></li>
       <li><a href="menu-card.jpg">The printed menu (photo)</a></li>
     </ul></div>
-    <div><h4>Visit</h4><ul>
+    <div><h3>Visit</h3><ul>
       <li>507 NW 5th Ave<br>Gainesville, FL 32601</li>
       <li><a href="https://www.google.com/maps/dir/?api=1&destination=Caribbean+Queen%2C+507+NW+5th+Ave%2C+Gainesville%2C+FL+32601" target="_blank" rel="noopener">Get directions &rarr;</a></li>
       <li style="padding-top:.45rem">Mon&ndash;Thu: 10:30am &ndash; 6:30pm<br>
         Fri &amp; Sun: 10:30am &ndash; 5pm<br>Saturday: closed</li>
     </ul></div>
-    <div><h4>Order &amp; Catering</h4>
+    <div><h3>Order &amp; Catering</h3>
       <a class="foot__ph" href="tel:+13523748111">(352) 374-8111</a>
       <ul style="padding-top:.6rem">
         <li>Call to order for pickup</li>
@@ -968,51 +1058,6 @@ p,li,dt,dd,th,td,.field__k,.field__v,.foot__ph,.util__ph{overflow-wrap:break-wor
   </div>
 </div>
 
-<!-- ------------------------------------------------ accessibility (ADA) tools -->
-<button class="a11yfab" type="button" id="a11y-fab" aria-expanded="false" aria-controls="a11y"
-        aria-label="Accessibility tools"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 6c-2.6.7-5.7 1-8.5 1s-5.9-.3-8.5-1L3 8c1.9.5 4 .8 6 1v13h2v-6h2v6h2V9c2-.2 4.1-.5 6-1l-.5-2zM12 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg><span>Accessibility</span></button>
-<div class="a11y" id="a11y" role="dialog" aria-labelledby="a11y-h" hidden>
-  <div class="a11y__head">
-    <h2 id="a11y-h"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 6c-2.6.7-5.7 1-8.5 1s-5.9-.3-8.5-1L3 8c1.9.5 4 .8 6 1v13h2v-6h2v6h2V9c2-.2 4.1-.5 6-1l-.5-2zM12 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></svg> Accessibility</h2>
-    <button class="a11y__x" type="button" id="a11y-close"
-            aria-label="Close accessibility tools"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6.4 17.6 5 12 10.6 6.4 5 5 6.4 10.6 12 5 17.6 6.4 19 12 13.4 17.6 19 19 17.6 13.4 12z"/></svg></button>
-  </div>
-  <div class="a11y__body">
-    <div class="a11y__grp">
-      <p class="a11y__k" id="a11y-k1">Text size</p>
-      <div class="a11y__seg" role="group" aria-labelledby="a11y-k1">
-        <button type="button" data-a11y="text" data-v="1" aria-pressed="false">100%</button>
-        <button type="button" data-a11y="text" data-v="1.15" aria-pressed="false">115%</button>
-        <button type="button" data-a11y="text" data-v="1.3" aria-pressed="false">130%</button>
-        <button type="button" data-a11y="text" data-v="1.5" aria-pressed="false">150%</button>
-      </div>
-    </div>
-    <div class="a11y__grp">
-      <p class="a11y__k" id="a11y-k2">Colour &amp; contrast</p>
-      <div class="a11y__seg" role="group" aria-labelledby="a11y-k2">
-        <button type="button" data-a11y="contrast" data-v="" aria-pressed="false">Automatic</button>
-        <button type="button" data-a11y="contrast" data-v="light" aria-pressed="false">Light</button>
-        <button type="button" data-a11y="contrast" data-v="dark" aria-pressed="false">Dark</button>
-        <button type="button" data-a11y="contrast" data-v="high" aria-pressed="false">High contrast</button>
-      </div>
-    </div>
-    <div class="a11y__grp">
-      <p class="a11y__k">Reading</p>
-      <div class="a11y__sw">
-        <button type="button" data-a11y="font" data-v="1" data-toggle aria-pressed="false">Plain, wider-spaced type</button>
-        <button type="button" data-a11y="underline" data-v="1" data-toggle aria-pressed="false">Underline every link</button>
-        <button type="button" data-a11y="highlight" data-v="1" data-toggle aria-pressed="false">Highlight links &amp; buttons</button>
-        <button type="button" data-a11y="motion" data-v="off" data-toggle aria-pressed="false">Stop animation</button>
-        <button type="button" data-a11y="cursor" data-v="1" data-toggle aria-pressed="false">Large cursor</button>
-      </div>
-    </div>
-    <button class="a11y__reset" type="button" id="a11y-reset">Reset everything</button>
-    <p class="a11y__note">These settings stay on this device. If you need the menu read to you,
-      in large print, or in any other form, call <a href="tel:+13523748111">(352) 374-8111</a> &mdash; and please tell
-      us about anything on this site that got in your way. Our
-      <a href="accessibility.html">accessibility statement</a> says how.</p>
-  </div>
-</div>
 <script>
 (function(){
   // "Stop animation" in the accessibility panel counts the same as the OS setting.
@@ -1150,63 +1195,8 @@ p,li,dt,dd,th,td,.field__k,.field__v,.foot__ph,.util__ph{overflow-wrap:break-wor
    --------------------------------------------------------------------------- */
 (function(){
   var R = document.documentElement;
-
-  /* ---------------- accessibility preferences ---------------- */
-  var AK  = 'cq.a11y.v1';
-  var DEF = {text:'1', contrast:'', font:'0', underline:'0', highlight:'0', motion:'', cursor:'0'};
-  var st  = read();
-
-  function read(){
-    var o = {}, k;
-    for(k in DEF) o[k] = DEF[k];
-    try{
-      var raw = JSON.parse(localStorage.getItem(AK) || '{}');
-      for(k in DEF) if(typeof raw[k] === 'string') o[k] = raw[k];
-    }catch(e){}
-    return o;
-  }
-  function store(){ try{ localStorage.setItem(AK, JSON.stringify(st)); }catch(e){} }
   function flag(attr, on, val){ if(on) R.setAttribute(attr, val); else R.removeAttribute(attr); }
 
-  function paint(){
-    document.querySelectorAll('[data-a11y]').forEach(function(b){
-      var on = st[b.getAttribute('data-a11y')] === b.getAttribute('data-v');
-      b.setAttribute('aria-pressed', on ? 'true' : 'false');
-      b.classList.toggle('is-on', on);
-    });
-  }
-  function apply(){
-    R.style.setProperty('--a11y-scale', st.text);
-    if(st.contrast === 'light' || st.contrast === 'dark') R.setAttribute('data-theme', st.contrast);
-    else R.removeAttribute('data-theme');
-    flag('data-a11y-contrast',  st.contrast  === 'high', 'high');
-    flag('data-a11y-font',      st.font      === '1',    'plain');
-    flag('data-a11y-underline', st.underline === '1',    '1');
-    flag('data-a11y-highlight', st.highlight === '1',    '1');
-    flag('data-a11y-motion',    st.motion    === 'off',  'off');
-    flag('data-a11y-cursor',    st.cursor    === '1',    'big');
-    paint();
-  }
-
-  var fab  = document.getElementById('a11y-fab'),
-      pan  = document.getElementById('a11y'),
-      xbtn = document.getElementById('a11y-close'),
-      rbtn = document.getElementById('a11y-reset');
-
-  function panel(open, refocus){
-    if(!pan || !fab) return;
-    pan.hidden = !open;
-    fab.setAttribute('aria-expanded', open ? 'true' : 'false');
-    if(open){ var f = pan.querySelector('.a11y__seg button'); if(f) f.focus(); }
-    else if(refocus) fab.focus();
-  }
-  if(fab)  fab.addEventListener('click',  function(){ panel(pan.hidden, true); });
-  if(xbtn) xbtn.addEventListener('click', function(){ panel(false, true); });
-  if(rbtn) rbtn.addEventListener('click', function(){
-    var k; for(k in DEF) st[k] = DEF[k];
-    store(); apply(); motionChanged();
-  });
-  function motionChanged(){ try{ window.dispatchEvent(new Event('cq:motion')); }catch(e){} }
 
   /* ---------------- cookie / storage consent ---------------- */
   var CK = 'cq.consent.v1', YEAR = 365 * 24 * 60 * 60 * 1000;
@@ -1258,17 +1248,13 @@ p,li,dt,dd,th,td,.field__k,.field__v,.foot__ph,.util__ph{overflow-wrap:break-wor
   /* ---------------- wiring ---------------- */
   document.addEventListener('click', function(e){
     if(!e.target || !e.target.closest) return;
-    var b = e.target.closest('[data-a11y]');
-    if(b){
-      var k = b.getAttribute('data-a11y'), v = b.getAttribute('data-v');
-      st[k] = (b.hasAttribute('data-toggle') && st[k] === v) ? DEF[k] : v;
-      store(); apply();
-      if(k === 'motion') motionChanged();
-      return;
-    }
     var t = e.target.closest('[data-cc-set],[data-cc-open],[data-cc-toggle],[data-a11y-open]');
     if(!t) return;
-    if(t.hasAttribute('data-a11y-open')){ panel(true, false); return; }
+    if(t.hasAttribute('data-a11y-open')){
+      var nf = document.getElementById('a11yFab');
+      if(nf) nf.click();
+      return;
+    }
     if(t.hasAttribute('data-cc-toggle')){
       var open = R.getAttribute('data-cc-opts') !== '1';
       flag('data-cc-opts', open, '1');
@@ -1297,26 +1283,247 @@ p,li,dt,dd,th,td,.field__k,.field__v,.foot__ph,.util__ph{overflow-wrap:break-wor
     }
   });
 
-  document.addEventListener('click', function(e){
-    if(!pan || pan.hidden || !e.target || !e.target.closest) return;
-    if(pan.contains(e.target)) return;
-    if(e.target.closest('#a11y-fab,[data-a11y-open]')) return;
-    panel(false, false);
-  });
 
   document.addEventListener('keydown', function(e){
     if(e.key !== 'Escape') return;
-    if(pan && !pan.hidden){ panel(false, true); return; }
     /* The banner has no dismiss: a visitor who has not answered yet must choose.
        Once answered, re-opening it from the footer can be escaped. */
     if(cc && !cc.hidden && readCC()) showCC(false);
   });
 
-  apply();
   var gpcnote = document.getElementById('cc-gpc');
   if(gpcnote) gpcnote.hidden = !GPC;
   var had = readCC();
   if(had) publishCC(had); else showCC(true);
+})();
+</script>
+
+<aside class="a11y-ui a11y-root" aria-label="Accessibility adjustments">
+<button class="a11y-fab" id="a11yFab" type="button" aria-expanded="false" aria-controls="a11yPanel">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6a2.1 2.1 0 1 1 0 4.2 2.1 2.1 0 0 1 0-4.2zM3.4 7.9c2.7.9 5.6 1.4 8.6 1.4s5.9-.5 8.6-1.4a1.2 1.2 0 1 1 .7 2.3c-2 .6-4 1.1-6.1 1.3l.6 3.1 2.3 5.7a1.2 1.2 0 1 1-2.2.9L13.4 16h-2.8l-2.5 6.2a1.2 1.2 0 1 1-2.2-.9l2.3-5.7.6-3.1c-2.1-.2-4.1-.7-6.1-1.3a1.2 1.2 0 1 1 .7-2.3z"/></svg><span class="vh">Accessibility adjustments</span>
+</button>
+<div class="a11y" id="a11yPanel" role="dialog" aria-labelledby="a11yTitle" hidden>
+  <div class="a11y__head">
+    <button class="a11y__x" type="button" data-a11y-close
+            aria-label="Close accessibility adjustments">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg>
+    </button>
+    <span class="a11y__mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6a2.1 2.1 0 1 1 0 4.2 2.1 2.1 0 0 1 0-4.2zM3.4 7.9c2.7.9 5.6 1.4 8.6 1.4s5.9-.5 8.6-1.4a1.2 1.2 0 1 1 .7 2.3c-2 .6-4 1.1-6.1 1.3l.6 3.1 2.3 5.7a1.2 1.2 0 1 1-2.2.9L13.4 16h-2.8l-2.5 6.2a1.2 1.2 0 1 1-2.2-.9l2.3-5.7.6-3.1c-2.1-.2-4.1-.7-6.1-1.3a1.2 1.2 0 1 1 .7-2.3z"/></svg></span>
+    <h2 id="a11yTitle">Accessibility Adjustments</h2>
+    <p class="a11y__sub">Caribbean Queen &middot;
+      <button class="a11y__hide" type="button" data-a11y-close>Hide Toolbar</button></p>
+  </div>
+  <div class="a11y__body">
+    <section class="a11y__grp" aria-labelledby="a11yG1">
+      <h3 id="a11yG1">Content Modules</h3>
+      <div class="a11y__grid">
+        <div class="a11y__step"><span id="a11y-fs-l">Font Size</span><div class="a11y__row"><button class="a11y__sbtn" type="button" data-a11y-s="fs" data-dir="1" aria-describedby="a11y-fs-l" aria-label="Increase font size"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5.5v13M5.5 12h13"/></svg></button><output class="a11y__out" id="a11y-fs-v" for="a11y-fs-l">Default</output><button class="a11y__sbtn" type="button" data-a11y-s="fs" data-dir="-1" aria-describedby="a11y-fs-l" aria-label="Decrease font size"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 12h13"/></svg></button></div></div><button class="a11y__tile" type="button" data-a11y-t="readable" aria-pressed="false"><span class="a11y__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9 16l3-8 3 8M10 13.6h4"/></svg></span><span class="a11y__lab" data-lab="Readable Font">Readable Font</span></button>
+        <div class="a11y__step"><span id="a11y-lh-l">Line Height</span><div class="a11y__row"><button class="a11y__sbtn" type="button" data-a11y-s="lh" data-dir="1" aria-describedby="a11y-lh-l" aria-label="Increase line height"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5.5v13M5.5 12h13"/></svg></button><output class="a11y__out" id="a11y-lh-v" for="a11y-lh-l">Default</output><button class="a11y__sbtn" type="button" data-a11y-s="lh" data-dir="-1" aria-describedby="a11y-lh-l" aria-label="Decrease line height"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 12h13"/></svg></button></div></div><button class="a11y__tile" type="button" data-a11y-t="cursor" aria-pressed="false"><span class="a11y__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5l12 8.4-5.6 1 2.6 5.6-2.6 1.1-2.5-5.6-3.9 3.7z"/></svg></span><span class="a11y__lab" data-lab="Big Cursor">Big Cursor</span></button>
+        <button class="a11y__tile" type="button" data-a11y-t="ls" aria-pressed="false"><span class="a11y__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5v7M11 5v7M15 5v7M3 18h18M3 18l2.5-2.5M3 18l2.5 2.5M21 18l-2.5-2.5M21 18l-2.5 2.5"/></svg></span><span class="a11y__lab" data-lab="Letter Spacing">Letter Spacing</span></button><button class="a11y__tile" type="button" data-a11y-t="align" aria-pressed="false"><span class="a11y__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 10.7h10M4 15.3h16M7 20h10"/></svg></span><span class="a11y__lab" data-lab="Align Text">Align Text</span></button><button class="a11y__tile" type="button" data-a11y-t="weight" aria-pressed="false"><span class="a11y__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><path d="M9.5 8h3.1a2.1 2.1 0 0 1 0 4.2H9.5zm0 4.2h3.6a2.1 2.1 0 0 1 0 4.2H9.5z"/></svg></span><span class="a11y__lab" data-lab="Font Weight">Font Weight</span></button>
+      </div>
+    </section>
+    <section class="a11y__grp" aria-labelledby="a11yG2">
+      <h3 id="a11yG2">Color Modules</h3>
+      <div class="a11y__grid">
+        <button class="a11y__tile" type="button" data-a11y-t="c-light" aria-pressed="false"><span class="a11y__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.4v2.1M12 19.5v2.1M4.2 4.2l1.5 1.5M18.3 18.3l1.5 1.5M2.4 12h2.1M19.5 12h2.1M4.2 19.8l1.5-1.5M18.3 5.7l1.5-1.5"/></svg></span><span class="a11y__lab" data-lab="Light Contrast">Light Contrast</span></button><button class="a11y__tile" type="button" data-a11y-t="c-dark" aria-pressed="false"><span class="a11y__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.3 14.6A8.6 8.6 0 0 1 9.4 3.7a8.9 8.9 0 1 0 10.9 10.9z"/></svg></span><span class="a11y__lab" data-lab="Dark Contrast">Dark Contrast</span></button><button class="a11y__tile" type="button" data-a11y-t="c-high" aria-pressed="false"><span class="a11y__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3.1a8.9 8.9 0 0 1 0 17.8z" fill="currentColor" stroke="none"/></svg></span><span class="a11y__lab" data-lab="High Contrast">High Contrast</span></button><button class="a11y__tile" type="button" data-a11y-t="c-mono" aria-pressed="false"><span class="a11y__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M4.3 8.6h15.4M3.2 12.4h17.6M4.3 16.2h15.4"/></svg></span><span class="a11y__lab" data-lab="Monochrome">Monochrome</span></button>
+      </div>
+    </section>
+    <section class="a11y__grp" aria-labelledby="a11yG3">
+      <h3 id="a11yG3">Orientation Modules</h3>
+      <div class="a11y__grid">
+        <button class="a11y__tile" type="button" data-a11y-t="line" aria-pressed="false"><span class="a11y__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="6.5" width="19" height="11" rx="3"/><path d="M7.4 12h.01M12 12h.01M16.6 12h.01"/></svg></span><span class="a11y__lab" data-lab="Reading Line">Reading Line</span></button><button class="a11y__tile" type="button" data-a11y-t="mask" aria-pressed="false"><span class="a11y__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8.2c3-2.6 6-2.6 9 0s6 2.6 9 0M3 15.8c3 2.6 6 2.6 9 0s6-2.6 9 0"/></svg></span><span class="a11y__lab" data-lab="Reading Mask">Reading Mask</span></button><button class="a11y__tile" type="button" data-a11y-t="noimg" aria-pressed="false"><span class="a11y__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3.8 17.2L9 12l3.4 3.4M14.4 13.6L16.8 11l3.4 3.4"/><path d="M14.4 6.2l3.6 3.6M18 6.2l-3.6 3.6"/></svg></span><span class="a11y__lab" data-lab="Hide Images">Hide Images</span></button><button class="a11y__tile" type="button" data-a11y-t="spot" aria-pressed="false"><span class="a11y__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="4.5" width="15" height="15" rx="2"/><circle cx="4.5" cy="4.5" r="1.9" fill="currentColor" stroke="none"/><circle cx="19.5" cy="4.5" r="1.9" fill="currentColor" stroke="none"/><circle cx="4.5" cy="19.5" r="1.9" fill="currentColor" stroke="none"/><circle cx="19.5" cy="19.5" r="1.9" fill="currentColor" stroke="none"/></svg></span><span class="a11y__lab" data-lab="Highlight Content">Highlight Content</span></button><button class="a11y__tile" type="button" data-a11y-t="motion" aria-pressed="false"><span class="a11y__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5.6 18.4L18.4 5.6"/></svg></span><span class="a11y__lab" data-lab="Stop Animations">Stop Animations</span></button><button class="a11y__tile" type="button" data-a11y-t="links" aria-pressed="false"><span class="a11y__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13.8a4 4 0 0 0 5.7 0l2.8-2.9a4 4 0 0 0-5.7-5.6l-1.3 1.3"/><path d="M14 10.2a4 4 0 0 0-5.7 0l-2.8 2.9a4 4 0 0 0 5.7 5.6l1.3-1.3"/></svg></span><span class="a11y__lab" data-lab="Highlight Links">Highlight Links</span></button>
+      </div>
+    </section>
+    <p class="a11y__note">Your choices are stored on this device only. Need the menu read to you,
+      in large print, or in any other form? Call <a href="tel:+13523748111">(352) 374-8111</a>. Our
+      <a href="accessibility.html">accessibility statement</a> says how to tell us about
+      anything here that got in your way.</p>
+    <button class="a11y__reset" type="button" data-a11y-reset>Reset Settings</button>
+  </div>
+</div>
+</aside>
+<script>
+(function(){
+  var H = document.documentElement, KEY = 'cq_a11y_v1';
+  var fab = document.getElementById('a11yFab'), panel = document.getElementById('a11yPanel');
+  if (!fab || !panel) return;
+  var root = fab.parentNode;
+
+  // Stepper scales. Index 1 is the untouched page in both, so "Default" is always
+  // one press away and a visitor can never strand themselves at an unreadable size.
+  var FS = [{s:'0.88',n:'Smaller'},{s:'1',n:'Default'},{s:'1.15',n:'Large'},
+            {s:'1.3',n:'Larger'},{s:'1.5',n:'X-Large'},{s:'1.75',n:'XX-Large'}];
+  var LH = [{v:'1.25',n:'Tight'},{v:'',n:'Default'},{v:'1.9',n:'Relaxed'},
+            {v:'2.3',n:'Loose'},{v:'2.8',n:'Very Loose'}];
+  var LS = [{n:'Default'},{v:'.06em',w:'.16em',n:'Wide'},
+            {v:'.12em',w:'.26em',n:'Wider'},{v:'.2em',w:'.4em',n:'Widest'}];
+  var AL = [{n:'Default'},{v:'left',n:'Left'},{v:'center',n:'Center'},{v:'right',n:'Right'}];
+  var DEF = {fs:1, lh:1, ls:0, align:0, weight:0, readable:0, cursor:0,
+             color:'', line:0, mask:0, noimg:0, spot:0, motion:0, links:0};
+  var S = {};
+
+  function load(){
+    for (var k in DEF) S[k] = DEF[k];
+    try {
+      var raw = localStorage.getItem(KEY);
+      if (!raw) return;
+      var o = JSON.parse(raw);
+      for (var k2 in DEF) if (o && o[k2] !== undefined) S[k2] = o[k2];
+    } catch (e) {}
+  }
+  function save(){ try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+
+  function flag(attr, on){ if (on) H.setAttribute(attr,''); else H.removeAttribute(attr); }
+
+  // ---- reading aids are drawn inside this landmark, never loose on <body> ----
+  function overlay(cls){
+    var d = document.createElement('div');
+    d.className = cls + ' a11y-ui';
+    d.setAttribute('aria-hidden','true');
+    root.appendChild(d);
+    return d;
+  }
+  var rule = overlay('a11y-rule'), mTop = overlay('a11y-mask'), mBot = overlay('a11y-mask');
+  var spotted = null;
+
+  function clearSpot(){
+    if (spotted) { spotted.classList.remove('a11y-spot'); spotted = null; }
+  }
+  function onMove(e){
+    var y = e.clientY;
+    if (S.line) rule.style.top = (y - 2) + 'px';
+    if (S.mask) {
+      mTop.style.top = '0px';
+      mTop.style.height = Math.max(0, y - 62) + 'px';
+      mBot.style.top = (y + 62) + 'px';
+      mBot.style.bottom = '0px';
+    }
+    if (S.spot) {
+      var el = document.elementFromPoint(e.clientX, y);
+      el = el && el.closest ? el.closest('p,h1,h2,h3,h4,h5,h6,li,figcaption,blockquote') : null;
+      if (el && el.closest('.a11y-ui')) el = null;
+      if (el !== spotted) { clearSpot(); spotted = el; if (el) el.classList.add('a11y-spot'); }
+    }
+  }
+  document.addEventListener('mousemove', onMove, {passive:true});
+
+  function apply(){
+    H.style.setProperty('--a11y-fs', FS[S.fs].s);
+
+    var lh = LH[S.lh];
+    flag('data-a11y-lh', !!lh.v);
+    if (lh.v) H.style.setProperty('--a11y-lh', lh.v);
+
+    var ls = LS[S.ls];
+    flag('data-a11y-ls', !!ls.v);
+    if (ls.v) { H.style.setProperty('--a11y-ls', ls.v); H.style.setProperty('--a11y-ws', ls.w); }
+
+    var al = AL[S.align];
+    flag('data-a11y-align', !!al.v);
+    if (al.v) H.style.setProperty('--a11y-align', al.v);
+
+    flag('data-a11y-weight',   S.weight);
+    flag('data-a11y-readable', S.readable);
+    flag('data-a11y-cursor',   S.cursor);
+    flag('data-a11y-noimg',    S.noimg);
+    flag('data-a11y-links',    S.links);
+    flag('data-a11y-stopmotion', S.motion);
+
+    if (S.color) H.setAttribute('data-a11y-color', S.color);
+    else H.removeAttribute('data-a11y-color');
+
+    rule.style.display = S.line ? 'block' : 'none';
+    mTop.style.display = mBot.style.display = S.mask ? 'block' : 'none';
+    if (!S.spot) clearSpot();
+
+    sync();
+  }
+
+  function setLab(btn, base, extra){
+    var lab = btn.querySelector('.a11y__lab');
+    lab.textContent = extra ? base + ': ' + extra : base;
+  }
+  function tile(key){ return panel.querySelector('[data-a11y-t="' + key + '"]'); }
+  function press(key, on){ var b = tile(key); if (b) b.setAttribute('aria-pressed', on ? 'true' : 'false'); }
+
+  function sync(){
+    document.getElementById('a11y-fs-v').value = FS[S.fs].n;
+    document.getElementById('a11y-lh-v').value = LH[S.lh].n;
+
+    press('readable', S.readable); press('cursor', S.cursor);
+    press('weight', S.weight);     press('noimg', S.noimg);
+    press('line', S.line);         press('mask', S.mask);
+    press('spot', S.spot);         press('motion', S.motion);
+    press('links', S.links);
+    press('c-light', S.color === 'light');
+    press('c-dark',  S.color === 'dark');
+    press('c-high',  S.color === 'high');
+    press('c-mono',  S.color === 'mono');
+
+    press('ls', S.ls > 0);
+    setLab(tile('ls'), 'Letter Spacing', S.ls > 0 ? LS[S.ls].n : '');
+    press('align', S.align > 0);
+    setLab(tile('align'), 'Align Text', S.align > 0 ? AL[S.align].n : '');
+  }
+
+  // ---- controls ----
+  panel.addEventListener('click', function(e){
+    var b = e.target.closest ? e.target.closest('button') : null;
+    if (!b || !panel.contains(b)) return;
+
+    if (b.hasAttribute('data-a11y-close')) { closePanel(); return; }
+
+    if (b.hasAttribute('data-a11y-reset')) {
+      for (var k in DEF) S[k] = DEF[k];
+      clearSpot(); apply(); save();
+      return;
+    }
+
+    var st = b.getAttribute('data-a11y-s');
+    if (st) {
+      var dir = parseInt(b.getAttribute('data-dir'), 10);
+      var max = (st === 'fs' ? FS : LH).length - 1;
+      S[st] = Math.min(max, Math.max(0, S[st] + dir));
+      apply(); save();
+      return;
+    }
+
+    var t = b.getAttribute('data-a11y-t');
+    if (!t) return;
+    if (t === 'ls')         S.ls    = (S.ls + 1) % LS.length;
+    else if (t === 'align') S.align = (S.align + 1) % AL.length;
+    else if (t.indexOf('c-') === 0) {
+      var mode = t.slice(2);
+      S.color = (S.color === mode) ? '' : mode;   // the three colour modes are exclusive
+    } else {
+      S[t] = S[t] ? 0 : 1;
+    }
+    apply(); save();
+  });
+
+  // ---- open / close ----
+  function openPanel(){
+    panel.hidden = false;
+    fab.setAttribute('aria-expanded','true');
+    fab.style.display = 'none';          // the panel sits over the launcher
+    // preventScroll matters: without it the browser scrolls .a11y__body to "reveal"
+    // a button that is in the header, and the panel opens halfway down the list.
+    panel.querySelector('.a11y__x').focus({preventScroll:true});
+    panel.querySelector('.a11y__body').scrollTop = 0;
+  }
+  function closePanel(){
+    panel.hidden = true;
+    fab.setAttribute('aria-expanded','false');
+    fab.style.display = '';
+    fab.focus();
+  }
+  fab.addEventListener('click', openPanel);
+  document.addEventListener('keydown', function(e){
+    if ((e.key === 'Escape' || e.key === 'Esc') && !panel.hidden) closePanel();
+  });
+
+  load();
+  apply();
 })();
 </script>
 </body>

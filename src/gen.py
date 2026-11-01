@@ -87,7 +87,7 @@ def head(key):
     nav = ''.join('<a href="%s"%s>%s</a>' % (h, ' aria-current="page"' if k == key else '', l)
                   for k, l, h in PAGES)
     return """<a class="skip" href="#main">Skip to content</a>
-<div class="util"><div class="wrap util__in">
+<div class="util" role="region" aria-label="Address, hours and phone"><div class="wrap util__in">
   <span class="util__i">{pin} {a1}, {a2}</span>
   <span class="util__i"><span class="open-dot" id="open-dot"></span><span id="open-now">Open 10:30am&ndash;6:30pm today</span></span>
   <span class="util__sp"></span>
@@ -109,11 +109,11 @@ def head(key):
                           mn=ico('menu'), wm=wordmark(False), flag=flag())
 
 
-FOOT_HTML = """<section class="sec sec--char" style="border-top:5px solid var(--gold-bright)">
+FOOT_HTML = """<section class="sec sec--char" aria-labelledby="hungry" style="border-top:5px solid var(--gold-bright)">
   <div class="wrap" style="display:flex;flex-wrap:wrap;gap:1.4rem;align-items:center;justify-content:space-between">
     <div style="display:flex;flex-direction:column;gap:.75rem;min-width:0">
       <p class="signboard">Good Food Brings People Together</p>
-      <h2>Hungry yet?</h2>
+      <h2 id="hungry">Hungry yet?</h2>
       <p class="lede">Call the kitchen and it will be boxed and waiting. Fish needs a little
         more notice &mdash; say so when you ring.</p>
     </div>
@@ -135,20 +135,20 @@ FOOT_HTML = """<section class="sec sec--char" style="border-top:5px solid var(--
         <a href="{maps_pl}" target="_blank" rel="noopener" aria-label="Caribbean Queen on Google">{pini}</a>
       </div>
     </div>
-    <div><h4>Eat</h4><ul>
+    <div><h3>Eat</h3><ul>
       <li><a href="menu.html">Full Menu</a></li>
       <li><a href="menu.html#specialties">Jamaican Specialties</a></li>
       <li><a href="menu.html#vegetarian">Vegetarian Dishes</a></li>
       <li><a href="menu.html#fish">Catch of the Day</a></li>
       <li><a href="{board}">The printed menu (photo)</a></li>
     </ul></div>
-    <div><h4>Visit</h4><ul>
+    <div><h3>Visit</h3><ul>
       <li>{a1}<br>{a2}</li>
       <li><a href="{maps}" target="_blank" rel="noopener">Get directions &rarr;</a></li>
       <li style="padding-top:.45rem">Mon&ndash;Thu: 10:30am &ndash; 6:30pm<br>
         Fri &amp; Sun: 10:30am &ndash; 5pm<br>Saturday: closed</li>
     </ul></div>
-    <div><h4>Order &amp; Catering</h4>
+    <div><h3>Order &amp; Catering</h3>
       <a class="foot__ph" href="{ph}">{pht}</a>
       <ul style="padding-top:.6rem">
         <li>Call to order for pickup</li>
@@ -221,51 +221,6 @@ CONTROLS_HTML = """<!-- ------------------------------------------------ cookie 
   </div>
 </div>
 
-<!-- ------------------------------------------------ accessibility (ADA) tools -->
-<button class="a11yfab" type="button" id="a11y-fab" aria-expanded="false" aria-controls="a11y"
-        aria-label="Accessibility tools">{a11yi}<span>Accessibility</span></button>
-<div class="a11y" id="a11y" role="dialog" aria-labelledby="a11y-h" hidden>
-  <div class="a11y__head">
-    <h2 id="a11y-h">{a11yi} Accessibility</h2>
-    <button class="a11y__x" type="button" id="a11y-close"
-            aria-label="Close accessibility tools">{xi}</button>
-  </div>
-  <div class="a11y__body">
-    <div class="a11y__grp">
-      <p class="a11y__k" id="a11y-k1">Text size</p>
-      <div class="a11y__seg" role="group" aria-labelledby="a11y-k1">
-        <button type="button" data-a11y="text" data-v="1" aria-pressed="false">100%</button>
-        <button type="button" data-a11y="text" data-v="1.15" aria-pressed="false">115%</button>
-        <button type="button" data-a11y="text" data-v="1.3" aria-pressed="false">130%</button>
-        <button type="button" data-a11y="text" data-v="1.5" aria-pressed="false">150%</button>
-      </div>
-    </div>
-    <div class="a11y__grp">
-      <p class="a11y__k" id="a11y-k2">Colour &amp; contrast</p>
-      <div class="a11y__seg" role="group" aria-labelledby="a11y-k2">
-        <button type="button" data-a11y="contrast" data-v="" aria-pressed="false">Automatic</button>
-        <button type="button" data-a11y="contrast" data-v="light" aria-pressed="false">Light</button>
-        <button type="button" data-a11y="contrast" data-v="dark" aria-pressed="false">Dark</button>
-        <button type="button" data-a11y="contrast" data-v="high" aria-pressed="false">High contrast</button>
-      </div>
-    </div>
-    <div class="a11y__grp">
-      <p class="a11y__k">Reading</p>
-      <div class="a11y__sw">
-        <button type="button" data-a11y="font" data-v="1" data-toggle aria-pressed="false">Plain, wider-spaced type</button>
-        <button type="button" data-a11y="underline" data-v="1" data-toggle aria-pressed="false">Underline every link</button>
-        <button type="button" data-a11y="highlight" data-v="1" data-toggle aria-pressed="false">Highlight links &amp; buttons</button>
-        <button type="button" data-a11y="motion" data-v="off" data-toggle aria-pressed="false">Stop animation</button>
-        <button type="button" data-a11y="cursor" data-v="1" data-toggle aria-pressed="false">Large cursor</button>
-      </div>
-    </div>
-    <button class="a11y__reset" type="button" id="a11y-reset">Reset everything</button>
-    <p class="a11y__note">These settings stay on this device. If you need the menu read to you,
-      in large print, or in any other form, call <a href="{ph}">{pht}</a> &mdash; and please tell
-      us about anything on this site that got in your way. Our
-      <a href="accessibility.html">accessibility statement</a> says how.</p>
-  </div>
-</div>
 """
 
 FOOT_JS = r"""(function(){
@@ -406,63 +361,8 @@ A11Y_JS = r"""
    --------------------------------------------------------------------------- */
 (function(){
   var R = document.documentElement;
-
-  /* ---------------- accessibility preferences ---------------- */
-  var AK  = 'cq.a11y.v1';
-  var DEF = {text:'1', contrast:'', font:'0', underline:'0', highlight:'0', motion:'', cursor:'0'};
-  var st  = read();
-
-  function read(){
-    var o = {}, k;
-    for(k in DEF) o[k] = DEF[k];
-    try{
-      var raw = JSON.parse(localStorage.getItem(AK) || '{}');
-      for(k in DEF) if(typeof raw[k] === 'string') o[k] = raw[k];
-    }catch(e){}
-    return o;
-  }
-  function store(){ try{ localStorage.setItem(AK, JSON.stringify(st)); }catch(e){} }
   function flag(attr, on, val){ if(on) R.setAttribute(attr, val); else R.removeAttribute(attr); }
 
-  function paint(){
-    document.querySelectorAll('[data-a11y]').forEach(function(b){
-      var on = st[b.getAttribute('data-a11y')] === b.getAttribute('data-v');
-      b.setAttribute('aria-pressed', on ? 'true' : 'false');
-      b.classList.toggle('is-on', on);
-    });
-  }
-  function apply(){
-    R.style.setProperty('--a11y-scale', st.text);
-    if(st.contrast === 'light' || st.contrast === 'dark') R.setAttribute('data-theme', st.contrast);
-    else R.removeAttribute('data-theme');
-    flag('data-a11y-contrast',  st.contrast  === 'high', 'high');
-    flag('data-a11y-font',      st.font      === '1',    'plain');
-    flag('data-a11y-underline', st.underline === '1',    '1');
-    flag('data-a11y-highlight', st.highlight === '1',    '1');
-    flag('data-a11y-motion',    st.motion    === 'off',  'off');
-    flag('data-a11y-cursor',    st.cursor    === '1',    'big');
-    paint();
-  }
-
-  var fab  = document.getElementById('a11y-fab'),
-      pan  = document.getElementById('a11y'),
-      xbtn = document.getElementById('a11y-close'),
-      rbtn = document.getElementById('a11y-reset');
-
-  function panel(open, refocus){
-    if(!pan || !fab) return;
-    pan.hidden = !open;
-    fab.setAttribute('aria-expanded', open ? 'true' : 'false');
-    if(open){ var f = pan.querySelector('.a11y__seg button'); if(f) f.focus(); }
-    else if(refocus) fab.focus();
-  }
-  if(fab)  fab.addEventListener('click',  function(){ panel(pan.hidden, true); });
-  if(xbtn) xbtn.addEventListener('click', function(){ panel(false, true); });
-  if(rbtn) rbtn.addEventListener('click', function(){
-    var k; for(k in DEF) st[k] = DEF[k];
-    store(); apply(); motionChanged();
-  });
-  function motionChanged(){ try{ window.dispatchEvent(new Event('cq:motion')); }catch(e){} }
 
   /* ---------------- cookie / storage consent ---------------- */
   var CK = 'cq.consent.v1', YEAR = 365 * 24 * 60 * 60 * 1000;
@@ -514,17 +414,13 @@ A11Y_JS = r"""
   /* ---------------- wiring ---------------- */
   document.addEventListener('click', function(e){
     if(!e.target || !e.target.closest) return;
-    var b = e.target.closest('[data-a11y]');
-    if(b){
-      var k = b.getAttribute('data-a11y'), v = b.getAttribute('data-v');
-      st[k] = (b.hasAttribute('data-toggle') && st[k] === v) ? DEF[k] : v;
-      store(); apply();
-      if(k === 'motion') motionChanged();
-      return;
-    }
     var t = e.target.closest('[data-cc-set],[data-cc-open],[data-cc-toggle],[data-a11y-open]');
     if(!t) return;
-    if(t.hasAttribute('data-a11y-open')){ panel(true, false); return; }
+    if(t.hasAttribute('data-a11y-open')){
+      var nf = document.getElementById('a11yFab');
+      if(nf) nf.click();
+      return;
+    }
     if(t.hasAttribute('data-cc-toggle')){
       var open = R.getAttribute('data-cc-opts') !== '1';
       flag('data-cc-opts', open, '1');
@@ -553,28 +449,312 @@ A11Y_JS = r"""
     }
   });
 
-  document.addEventListener('click', function(e){
-    if(!pan || pan.hidden || !e.target || !e.target.closest) return;
-    if(pan.contains(e.target)) return;
-    if(e.target.closest('#a11y-fab,[data-a11y-open]')) return;
-    panel(false, false);
-  });
 
   document.addEventListener('keydown', function(e){
     if(e.key !== 'Escape') return;
-    if(pan && !pan.hidden){ panel(false, true); return; }
     /* The banner has no dismiss: a visitor who has not answered yet must choose.
        Once answered, re-opening it from the footer can be escaped. */
     if(cc && !cc.hidden && readCC()) showCC(false);
   });
 
-  apply();
   var gpcnote = document.getElementById('cc-gpc');
   if(gpcnote) gpcnote.hidden = !GPC;
   var had = readCC();
   if(had) publishCC(had); else showCC(true);
 })();
 """
+
+# ======================================================== ACCESSIBILITY TOOLBAR
+# A visitor-facing panel of display preferences. It is deliberately a plain
+# <aside> landmark holding a launcher and a non-modal dialog: no framework, no
+# network call, and nothing it does is required for the page to work. Choices
+# persist in localStorage; every read and write is guarded because private
+# windows and blocked site data make both throw.
+#
+# All of the page-wide CSS it triggers is scoped to body>*:not(.a11y-ui) in
+# _css.css, so the panel can never restyle its own controls out from under the
+# visitor who is using them.
+
+A11Y_ICONS = {
+ 'person':'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.6a2.1 2.1 0 1 1 0 4.2 2.1 2.1 0 0 1 0-4.2zM3.4 7.9c2.7.9 5.6 1.4 8.6 1.4s5.9-.5 8.6-1.4a1.2 1.2 0 1 1 .7 2.3c-2 .6-4 1.1-6.1 1.3l.6 3.1 2.3 5.7a1.2 1.2 0 1 1-2.2.9L13.4 16h-2.8l-2.5 6.2a1.2 1.2 0 1 1-2.2-.9l2.3-5.7.6-3.1c-2.1-.2-4.1-.7-6.1-1.3a1.2 1.2 0 1 1 .7-2.3z"/></svg>',
+ 'aa':'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9 16l3-8 3 8M10 13.6h4"/></svg>',
+ 'cursor':'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5l12 8.4-5.6 1 2.6 5.6-2.6 1.1-2.5-5.6-3.9 3.7z"/></svg>',
+ 'ls':'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5v7M11 5v7M15 5v7M3 18h18M3 18l2.5-2.5M3 18l2.5 2.5M21 18l-2.5-2.5M21 18l-2.5 2.5"/></svg>',
+ 'align':'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 10.7h10M4 15.3h16M7 20h10"/></svg>',
+ 'bold':'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><path d="M9.5 8h3.1a2.1 2.1 0 0 1 0 4.2H9.5zm0 4.2h3.6a2.1 2.1 0 0 1 0 4.2H9.5z"/></svg>',
+ 'sun':'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.4v2.1M12 19.5v2.1M4.2 4.2l1.5 1.5M18.3 18.3l1.5 1.5M2.4 12h2.1M19.5 12h2.1M4.2 19.8l1.5-1.5M18.3 5.7l1.5-1.5"/></svg>',
+ 'half':'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3.1a8.9 8.9 0 0 1 0 17.8z" fill="currentColor" stroke="none"/></svg>',
+ 'moon':'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.3 14.6A8.6 8.6 0 0 1 9.4 3.7a8.9 8.9 0 1 0 10.9 10.9z"/></svg>',
+ 'mono':'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M4.3 8.6h15.4M3.2 12.4h17.6M4.3 16.2h15.4"/></svg>',
+ 'rline':'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="6.5" width="19" height="11" rx="3"/><path d="M7.4 12h.01M12 12h.01M16.6 12h.01"/></svg>',
+ 'rmask':'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8.2c3-2.6 6-2.6 9 0s6 2.6 9 0M3 15.8c3 2.6 6 2.6 9 0s6-2.6 9 0"/></svg>',
+ 'noimg':'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3.8 17.2L9 12l3.4 3.4M14.4 13.6L16.8 11l3.4 3.4"/><path d="M14.4 6.2l3.6 3.6M18 6.2l-3.6 3.6"/></svg>',
+ 'spot':'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="4.5" width="15" height="15" rx="2"/><circle cx="4.5" cy="4.5" r="1.9" fill="currentColor" stroke="none"/><circle cx="19.5" cy="4.5" r="1.9" fill="currentColor" stroke="none"/><circle cx="4.5" cy="19.5" r="1.9" fill="currentColor" stroke="none"/><circle cx="19.5" cy="19.5" r="1.9" fill="currentColor" stroke="none"/></svg>',
+ 'stop':'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M5.6 18.4L18.4 5.6"/></svg>',
+ 'link':'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13.8a4 4 0 0 0 5.7 0l2.8-2.9a4 4 0 0 0-5.7-5.6l-1.3 1.3"/><path d="M14 10.2a4 4 0 0 0-5.7 0l-2.8 2.9a4 4 0 0 0 5.7 5.6l1.3-1.3"/></svg>',
+ 'plus':'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5.5v13M5.5 12h13"/></svg>',
+ 'minus':'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 12h13"/></svg>',
+}
+
+def a11y_tile(key, label, icon):
+    return ('<button class="a11y__tile" type="button" data-a11y-t="%s" aria-pressed="false">'
+            '<span class="a11y__ic">%s</span>'
+            '<span class="a11y__lab" data-lab="%s">%s</span></button>'
+            % (key, A11Y_ICONS[icon], label, label))
+
+def a11y_step(key, label):
+    return ('<div class="a11y__step"><span id="a11y-%s-l">%s</span><div class="a11y__row">'
+            '<button class="a11y__sbtn" type="button" data-a11y-s="%s" data-dir="1" '
+            'aria-describedby="a11y-%s-l" aria-label="Increase %s">%s</button>'
+            '<output class="a11y__out" id="a11y-%s-v" for="a11y-%s-l">Default</output>'
+            '<button class="a11y__sbtn" type="button" data-a11y-s="%s" data-dir="-1" '
+            'aria-describedby="a11y-%s-l" aria-label="Decrease %s">%s</button>'
+            '</div></div>'
+            % (key, label, key, key, label.lower(), A11Y_ICONS['plus'],
+               key, key, key, key, label.lower(), A11Y_ICONS['minus']))
+
+A11Y = ("""
+<aside class="a11y-ui a11y-root" aria-label="Accessibility adjustments">
+<button class="a11y-fab" id="a11yFab" type="button" aria-expanded="false" aria-controls="a11yPanel">
+  """ + A11Y_ICONS['person'] + """<span class="vh">Accessibility adjustments</span>
+</button>
+<div class="a11y" id="a11yPanel" role="dialog" aria-labelledby="a11yTitle" hidden>
+  <div class="a11y__head">
+    <button class="a11y__x" type="button" data-a11y-close
+            aria-label="Close accessibility adjustments">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg>
+    </button>
+    <span class="a11y__mark">""" + A11Y_ICONS['person'] + """</span>
+    <h2 id="a11yTitle">Accessibility Adjustments</h2>
+    <p class="a11y__sub">Caribbean Queen &middot;
+      <button class="a11y__hide" type="button" data-a11y-close>Hide Toolbar</button></p>
+  </div>
+  <div class="a11y__body">
+    <section class="a11y__grp" aria-labelledby="a11yG1">
+      <h3 id="a11yG1">Content Modules</h3>
+      <div class="a11y__grid">
+        """ + a11y_step('fs', 'Font Size') + a11y_tile('readable', 'Readable Font', 'aa') + """
+        """ + a11y_step('lh', 'Line Height') + a11y_tile('cursor', 'Big Cursor', 'cursor') + """
+        """ + a11y_tile('ls', 'Letter Spacing', 'ls')
+            + a11y_tile('align', 'Align Text', 'align')
+            + a11y_tile('weight', 'Font Weight', 'bold') + """
+      </div>
+    </section>
+    <section class="a11y__grp" aria-labelledby="a11yG2">
+      <h3 id="a11yG2">Color Modules</h3>
+      <div class="a11y__grid">
+        """ + a11y_tile('c-light', 'Light Contrast', 'sun')
+            + a11y_tile('c-dark', 'Dark Contrast', 'moon')
+            + a11y_tile('c-high', 'High Contrast', 'half')
+            + a11y_tile('c-mono', 'Monochrome', 'mono') + """
+      </div>
+    </section>
+    <section class="a11y__grp" aria-labelledby="a11yG3">
+      <h3 id="a11yG3">Orientation Modules</h3>
+      <div class="a11y__grid">
+        """ + a11y_tile('line', 'Reading Line', 'rline')
+            + a11y_tile('mask', 'Reading Mask', 'rmask')
+            + a11y_tile('noimg', 'Hide Images', 'noimg')
+            + a11y_tile('spot', 'Highlight Content', 'spot')
+            + a11y_tile('motion', 'Stop Animations', 'stop')
+            + a11y_tile('links', 'Highlight Links', 'link') + """
+      </div>
+    </section>
+    <p class="a11y__note">Your choices are stored on this device only. Need the menu read to you,
+      in large print, or in any other form? Call <a href="{ph}">{pht}</a>. Our
+      <a href="accessibility.html">accessibility statement</a> says how to tell us about
+      anything here that got in your way.</p>
+    <button class="a11y__reset" type="button" data-a11y-reset>Reset Settings</button>
+  </div>
+</div>
+</aside>
+<script>
+(function(){
+  var H = document.documentElement, KEY = 'cq_a11y_v1';
+  var fab = document.getElementById('a11yFab'), panel = document.getElementById('a11yPanel');
+  if (!fab || !panel) return;
+  var root = fab.parentNode;
+
+  // Stepper scales. Index 1 is the untouched page in both, so "Default" is always
+  // one press away and a visitor can never strand themselves at an unreadable size.
+  var FS = [{s:'0.88',n:'Smaller'},{s:'1',n:'Default'},{s:'1.15',n:'Large'},
+            {s:'1.3',n:'Larger'},{s:'1.5',n:'X-Large'},{s:'1.75',n:'XX-Large'}];
+  var LH = [{v:'1.25',n:'Tight'},{v:'',n:'Default'},{v:'1.9',n:'Relaxed'},
+            {v:'2.3',n:'Loose'},{v:'2.8',n:'Very Loose'}];
+  var LS = [{n:'Default'},{v:'.06em',w:'.16em',n:'Wide'},
+            {v:'.12em',w:'.26em',n:'Wider'},{v:'.2em',w:'.4em',n:'Widest'}];
+  var AL = [{n:'Default'},{v:'left',n:'Left'},{v:'center',n:'Center'},{v:'right',n:'Right'}];
+  var DEF = {fs:1, lh:1, ls:0, align:0, weight:0, readable:0, cursor:0,
+             color:'', line:0, mask:0, noimg:0, spot:0, motion:0, links:0};
+  var S = {};
+
+  function load(){
+    for (var k in DEF) S[k] = DEF[k];
+    try {
+      var raw = localStorage.getItem(KEY);
+      if (!raw) return;
+      var o = JSON.parse(raw);
+      for (var k2 in DEF) if (o && o[k2] !== undefined) S[k2] = o[k2];
+    } catch (e) {}
+  }
+  function save(){ try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} }
+
+  function flag(attr, on){ if (on) H.setAttribute(attr,''); else H.removeAttribute(attr); }
+
+  // ---- reading aids are drawn inside this landmark, never loose on <body> ----
+  function overlay(cls){
+    var d = document.createElement('div');
+    d.className = cls + ' a11y-ui';
+    d.setAttribute('aria-hidden','true');
+    root.appendChild(d);
+    return d;
+  }
+  var rule = overlay('a11y-rule'), mTop = overlay('a11y-mask'), mBot = overlay('a11y-mask');
+  var spotted = null;
+
+  function clearSpot(){
+    if (spotted) { spotted.classList.remove('a11y-spot'); spotted = null; }
+  }
+  function onMove(e){
+    var y = e.clientY;
+    if (S.line) rule.style.top = (y - 2) + 'px';
+    if (S.mask) {
+      mTop.style.top = '0px';
+      mTop.style.height = Math.max(0, y - 62) + 'px';
+      mBot.style.top = (y + 62) + 'px';
+      mBot.style.bottom = '0px';
+    }
+    if (S.spot) {
+      var el = document.elementFromPoint(e.clientX, y);
+      el = el && el.closest ? el.closest('p,h1,h2,h3,h4,h5,h6,li,figcaption,blockquote') : null;
+      if (el && el.closest('.a11y-ui')) el = null;
+      if (el !== spotted) { clearSpot(); spotted = el; if (el) el.classList.add('a11y-spot'); }
+    }
+  }
+  document.addEventListener('mousemove', onMove, {passive:true});
+
+  function apply(){
+    H.style.setProperty('--a11y-fs', FS[S.fs].s);
+
+    var lh = LH[S.lh];
+    flag('data-a11y-lh', !!lh.v);
+    if (lh.v) H.style.setProperty('--a11y-lh', lh.v);
+
+    var ls = LS[S.ls];
+    flag('data-a11y-ls', !!ls.v);
+    if (ls.v) { H.style.setProperty('--a11y-ls', ls.v); H.style.setProperty('--a11y-ws', ls.w); }
+
+    var al = AL[S.align];
+    flag('data-a11y-align', !!al.v);
+    if (al.v) H.style.setProperty('--a11y-align', al.v);
+
+    flag('data-a11y-weight',   S.weight);
+    flag('data-a11y-readable', S.readable);
+    flag('data-a11y-cursor',   S.cursor);
+    flag('data-a11y-noimg',    S.noimg);
+    flag('data-a11y-links',    S.links);
+    flag('data-a11y-stopmotion', S.motion);
+
+    if (S.color) H.setAttribute('data-a11y-color', S.color);
+    else H.removeAttribute('data-a11y-color');
+
+    rule.style.display = S.line ? 'block' : 'none';
+    mTop.style.display = mBot.style.display = S.mask ? 'block' : 'none';
+    if (!S.spot) clearSpot();
+
+    sync();
+  }
+
+  function setLab(btn, base, extra){
+    var lab = btn.querySelector('.a11y__lab');
+    lab.textContent = extra ? base + ': ' + extra : base;
+  }
+  function tile(key){ return panel.querySelector('[data-a11y-t="' + key + '"]'); }
+  function press(key, on){ var b = tile(key); if (b) b.setAttribute('aria-pressed', on ? 'true' : 'false'); }
+
+  function sync(){
+    document.getElementById('a11y-fs-v').value = FS[S.fs].n;
+    document.getElementById('a11y-lh-v').value = LH[S.lh].n;
+
+    press('readable', S.readable); press('cursor', S.cursor);
+    press('weight', S.weight);     press('noimg', S.noimg);
+    press('line', S.line);         press('mask', S.mask);
+    press('spot', S.spot);         press('motion', S.motion);
+    press('links', S.links);
+    press('c-light', S.color === 'light');
+    press('c-dark',  S.color === 'dark');
+    press('c-high',  S.color === 'high');
+    press('c-mono',  S.color === 'mono');
+
+    press('ls', S.ls > 0);
+    setLab(tile('ls'), 'Letter Spacing', S.ls > 0 ? LS[S.ls].n : '');
+    press('align', S.align > 0);
+    setLab(tile('align'), 'Align Text', S.align > 0 ? AL[S.align].n : '');
+  }
+
+  // ---- controls ----
+  panel.addEventListener('click', function(e){
+    var b = e.target.closest ? e.target.closest('button') : null;
+    if (!b || !panel.contains(b)) return;
+
+    if (b.hasAttribute('data-a11y-close')) { closePanel(); return; }
+
+    if (b.hasAttribute('data-a11y-reset')) {
+      for (var k in DEF) S[k] = DEF[k];
+      clearSpot(); apply(); save();
+      return;
+    }
+
+    var st = b.getAttribute('data-a11y-s');
+    if (st) {
+      var dir = parseInt(b.getAttribute('data-dir'), 10);
+      var max = (st === 'fs' ? FS : LH).length - 1;
+      S[st] = Math.min(max, Math.max(0, S[st] + dir));
+      apply(); save();
+      return;
+    }
+
+    var t = b.getAttribute('data-a11y-t');
+    if (!t) return;
+    if (t === 'ls')         S.ls    = (S.ls + 1) % LS.length;
+    else if (t === 'align') S.align = (S.align + 1) % AL.length;
+    else if (t.indexOf('c-') === 0) {
+      var mode = t.slice(2);
+      S.color = (S.color === mode) ? '' : mode;   // the three colour modes are exclusive
+    } else {
+      S[t] = S[t] ? 0 : 1;
+    }
+    apply(); save();
+  });
+
+  // ---- open / close ----
+  function openPanel(){
+    panel.hidden = false;
+    fab.setAttribute('aria-expanded','true');
+    fab.style.display = 'none';          // the panel sits over the launcher
+    // preventScroll matters: without it the browser scrolls .a11y__body to "reveal"
+    // a button that is in the header, and the panel opens halfway down the list.
+    panel.querySelector('.a11y__x').focus({preventScroll:true});
+    panel.querySelector('.a11y__body').scrollTop = 0;
+  }
+  function closePanel(){
+    panel.hidden = true;
+    fab.setAttribute('aria-expanded','false');
+    fab.style.display = '';
+    fab.focus();
+  }
+  fab.addEventListener('click', openPanel);
+  document.addEventListener('keydown', function(e){
+    if ((e.key === 'Escape' || e.key === 'Esc') && !panel.hidden) closePanel();
+  });
+
+  load();
+  apply();
+})();
+</script>""")
+
+A11Y = A11Y.replace('{ph}', PHONE_H).replace('{pht}', PHONE_T)
+
 
 FOOT = (FOOT_HTML.format(ph=PHONE_H, pht=PHONE_T, a1=ADDR1, a2=ADDR2, maps=MAPS,
                          maps_pl=MAPS_PL, yelp=YELP, board=BOARD, opened=OPENED,
@@ -593,20 +773,32 @@ FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">'
          '&family=Karla:wght@400;500;700&display=swap">')
 
 BOOT = ("<script>(function(){try{"
-        "var R=document.documentElement,s=JSON.parse(localStorage.getItem('cq.a11y.v1')||'{}');"
-        "if(s.text)R.style.setProperty('--a11y-scale',s.text);"
-        "if(s.contrast==='light'||s.contrast==='dark')R.setAttribute('data-theme',s.contrast);"
-        "if(s.contrast==='high')R.setAttribute('data-a11y-contrast','high');"
-        "if(s.font==='1')R.setAttribute('data-a11y-font','plain');"
-        "if(s.underline==='1')R.setAttribute('data-a11y-underline','1');"
-        "if(s.highlight==='1')R.setAttribute('data-a11y-highlight','1');"
-        "if(s.motion==='off')R.setAttribute('data-a11y-motion','off');"
-        "if(s.cursor==='1')R.setAttribute('data-a11y-cursor','big');"
+        # Applies the saved toolbar settings before first paint, so a visitor who chose
+        # large text or high contrast never sees a flash of the default page. The scales
+        # here must stay in step with FS/LH/LS/AL in the panel's own script below.
+        "var R=document.documentElement,s=JSON.parse(localStorage.getItem('cq_a11y_v1')||'{}');"
+        "var FS=['0.88','1','1.15','1.3','1.5','1.75'],LH=['1.25','','1.9','2.3','2.8'],"
+        "LS=['','.06em','.12em','.2em'],WS=['','.16em','.26em','.4em'],"
+        "AL=['','left','center','right'];"
+        "if(s.fs&&FS[s.fs])R.style.setProperty('--a11y-fs',FS[s.fs]);"
+        "if(s.lh&&LH[s.lh]){R.setAttribute('data-a11y-lh','');"
+        "R.style.setProperty('--a11y-lh',LH[s.lh]);}"
+        "if(s.ls&&LS[s.ls]){R.setAttribute('data-a11y-ls','');"
+        "R.style.setProperty('--a11y-ls',LS[s.ls]);R.style.setProperty('--a11y-ws',WS[s.ls]);}"
+        "if(s.align&&AL[s.align]){R.setAttribute('data-a11y-align','');"
+        "R.style.setProperty('--a11y-align',AL[s.align]);}"
+        "if(s.weight)R.setAttribute('data-a11y-weight','');"
+        "if(s.readable)R.setAttribute('data-a11y-readable','');"
+        "if(s.cursor)R.setAttribute('data-a11y-cursor','');"
+        "if(s.noimg)R.setAttribute('data-a11y-noimg','');"
+        "if(s.links)R.setAttribute('data-a11y-links','');"
+        "if(s.motion)R.setAttribute('data-a11y-stopmotion','');"
+        "if(s.color)R.setAttribute('data-a11y-color',s.color);"
         "}catch(e){}})();</script>")
 
 def build(key, title, desc, body, standalone):
-    inner = ('<title>%s</title>\n%s\n<style>\n%s</style>\n%s\n%s\n<main id="main">\n%s\n</main>\n%s\n'
-             % (title, FONTS, CSS, BOOT, head(key), body, FOOT))
+    inner = ('<title>%s</title>\n%s\n<style>\n%s</style>\n%s\n%s\n<main id="main">\n%s\n</main>\n%s\n%s\n'
+             % (title, FONTS, CSS, BOOT, head(key), body, FOOT, A11Y))
     if not standalone:
         return inner
     hp, bp = inner.split('</style>\n', 1)
@@ -675,7 +867,7 @@ def dish_card(src, name, desc, sizes, href, section):
 
 def photo_carousel(items):
     slides = ''.join(
-        '<li class="pcar__slide" role="group" aria-roledescription="slide" aria-label="%d of %d">%s</li>'
+        '<div class="pcar__slide" role="group" aria-roledescription="slide" aria-label="%d of %d">%s</div>'
         % (i + 1, len(items), dish_card(*it)) for i, it in enumerate(items))
     dots = ''.join(
         '<button class="pcar__dot" type="button" role="tab" data-dot="%d" aria-selected="%s" '
@@ -684,7 +876,7 @@ def photo_carousel(items):
     return """<div class="pcar" data-pcar>
   <div class="pcar__vp" data-vp tabindex="0" role="group" aria-roledescription="carousel"
        aria-label="Dishes from the menu" aria-live="polite">
-    <ul class="pcar__track" data-track>%s</ul>
+    <div class="pcar__track" data-track>%s</div>
   </div>
   <div class="pcar__ctl">
     <button class="pcar__btn" type="button" data-prev aria-label="Previous dish">%s</button>
@@ -706,7 +898,7 @@ def size_block(sizes):
 def menu_html():
     jump = ''.join('<a href="#%s">%s</a>' % (slug, name)
                    for slug, name, _c, _b, _t, _i in MENU)
-    out = ['<div class="menujump" aria-label="Jump to a menu section">%s</div>' % jump,
+    out = ['<nav class="menujump" aria-label="Jump to a menu section">%s</nav>' % jump,
            '<p class="legend">'
            '<span><b>Plates come three ways</b> &mdash; Express, Medium or Large. '
            'Express is the quick plate; Large is the one you take home leftovers from.</span>'
@@ -1275,9 +1467,15 @@ accessibility = phead("Accessibility", "Accessibility statement",
 
     <h2>What is built in</h2>
     <ul>
-      <li><b>Accessibility tools on every page.</b> The round button in the corner opens text
-        sizing up to 150%, light, dark and high-contrast colour, plain wider-spaced type,
-        underlined links, highlighted links and buttons, stopped animation, and a large cursor.
+      <li><b>Accessibility tools on every page.</b> The round button in the corner opens a
+        toolbar of eighteen display controls, grouped the way assistive toolbars usually are.
+        <b>Content:</b> text size up to 175%, line height, readable font, big cursor, letter
+        spacing, text alignment and font weight. <b>Colour:</b> light, dark, high-contrast and
+        monochrome. <b>Orientation:</b> a reading line that follows the pointer, a reading mask
+        that dims everything but the current line, hide images, highlight the block you are
+        reading, stop animation, and highlight every link. One button resets the lot. Your
+        choices are kept on your own device and are applied before the page paints, so nothing
+        flashes back to the default.
         Your choices are remembered on your own device, with nothing sent anywhere.</li>
       <li><b>A real menu, not a picture of one.</b> Every dish on the card is live text, so a
         screen reader can read it, you can search it, and you can zoom it without it turning to
