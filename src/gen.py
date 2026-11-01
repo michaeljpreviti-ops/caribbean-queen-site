@@ -825,7 +825,10 @@ def hours_dl(mark_today=True):
 
 
 def grate(dark=False):
-    stars = '&#9733;' * 5
+    star = ('<path transform="translate(%d,0)" d="M9 1.1l2.14 4.52 4.86.69-3.5 3.48.82 4.98'
+            'L9 12.42l-4.32 2.35.82-4.98L2 6.31l4.86-.69z"/>')
+    stars = ('<svg class="stars__svg" viewBox="0 0 92 16" aria-hidden="true" focusable="false">'
+             + ''.join(star % (i * 18.4) for i in range(5)) + '</svg>')
     return ('<a class="grate%s" href="%s" target="_blank" rel="noopener"'
             ' aria-label="Rated %s out of 5 on Google from %s reviews. Opens the Google listing.">'
             '<span class="grate__num">%s</span>'

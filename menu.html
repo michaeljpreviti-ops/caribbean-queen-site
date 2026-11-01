@@ -328,8 +328,11 @@ a.dish:hover .dish__go,a.dish:focus-visible .dish__go{color:var(--red-text)}
   border-radius:4px;padding:.45rem .75rem;background:var(--surface)}
 .grate:hover{border-color:var(--gold-bright)}
 .grate__num{font-family:var(--f-display);font-size:1.5rem;line-height:1;color:var(--ink)}
-.stars{position:relative;display:inline-block;white-space:nowrap;font-size:1.15rem;line-height:1;letter-spacing:.1em}
-.stars__bg{color:#9A8A63}
+.stars{position:relative;display:inline-block;width:92px;height:16px;line-height:0;flex:none}
+.stars__svg{display:block;width:92px;height:16px;fill:currentColor}
+.stars__bg{display:block;color:#9A8A63}
+/* the filled layer is clipped to the score; its svg keeps full width so the
+   clip reveals a fraction of the row rather than squashing the stars */
 .stars__fg{position:absolute;left:0;top:0;overflow:hidden;width:var(--pct,100%);color:var(--gold-deep)}
 .grate__n{font-family:var(--f-cond);font-size:1rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);line-height:1.3;font-weight:600}
 .grate__n b{display:block;color:var(--ink);font-weight:700}
